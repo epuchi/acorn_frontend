@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
-
-/* 근데 이거 하위메뉴가 너무 작게 나와가지고 다시 좀 해보겠습니다????*/
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
         *{
             font-family: "Nanum Gothic", serif;
             font-weight: 400;
             font-style: normal;
         }
-    
+        
         header{
             height: 165px;
             border-top: 5px solid #009223;
-            display: flex;
+            display: block;
             position: relative;
             border-bottom: 0.5px solid #ddd;
         }
@@ -95,6 +92,7 @@
             position: absolute;
             left: 0px;
             top:  -10px;
+            background-color: white;
             transform: translateY(50px);
         }
         .hidden_menu li{
@@ -121,13 +119,13 @@
 <body>
     <header>
         <div class="logo">
-            <a href=https://www.subway.co.kr><img src="../images/header/logo_w.png"></a>
+            <a href=#><img src="./image/logo_w.png"></a>
         </div>
         <div class="log_menu">
             <ul>
                 <li><a href="">로그인</a></li>
                 <li class="signup"><a href="">회원가입</a></li>
-                <li><a href="https://www.subway.com/en-us/"><img src="../images/header/icon_utill_global.png"></a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
         <nav class="main_nav">

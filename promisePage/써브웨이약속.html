@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+
+        .sub_content ul{
+            list-style: none;
+        }
+
+        .sub_hd{
+            padding-top: 25px;
+        }
+
+
+        .subway_wraps{
+            text-align: center;
+        }
+
+        .sub_hd h2{
+            color:#009223;
+            font-size:40px;
+            font-family: "Noto Sans", serif;
+            transform: scaleY(0.9);
+            letter-spacing: -2px;
+            margin-bottom: 0px;
+            position:relative;
+            padding-right:15px;
+        }
+
+        .a{
+            font-size: 28px;
+            position: absolute;
+            top: 3px;
+        }
+
+        .sub_hd p{
+            font-size:18px;
+            font-weight: 600;
+            letter-spacing: -2px;
+        }
+
+        .sub_content{
+            padding: 0px ;
+        }
+
+        .sub_content li{
+            box-sizing: border-box;
+            margin:0 auto;
+            background-color: #F6F6F6;
+            color: #666666;
+            height:380px;
+            letter-spacing: -1px;
+        }
+
+        .sub_content li:nth-child(2), .sub_content li:nth-child(4) {
+            background-color: #FFFFFF;
+        }
+
+        .wrap{
+            display:flex;
+            justify-content: center;
+            margin-top:80px;
+            height:100%;
+        }
+
+        .content_img{
+            width: 600px;
+            position: relative;
+        }
+
+        .content_img img{
+            position: absolute;
+            left:0px;
+            top:70px;
+        }
+
+
+
+        .info{
+            width:600px;
+            padding-top:100px;
+            position:relative;
+            line-height: 26px;
+            text-align: left;
+        }
+        
+        .point{
+            height:80px;
+            position:absolute;
+            left:0px;
+            bottom:-40px;
+            font-size:80px;
+            font-weight: bolder;
+            color: #fff;
+        }
+        .info h2{
+
+            display: flex;
+            font-size:28px; 
+            color: #292929;
+            margin-left: 60px;
+            align-items: center;
+        }
+        
+        .info p{
+            font-size:16px;
+            font-weight: 600;
+            color: #292929;
+            margin-left: 60px;
+        }
+        
+
+        .sub_content li:nth-child(2) .point, .sub_content li:nth-child(4) .point{
+            left:210px;
+            bottom:-100px;
+            color: #F6F6F6;    
+        }
+
+        .sub_content li:nth-child(2) .info h2, .sub_content li:nth-child(4) .info h2{
+            margin-right: 60px;
+        }
+
+        .sub_content li:nth-child(2) .info p, .sub_content li:nth-child(4) .info p{
+            margin-right: 60px;
+        }
+
+        .num{
+            display:flex;
+            width:50px;
+            height:50px;
+            justify-content: center;
+            align-items: center;
+            background-color: #009223;
+            color: #ffffff;
+            font-size:18px;
+            margin-right: 15px;
+            text-decoration: overline;
+
+        }
+
+        .hd{
+            position:sticky;
+            top:0;
+            z-index: 1000;
+            width:100%;
+            display: flex;
+            border-top:1px solid #e0dede;
+            border-bottom:1px solid #e0dede;
+            height:60px;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.1);
+        }
+
+        .hd ul{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 0;
+            position:relative;
+        }
+
+        .hd li{
+            margin:0 auto;
+            color: #999999;
+        }
+
+        .hd li a, .hd a{
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            text-decoration: none;
+            color: #999999;
+        }
+        
+        .logo_img{
+            width:110px;
+            height:60px;
+            background-image: url(https://www.subway.co.kr/images/common/logo_sub_header.png);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position:absolute;
+            left:-350px;
+        }
+
+        .top{
+            position:absolute;
+            top:-20px;
+            right:-330px;
+            width:40px;
+            height:32px;
+            box-sizing: border-box;
+            line-height: 60px;
+            font-size:13px;
+            color:#BBBBBB;
+        }
+
+        </style>
+</head>
+<body>
+    <div class="subway_wraps">
+        <div class="hd">
+            <ul>
+            <a class="logo_img" href=""></a>
+            <a href="">써브웨이 역사</a>
+            <li><a href="">써브웨이 약속</a></li>
+            <li><a href="">샌드위치 아티스트 지원</a></li>
+            <li><a href="">매장찾기</a></li>
+            <div class="top"></div>
+            <a class="top" href="">TOP</a>
+            </ul>
+        </div>
+        <div class="sub_hd">
+            <h2><span style="color:#62ce08;"> SEARCH </span> FOR BETTER<span class="a">®</span></h2>
+            <p>우리는 더 좋은 써브웨이를 위해 매일 노력합니다.</p>
+        </div>
+        <ul class="sub_content">
+            <li>
+                <div class="wrap">
+                    <div class="content_img">
+                        <img src="https://www.subway.co.kr/images/subway/img_sw_promise01.jpg">
+                    </div>
+                    <div class="info">
+                        <h2><span class="num">01</span>엄격하게 관리되는 우리의 재료</h2>
+                        <p>
+                            매일 매장에 배송되는 신선한 야채들은 각 매장에서 정성스럽게 손질됩니다.<br>
+                            엄격한 규율에 따라 세척 과정을 거친 야채들은 <br>
+                            당일 판매되는 양만큼 준비되며 언제나 신선한 최상의 야채를<br>
+                            안전하게 제공하는 것이 써브웨이의 목표입니다.
+                        </p>
+                        <div class="point">Our Veggies</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrap">
+                    <div class="info">
+                        <h2><span class="num">02</span>써브웨이만의 특별한 빵</h2>
+                        <p>
+                            1983년부터 써브웨이는<br>
+                            각 매장에서 매일 직접 구워 낸 신선한 샌드위치 빵을 제공합니다.<br>
+                            신선한 샌드위치는 신선한 빵에서 시작된다는 철학으로 <br>
+                            매일 최상의 샌드위치 빵을 제공하기 위해 노력하고 있습니다.
+                        </p>
+                        <div class="point">Our Bread</div>
+                    </div>
+                    <div class="content_img">
+                        <img src="https://www.subway.co.kr/images/subway/img_sw_promise02.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrap">
+                    <div class="content_img">
+                        <img src="https://www.subway.co.kr/images/subway/img_sw_promise03.jpg">
+                    </div>
+                    <div class="info">
+                        <h2><span class="num">03</span>환경을 위한 우리의 노력</h2>
+                        <p>
+                            써브웨이의 샐러드 보울은 95% 재생 용기로 만들어졌으며,<br>
+                            매장 내 일회용품 사용을 줄여 나가고 있습니다. <br>
+                            써브웨이는 작은 부분이라도 놓치지 않고 <br>
+                            환경을 늘 생각하는 브랜드가 되기 위해 지속적으로 노력하고 있습니다.
+                        </p>
+                        <div class="point">Our Impact</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrap">
+                    <div class="info">
+                        <h2><span class="num">04</span>신선함을 위한 우리의 노력</h2>
+                        <p>
+                            써브웨이 빵은 인위적 당분이 함유되어 있지 않으며 <br>
+                            비타민과 칼슘을 강화하고 나트륨을 줄이는 등 <br>
+                            건강한 먹거리를 제공하기 위해 노력하고 있습니다.
+                        </p>
+                        <div class="point">Our Fresh</div>
+                    </div>
+                    <div class="content_img">
+                        <img src="https://www.subway.co.kr/images/subway/img_sw_promise04.jpg">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
