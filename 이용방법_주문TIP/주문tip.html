@@ -124,7 +124,7 @@
         .sub_header ul{
             list-style: none;
             display: flex;
-            justify-content:  center;
+            justify-content: center;
             padding: 0px;
             margin: 0px;
         }
@@ -138,6 +138,8 @@
         }
         .sub_header li{
             position: relative;
+            height: 60px;
+            align-content: center;
         }
         .sub_header li:nth-child(-n+3)::after {
             content: '';
@@ -151,21 +153,19 @@
         }
         .sub_header li:nth-child(1)::after{
             content:'';
-            width: 100%;
-            height: 2px;
+            width: 80%;
+            height: 5px;
             background-color: #009223;
+            border-radius: 0;
             position: absolute;
-            bottom: 0px;
-            left: 0px;
-            /*왜중간엗ㄹ어가있는거임임*/
+            top: 95%;
+            left: 15px;
         }
-
-        .sub_header li:nth-child(1){
-            border: 1px solid red;  /*확인용*/
-        }
-
+ 
         /*li 높이늘리고??? li 초록색밑줄칠하는거 해야되ㅁ 길이도 좀 줄여야겟다
-        빨간네모칸 li 크기 보려고 해놓은 거임!!!!*/
+        빨간네모칸 li 크기 보려고 해놓은 거임!!!!
+        아니 점 어디갔어 ㅡㅡ 아 ㅡㅡ 왜저래진짜 ;;;;;; 두개 적용해서 그런가봐 아니 뭐 이래
+        아 아니면은 보더를 짧게?? 할 수가 있나 저거 애프터 지우고 보더로 해*/
         
         
     </style>
