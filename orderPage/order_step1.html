@@ -15,7 +15,7 @@
             display: flex;
             flex-direction: column;
             min-width: 1280px;
-            background: url(../images/order/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
             text-align: center;
             align-items: center;
         }
@@ -61,7 +61,7 @@
         }
 
         .step-point-on {
-            background: url(../images/order/step_point_on.png) no-repeat 0 0;
+            background: url(./image/step_point_on.png) no-repeat 0 0;
             background-position: center;
             width: 45px;
             height: 5px;
@@ -70,7 +70,7 @@
         }
 
         .step-point-off {
-            background: url(../images/order/step_point_off.png) no-repeat 0 0;
+            background: url(./image/step_point_off.png) no-repeat 0 0;
             background-position: center;
             width: 45px;
             height: 5px;
@@ -125,7 +125,7 @@
             border: 1px solid black;
             width: 100%;
             height: 820px;
-            background-image: url(../images/order/map.JPG);
+            background-image: url(./image/map.JPG);
             background-position: center;
             background-size: cover;
             position: relative;
@@ -187,7 +187,7 @@
             width: 50%;
             height: 50%;
             margin: 8px;
-            background-image: url(../images/order/icon_search.png);
+            background-image: url(./image/icon_search.png);
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -230,7 +230,7 @@
         }
 
         .star-icon {
-            background: url(../images/order/icon_star.png) no-repeat center;
+            background: url(./image/icon_star.png) no-repeat center;
             background-color: rgb(221, 221, 221);
             background-size: 15px;
 
@@ -356,7 +356,7 @@
         }
 
         .checkIcon {
-            background: url(/images/order/icon_check.png);
+            background: url(./image/icon_check.png);
             background-position: center;
             background-size: 20px;
             background-size: cover;
@@ -371,7 +371,7 @@
             console.log(steps)
             steps.forEach((item, index) => {
                 console.log(item)
-                item.style.backgroundImage = `url(../images/order/step${index + 1}.png)`
+                item.style.backgroundImage = `url(./image/step${index + 1}.png)`
             })
         })
 
@@ -403,7 +403,7 @@
 
 <body>
     <header id="header" class="fixed-top">
-        <script>loadHTML("./header.html");</script>
+        <script>loadHTML("../header/header.html");</script>
     </header>
     <div class="wrap">
 
@@ -490,16 +490,27 @@
                     </div>
                     <div class="marker-middle">
                         <ul>
-                            <li><div>주소</div><div>서울특별시 마포구 와우산로 117 102호</div></li>
-                            <li><div>연락처</div><div>02-336-0522</div></li>
-                            <li><div>영업시간</div><div>08:00 ~ 22:00</div></li>
+                            <li>
+                                <div>주소</div>
+                                <div>서울특별시 마포구 와우산로 117 102호</div>
+                            </li>
+                            <li>
+                                <div>연락처</div>
+                                <div>02-336-0522</div>
+                            </li>
+                            <li>
+                                <div>영업시간</div>
+                                <div>08:00 ~ 22:00</div>
+                            </li>
                         </ul>
                     </div>
                     <div class="orderbutton">
                         주문하기
                         <div class="checkIcon"></div>
                     </div>
-                    <div style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(0, 128, 40) transparent transparent; border-image: initial; pointer-events: none; box-sizing: content-box !important; bottom: -22px; left: 140px;"></div>
+                    <div
+                        style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(0, 128, 40) transparent transparent; border-image: initial; pointer-events: none; box-sizing: content-box !important; bottom: -22px; left: 140px;">
+                    </div>
                 </div>
             </div>
         </div>
