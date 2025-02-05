@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            background: url(../images/order/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        .title-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: white;
+            margin-top: 30px;
+        }
+
+        .step-area {
+            display: flex;
+            align-items: center;
+            height: 110px;
+        }
+
+        .step {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .step:nth-child(1) {
+            margin-top: 80px;
+            margin-right: -45px;
+            width: 266px;
+            height: 170px;
+            position: relative;
+        }
+
+        .step>div {
+            width: 70px;
+            height: 70px;
+        }
+
+        .step-point-on {
+            background: url(../images/order/step_point_on.png) no-repeat 0 0;
+            background-position: center;
+            width: 45px;
+            height: 5px;
+            padding: 0 15px;
+
+        }
+
+        .step-point-off {
+            background: url(../images/order/step_point_off.png) no-repeat 0 0;
+            background-position: center;
+            width: 45px;
+            height: 5px;
+            padding: 0 15px;
+
+        }
+
+        .step-num {
+            font-size: 16px;
+            position: absolute;
+            font-weight: bold;
+            color: rgb(255, 195, 0);
+            top: 15px;
+            left: 100px;
+        }
+
+        .step-title {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 35px;
+            left: 100px;
+        }
+
+        .map-area {
+            margin-top: 80px;
+            margin-bottom: 160px;
+            width: 1180px;
+        }
+
+        .button-area {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .btn {
+            width: 50%;
+            height: 80px;
+            line-height: 80px;
+            font-size: 22px;
+            background-color: white;
+            box-shadow: 7px 7px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .on {
+            background-color: rgb(0, 146, 35);
+            color: white;
+        }
+
+        .map {
+            border: 1px solid black;
+            width: 100%;
+            height: 820px;
+            background-image: url(../images/order/map.JPG);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .find {
+            width: 400px;
+            height: 760px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        .find-text {
+            font-size: 32px;
+            font-weight: bold;
+            padding: 40px 0 20px 0;
+        }
+
+        .find-input {
+            margin: 0 auto;
+            border: 2px solid #dddddd;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        .find-input>input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            font-size: 16px;
+            text-indent: 14px;
+            outline: none;
+            font-family: font_ns, sans-serif;
+            border: none;
+        }
+
+        .find-icon::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 2px;
+            height: 17px;
+            background-color: #e5e5e5;
+        }
+
+        .find-icon {
+            position: relative;
+            box-sizing: border-box;
+            width: 10%;
+            height: 100%;
+        }
+
+        .find-icon>div {
+            width: 50%;
+            height: 50%;
+            margin: 8px;
+            background-image: url(../images/order/icon_search.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .search {
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .place-area {
+            width: 100%;
+            height: 65%;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .place {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 25px;
+        }
+
+        .place-info-top {
+            display: flex;
+        }
+
+        .placeName {
+            width: 80%;
+            height: 25px;
+            text-align: left;
+            display: flex;
+        }
+
+        .placeName>p {
+            line-height: 25px;
+        }
+
+        .star-icon {
+            background: url(../images/order/icon_star.png) no-repeat center;
+            background-color: rgb(221, 221, 221);
+            background-size: 15px;
+
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-left: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .order-btn {
+            background-color: green;
+            color: white;
+            border-radius: 13px;
+            padding: 3px 10px;
+            font-size: 14px;
+        }
+
+        .place-info-middle {
+            margin-top: 5px;
+            display: flex;
+            font-weight: bold;
+        }
+
+        .place-info-middle>p {
+            text-align: left;
+            width: 50%;
+        }
+
+        .place-info-bottom {
+            margin-top: 5px;
+            font-weight: bold;
+            text-align: left;
+            color: rgb(180, 180, 180);
+        }
+
+        .page {
+            background-color: red;
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        .page>span {
+            padding: 0 10px;
+        }
+
+    </style>
+    <script>
+        window.addEventListener("load", (e) => {
+            const steps = document.querySelectorAll(".step");
+            console.log(steps)
+            steps.forEach((item, index) => {
+                console.log(item)
+                item.style.backgroundImage = `url(../images/order/step${index + 1}.png)`
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="title-area">
+            <p class="title">Fast-Sub</p>
+            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+        <div class="step-area">
+            <div class="step">
+                <p class="step-num">STEP 1</p>
+                <p class="step-title">매장선택</p>
+            </div>
+            <div class="step-point-on">
+
+            </div>
+            <div class="step">
+                <div class=""></div>
+            </div>
+            <div class="step-point-off">
+
+            </div>
+            <div class="step">
+                <div class=""></div>
+
+            </div>
+            <div class="step-point-off">
+
+            </div>
+            <div class="step">
+                <div class=""></div>
+
+            </div>
+        </div>
+        <div class="map-area">
+            <div class="button-area">
+                <div class="btn on">
+                    매장찾기
+                </div>
+                <div class="btn">
+                    자주 찾는 매장
+                </div>
+            </div>
+            <div class="map">
+                <div class="find">
+                    <div class="find-text">
+                        매장찾기
+                    </div>
+                    <div class="find-input">
+                        <input type="text" placeholder="지역 또는 매장명 입력">
+                        <div class="find-icon">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <p>'<span id="search-place">홍대</span>' 검색 결과 <span>1</span>건</p>
+                    </div>
+                    <div class="place-area">
+                        <div class="place">
+                            <div class="place-info-top">
+                                <div class="placeName">
+                                    <p>홍대아트</p>
+                                    <div class="star-icon"></div>
+                                </div>
+                                <div class="order-btn">주문하기</div>
+                            </div>
+                            <div class="place-info-middle">
+                                <p>예상 소요시간</p>
+                                <p>10분</p>
+                            </div>
+                            <div class="place-info-bottom">
+                                <p>서울특별시 마포구 와우산로 117 102호</p>
+                                <p>02-336-0522</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <p><span>◀</span>1<span>▶</span></p>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
