@@ -272,13 +272,12 @@
             height: 30px;
             line-height: 30px;
         }
-        
+
         .page span {
             margin: 0 35px;
             font-size: 14px;
             color: #bcbcbc;
         }
-
     </style>
     <script>
         window.addEventListener("load", (e) => {
@@ -289,11 +288,29 @@
                 item.style.backgroundImage = `url(../images/order/step${index + 1}.png)`
             })
         })
+
+        function loadHTML(file) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        var allText = rawFile.responseText;
+                        document.write(allText);
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
     </script>
 </head>
 
 <body>
+    <header id="header" class="fixed-top">
+        <script>loadHTML("./header.html");</script>
+    </header>
     <div class="wrap">
+        
         <div class="title-area">
             <p class="title">Fast-Sub</p>
             <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
@@ -367,7 +384,7 @@
                         </div>
                     </div>
                     <div class="page">
-                        <p><span>◀</span>1<span>▶</span></p>    
+                        <p><span>◀</span>1<span>▶</span></p>
                     </div>
                 </div>
             </div>
