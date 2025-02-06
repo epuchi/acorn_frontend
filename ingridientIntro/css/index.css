@@ -87,14 +87,27 @@ li{
     height: 400px;
     /* border: 1px solid red; */
 }
-.ing_body_nav ul{
+.ing_body_nav ul {
     display: flex;
     gap: 30px;
-    margin-left: 34%;
-    margin-top: 2.5%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     font-weight: bold;
     color: gray;
     font-family: "Noto Sans KR", serif;
+}
+.ing_body_nav ul li:hover{
+    cursor: pointer;
+}
+.ing_body_nav_ybar{
+    color: lightgray;
+}
+.ing_body_nav_ybar:hover{
+
+    cursor: none;
 }
 .ing_body_nav_bar{
     content: '';
@@ -278,12 +291,12 @@ li{
     box-sizing: border-box;
 }
 
-/* hover 시 overlay 보이게 */
+
 .ing_body_list_box li:hover .bread_overlay {
     opacity: 1;
 }
 
-/* hover 시 기존 내용 숨기기 */
+
 .ing_body_list_box li:hover .bread_img,
 .ing_body_list_box li:hover .bread_text {
     opacity: 0;
