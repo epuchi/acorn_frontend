@@ -56,7 +56,7 @@
         }
 
         .btn {
-            width: 50%;
+            width: 100%;
             height: 80px;
             line-height: 80px;
             font-size: 22px;
@@ -231,9 +231,9 @@
             font-size: 14px;
             color: #bcbcbc;
         }
-
+        
         .place-marker {
-            display: flex;
+            display: none;
             flex-direction: column;
             background-color: white;
             width: 300px;
@@ -263,7 +263,7 @@
             flex-direction: row;
             width: 80%;
             margin: 0 auto;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .marker-middle li {
@@ -289,7 +289,7 @@
 
         .orderbutton {
             margin: 0 auto;
-            margin-top: 20px;
+            margin-top: 10px;
             background-color: green;
             text-align: center;
             width: 40%;
@@ -375,7 +375,8 @@
             text-align: center;
         }
 
-        .how-btn p {
+        .how-btn a {
+            display: block;
             margin: 0 auto;
             width: 178px;
             height: 178px;
@@ -395,6 +396,14 @@
             top: 5px;
             right: -10px;
             transform: translateX(100%);
+        }
+
+        .how-btn:hover, .x-btn:hover, .order-btn:hover, .orderbutton:hover, .marker-top p:nth-child(2):hover {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
         }
     </style>
     <script>
@@ -532,9 +541,6 @@
                 <div class="btn on">
                     매장찾기
                 </div>
-                <div class="btn">
-                    자주 찾는 매장
-                </div>
             </div>
             <div class="map">
                 <div class="find">
@@ -548,7 +554,7 @@
                         </div>
                     </div>
                     <div class="search">
-                        <p>'<span id="search-place">홍대</span>' 검색 결과 <span>1</span>건</p>
+                        <p><span id="search-place">'홍대'</span> 검색 결과 <span>1</span>건</p>
                     </div>
                     <div class="place-area">
                         <div class="place">
@@ -616,10 +622,10 @@
             </div>
             <div class="inside-bottom">
                 <div class="how-btn">
-                    <p>방문 포장</p>
+                    <a href="./order_stop2.html">방문 포장</a>
                 </div>
                 <div class="how-btn">
-                    <p>매장 식사</p>
+                    <a href="./order_stop2.html">매장 식사</a>
                 </div>
             </div>
         </div>
