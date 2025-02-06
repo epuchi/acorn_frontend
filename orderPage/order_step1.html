@@ -364,6 +364,90 @@
             height: 16px;
             margin-left: 5px;
         }
+
+        .select-order {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 0%;
+            z-index: 9;
+            top: 0;
+        }
+
+        .popup {
+            display: none;
+            box-sizing: border-box;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            width: 500px;
+            height: 460px;
+            background-color: #FFC300;
+            z-index: 10;
+            border-radius: 40px;
+            padding: 30px;
+        }
+
+        .inside {
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 40px;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .inside-top {
+            border-bottom: 5px solid #008A12;
+            text-align: center;
+            padding: 30px;
+            margin: 0 30px;
+        }
+
+        .inside-top p,
+        span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .inside-top span {
+            color: #FF850D;
+        }
+
+        .inside-bottom {
+            width: 100%;
+            margin-top: 45px;
+            display: flex;
+
+        }
+
+        .how-btn {
+            width: 50%;
+            text-align: center;
+        }
+
+        .how-btn p {
+            margin: 0 auto;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            color: white;
+            font-size: 26px;
+            font-weight: 500;
+            background-color: #008A12;
+            border-radius: 30px;
+        }
+
+        .x-btn {
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            position: absolute;
+            top: 5px;
+            right: -10px;
+            transform: translateX(100%);
+        }
     </style>
     <script>
         window.addEventListener("load", (e) => {
@@ -397,6 +481,20 @@
         function orderCencle() {
             const marker = document.querySelector(".place-marker");
             marker.style.display = 'none';
+        }
+
+        function Popup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "100%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'block'
+        }
+
+        function cenclelPopup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "0%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'none'
         }
     </script>
 </head>
@@ -504,7 +602,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="orderbutton">
+                    <div class="orderbutton" onclick="Popup()">
                         주문하기
                         <div class="checkIcon"></div>
                     </div>
@@ -513,6 +611,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="select-order">
+
+    </div>
+    <div class="popup">
+        <div class="inside">
+            <div class="inside-top">
+                <p><span>주문 방법</span>을</p>
+                <p>선택해주세요.</p>
+            </div>
+            <div class="inside-bottom">
+                <div class="how-btn">
+                    <p>방문 포장</p>
+                </div>
+                <div class="how-btn">
+                    <p>매장 식사</p>
+                </div>
+            </div>
+        </div>
+        <div class="x-btn" onclick="cenclelPopup()">
+            ⨉
         </div>
     </div>
 </body>
