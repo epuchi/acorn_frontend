@@ -38,59 +38,24 @@
             <div class="ing_body_nav">
                 <ul>
                     <li>All</li>
-                    <li style="color: lightgray;">ㅣ</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
                     <li>빵</li>
-                    <li style="color: lightgray;">ㅣ</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
 
                     <li>야채</li>
-                    <li style="color: lightgray;">ㅣ</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
 
                     <li>치즈</li>
-                    <li style="color: lightgray;">ㅣ</li>
+                    <li class="ing_body_nav_ybar" style="cursor: default;">ㅣ</li>
 
                     <li>소스</li>
                 </ul>
             </div>
         </header>
-        <!-- <div class="ing_body_nav"></div> -->
+
         <div class="ing_body_list">
             <ul class="ing_body_list_box">
-                <!-- <li>
-                    <img src="../image/bread/img_recipe_b01.jpg" class="bread_img">
-                    <div class="bread_text">
-                        <p class="bread_text_title">허니 오트</p>
-                        <p class="bread_text_eng">Honey Oat</p>
-                        <p class="bread_text_cal">235 kcal</p>
-                    </div>
-                </li>
-
-                <li>
-                    <img src="../image/bread/하티.jpg" class="bread_img">
-                    <div class="bread_text">
-                        <p class="bread_text_title">하티</p>
-                        <p class="bread_text_eng">Hearty Italian</p>
-                        <p class="bread_text_cal">210 kcal</p>
-                    </div>
-                </li>
-
-                <li>
-                    <img src="../image/bread/위트.jpg" class="bread_img">
-                    <div class="bread_text">
-                        <p class="bread_text_title">하티</p>
-                        <p class="bread_text_eng">Wheat</p>
-                        <p class="bread_text_cal">192 kcal</p>
-                    </div>
-                </li>
-
-                <li>
-                    <img src="../image/bread/위트.jpg" class="bread_img">
-                    <div class="bread_text">
-                        <p class="bread_text_title">하티</p>
-                        <p class="bread_text_eng">Wheat</p>
-                        <p class="bread_text_cal">192 kcal</p>
-                    </div>
-                </li> -->
-
+               
             </ul>
 
 
@@ -236,7 +201,7 @@
                 engTitle: "Shredded Cheese",
                 calories: "53.6 kcal",
                 description:"",
-                id: "vegitable"
+                id: "cheese"
             },
             {
                 image: "../image/bread/모짜렐라치즈.jpg",
@@ -244,7 +209,7 @@
                 engTitle: "Mozzarella Cheese",
                 calories: "43.8 kcal",
                 description:"",
-                id: "vegitable"
+                id: "cheese"
             },
             {
                 image: "../image/bread/랜치.jpg",
@@ -361,19 +326,7 @@
             
        
         ];
-        // const des = [
-        //     {
-        //         title: bread.title,
-        //         eng: bread.eng,
-        //         des: "임시"
-        //     }
-        // ];
-
         
-
-    
-
-       
         function renderBreadList() {
             const listBox = document.querySelector('.ing_body_list_box');
 
@@ -401,6 +354,67 @@
 
         
         document.addEventListener('DOMContentLoaded', renderBreadList);
+
+
+
+        
+document.addEventListener('DOMContentLoaded', () => {
+    const navItems = document.querySelectorAll('.ing_body_nav ul li:not([style])');
+    const listBox = document.querySelector('.ing_body_list_box');
+
+    
+    renderBreadList();
+
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            
+            navItems.forEach(nav => nav.style.color = 'gray');
+            
+            item.style.color = '#008200';
+            
+            
+            const category = item.textContent.trim();
+            filterItems(category);
+        });
+    });
+
+    function filterItems(category) {
+        
+        listBox.innerHTML = '';
+        
+        
+        let filteredData = breadData;
+        if (category !== 'All') {
+            const categoryMap = {
+                '빵': 'bread',
+                '야채': 'vegitable',
+                '치즈': 'cheese',
+                '소스': 'sauce'
+            };
+            filteredData = breadData.filter(item => item.id === categoryMap[category]);
+        }
+        
+        
+        filteredData.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <img src="${item.image}" class="bread_img">
+                <div class="bread_text">
+                    <p class="bread_text_title">${item.title}</p>
+                    <p class="bread_text_eng">${item.engTitle}</p>
+                    <p class="bread_text_cal">${item.calories}</p>
+                </div>
+                <div class="bread_overlay">
+                    <p class="bread_overlay_title">${item.title}</p>
+                    <p class="bread_overlay_eng">${item.engTitle}</p>
+                    <p class="bread_overlay_description">${item.description}</p>
+                </div>
+            `;
+            listBox.appendChild(li);
+        });
+    }
+});
 
 
 
