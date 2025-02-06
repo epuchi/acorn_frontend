@@ -207,7 +207,7 @@
 
         /* 본문 orderTip 스타일 */
         .orderTip_title{
-            margin: 0px 0px 30px 0px;
+            margin: 0px 0px 20px 0px;
             line-height: 200px; /*height랑 같은 값이어야 가운데 정렬*/
             height: 200px;
             font-size: 40px;
@@ -219,6 +219,22 @@
             min-width: 1200px;
             text-align: center;
         }
+
+        /*이용방법탭 스타일*/
+        .orderTip_tap{
+            height: 300px;
+            height: 68px;
+            border: 1px solid black;
+            position: relative;
+            z-index: 2;
+        }
+        .orderTip_menu{
+            position: relative;
+            z-index: 1px;
+            top:-34px;
+        }
+        /*샌드위치 메뉴 스타일*/
+        
         .orderTip_img1{
             width: 100%;
             height: 520px;
@@ -478,6 +494,12 @@
     <!-- 본문 -->
     <h2 class=orderTip_title>써브웨이 이용방법</h2>
     <div class="orderTip_wrap">
+        
+        <!--이용방법 탭-->
+        <div class="orderTip_tap">
+            <div></div>
+            <div></div>
+        </div>
 
         <!--스테이크&치즈-->
         <div class="orderTip_menu">
