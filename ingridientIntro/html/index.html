@@ -55,7 +55,7 @@
 
         <div class="ing_body_list">
             <ul class="ing_body_list_box">
-               
+
             </ul>
 
 
@@ -63,7 +63,7 @@
         <div class="ing_text_btn">영양 성분표 보기 <span style="color: yellow;">></span></div>
     </div>
     <script>
-       
+
         // 데이터 배열 생성
         const breadData = [
             {
@@ -87,7 +87,7 @@
                 title: "위트",
                 engTitle: "Wheat",
                 calories: "192 kcal",
-                description:"여러가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵 <br> (위트의 칼로리는 15cm 기준입니다.)",
+                description: "여러가지 곡물로 만들어 건강하고 고소한 맛의 곡물빵 <br> (위트의 칼로리는 15cm 기준입니다.)",
                 id: "bread"
             },
             {
@@ -111,7 +111,7 @@
                 title: "플랫브레드",
                 engTitle: "Flat Bread",
                 calories: "232 kcal",
-                description:"이름처럼 납작 모양에 피자도우처럼 쫀득한 맛이 일품<br>(플랫브래드의 칼로리는 15cm 기준입니다.)",
+                description: "이름처럼 납작 모양에 피자도우처럼 쫀득한 맛이 일품<br>(플랫브래드의 칼로리는 15cm 기준입니다.)",
                 id: "bread"
             },
             {
@@ -119,7 +119,7 @@
                 title: "양상추",
                 engTitle: "Lettuce",
                 calories: "2.9 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -127,16 +127,16 @@
                 title: "토마토",
                 engTitle: "Tomatoes",
                 calories: "7.7 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
-                
+
             },
             {
                 image: "../image/bread/오이.jpg",
                 title: "오이",
                 engTitle: "Cucumbers",
                 calories: "1.5kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -144,7 +144,7 @@
                 title: "피망",
                 engTitle: "peppers",
                 calories: "1.4 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -152,7 +152,7 @@
                 title: "양파",
                 engTitle: "Red Onions",
                 calories: "2.8 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -160,7 +160,7 @@
                 title: "피클",
                 engTitle: "Pickles",
                 calories: "0.4 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -168,7 +168,7 @@
                 title: "올리브",
                 engTitle: "Olives",
                 calories: "3.9 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -176,7 +176,7 @@
                 title: "할라피뇨",
                 engTitle: "JalaPenos",
                 calories: "0.6 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -184,7 +184,7 @@
                 title: "아보카도",
                 engTitle: "Avocado",
                 calories: "56.5 kcal",
-                description:"",
+                description: "",
                 id: "vegitable"
             },
             {
@@ -192,7 +192,7 @@
                 title: "아메리칸 치즈",
                 engTitle: "American Cheese",
                 calories: "35.3 kcal",
-                description:"",
+                description: "",
                 id: "cheese"
             },
             {
@@ -200,7 +200,7 @@
                 title: "슈레드 치즈",
                 engTitle: "Shredded Cheese",
                 calories: "53.6 kcal",
-                description:"",
+                description: "",
                 id: "cheese"
             },
             {
@@ -208,7 +208,7 @@
                 title: "모짜렐라 치즈",
                 engTitle: "Mozzarella Cheese",
                 calories: "43.8 kcal",
-                description:"",
+                description: "",
                 id: "cheese"
             },
             {
@@ -304,7 +304,7 @@
                 title: "레드 와인 식초",
                 engTitle: "Red Wine Vinaigrette",
                 calories: "0.7 kcal",
-                description:"레드와인을 발효시켜 풍미가 가득한 식초",
+                description: "레드와인을 발효시켜 풍미가 가득한 식초",
                 id: "sauce"
             },
             {
@@ -323,17 +323,17 @@
             },
 
 
-            
-       
+
+
         ];
-        
+
         function renderBreadList() {
             const listBox = document.querySelector('.ing_body_list_box');
 
 
             breadData.forEach(bread => {
                 const li = document.createElement('li');
-                
+
                 li.innerHTML = `
             <img src="${bread.image}" class="bread_img">
             <div class="bread_text">
@@ -352,53 +352,53 @@
             });
         }
 
-        
+
         document.addEventListener('DOMContentLoaded', renderBreadList);
 
 
 
-        
-document.addEventListener('DOMContentLoaded', () => {
-    const navItems = document.querySelectorAll('.ing_body_nav ul li:not([style])');
-    const listBox = document.querySelector('.ing_body_list_box');
 
-    
-    renderBreadList();
+        document.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.ing_body_nav ul li:not([style])');
+            const listBox = document.querySelector('.ing_body_list_box');
 
-    
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            
-            navItems.forEach(nav => nav.style.color = 'gray');
-            
-            item.style.color = '#008200';
-            
-            
-            const category = item.textContent.trim();
-            filterItems(category);
-        });
-    });
 
-    function filterItems(category) {
-        
-        listBox.innerHTML = '';
-        
-        
-        let filteredData = breadData;
-        if (category !== 'All') {
-            const categoryMap = {
-                '빵': 'bread',
-                '야채': 'vegitable',
-                '치즈': 'cheese',
-                '소스': 'sauce'
-            };
-            filteredData = breadData.filter(item => item.id === categoryMap[category]);
-        }
-        
-        
-        filteredData.forEach(item => {
-            const li = document.createElement('li');
-            li.innerHTML = `
+            renderBreadList();
+
+
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+
+                    navItems.forEach(nav => nav.style.color = 'gray');
+
+                    item.style.color = '#008200';
+
+
+                    const category = item.textContent.trim();
+                    filterItems(category);
+                });
+            });
+
+            function filterItems(category) {
+
+                listBox.innerHTML = '';
+
+
+                let filteredData = breadData;
+                if (category !== 'All') {
+                    const categoryMap = {
+                        '빵': 'bread',
+                        '야채': 'vegitable',
+                        '치즈': 'cheese',
+                        '소스': 'sauce'
+                    };
+                    filteredData = breadData.filter(item => item.id === categoryMap[category]);
+                }
+
+
+                filteredData.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
                 <img src="${item.image}" class="bread_img">
                 <div class="bread_text">
                     <p class="bread_text_title">${item.title}</p>
@@ -411,16 +411,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="bread_overlay_description">${item.description}</p>
                 </div>
             `;
-            listBox.appendChild(li);
+                    listBox.appendChild(li);
+                });
+            }
         });
-    }
-});
 
 
 
-        
+
     </script>
-    
+
 </body>
 
 </html>
