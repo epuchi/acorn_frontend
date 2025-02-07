@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="how_wrap">
+        <header class="how_header_wrap">
+            <div class="how_header_nav">
+                <p>써브웨이 이용방법</p>
+                <p>·
+                </p>
+                <p>단체메뉴 이용방법</p>
+                <p>·
+                </p>
+                <p>신선한 재료 소개</p>
+                <p>·
+                </p>
+                <p>APP 이용방법</p>
+            </div>
+        </header>
+        <div class="how_main_title_wrap">
+            <p class="how_main_title_text">써브웨이 이용방법</p>
+        </div>
+        <div class="how_body_nav">
+            <div class="how_body_nav_left">
+                <p>매장에서 주문하기</p>
+            </div>
+            <div class="how_body_nav_right">
+                <p>주문 TIP</p>
+            </div>
+        </div>
+        <div class="how_body_wrap">
+            <div class="how_step_icon_section">
+                <ul class="how_step_icon_list">
+                    <li class="icon_box">
+                        <div class="step">
+                            step<br>
+                            <strong style="font-size: 25px; font-weight: 1000;">1</strong>
+                        </div>
+                    </li>
+                    <li><img src="../image/icon_step_dot.png" class="bar_img"></li>
+                    <li class="icon_box">
+                        <div class="step">
+                            step<br>
+                            <strong style="font-size: 25px; font-weight: 1000;">2</strong>
+                        </div>
+                    </li>
+                    <li><img src="../image/icon_step_dot.png" class="bar_img"></li>
+                    <li class="icon_box">
+                        <div class="step">
+                            step<br>
+                            <strong style="font-size: 25px; font-weight: 1000;">3</strong>
+                        </div>
+                    </li>
+                    <li><img src="../image/icon_step_dot.png" class="bar_img"></li>
+                    <li class="icon_box">
+                        <div class="step">
+                            step<br>
+                            <strong style="font-size: 25px; font-weight: 1000;">4</strong>
+                        </div>
+                    </li>
+                    <li><img src="../image/icon_step_dot.png" class="bar_img"></li>
+                    <li class="icon_box">
+                        <div class="step">
+                            step<br>
+                            <strong style="font-size: 25px; font-weight: 1000;">5</strong>
+                        </div>
+                    </li class="icon_box">
+                </ul>
+            </div>
+            <div class="how_img_slide_section">
+
+                <div class="how_img_slide_wrap">
+                    <ul class="how_img_slider">
+                        <li><img src="../image/slideImg/img_store_order01.png"></li>
+                        <li><img src="../image/slideImg/img_store_order02.png"></li>
+                        <li><img src="../image/slideImg/img_store_order03.png"></li>
+                        <li><img src="../image/slideImg/img_store_order04.png"></li>
+                        <li><img src="../image/slideImg/img_store_order05.png"></li>
+                    </ul>
+                </div>
+                <div class="slider_button">
+                    <div class="prev_button">&lt;</div>
+                    <div class="next_button">&gt;</div>
+                </div>
+            </div>
+            <div class="how_slide_intro_section"></div>
+        </div>
+
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {  // 오타 수정
+            const slider = document.querySelector('.how_img_slider');
+            const slides = document.querySelectorAll('.how_img_slider li');
+            const nextBtn = document.querySelector('.next_button');
+            const prevBtn = document.querySelector('.prev_button');
+            const stepIcons = document.querySelectorAll('.icon_box');
+
+            let currentIndex = 0;
+            const slideCount = slides.length;
+
+            
+            function updateSteps(index) {
+                stepIcons.forEach((icon, i) => {
+                    if (i === index) {
+                        icon.classList.add('active');
+                    } else {
+                        icon.classList.remove('active');
+                    }
+                });
+            }
+
+            function moveSlide(index) {
+                const slideWidth = slides[0].offsetWidth;
+                slider.style.transition = 'left 0.5s ease-out';
+                slider.style.left = `-${slideWidth * index}px`;
+                currentIndex = index;
+                updateSteps(currentIndex);
+            }
+
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    moveSlide(currentIndex - 1);
+                } else {
+                    moveSlide(slideCount - 1);
+                }
+            });
+
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < slideCount - 1) {
+                    moveSlide(currentIndex + 1);
+                } else {
+                    moveSlide(0);
+                }
+            });
+
+
+            let autoSlide = setInterval('',() => {
+                if (currentIndex < slideCount - 1) {
+                    moveSlide(currentIndex + 1);
+                } else {
+                    moveSlide(0);
+                }
+            }, 3000);
+
+
+            const slideSection = document.querySelector('.how_img_slide_section');
+            slideSection.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+
+
+            slideSection.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(() => {
+                    if (currentIndex < slideCount - 1) {
+                        moveSlide(currentIndex + 1);
+                    } else {
+                        moveSlide(0);
+                    }
+                }, 3000);
+            });
+
+
+            updateSteps(0);
+        });
+    </script>
+</body>
+
+</html>
