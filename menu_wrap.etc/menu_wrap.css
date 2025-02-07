@@ -1,3 +1,4 @@
+
 .menu_wrap {
 
     background-color: #f2f2f2;
@@ -8,6 +9,8 @@
 .wrap_intro {
     height: 380px;
     background-color: #85c441;
+    position: relative;
+    z-index: 1;
 }
 
 h2 {
@@ -26,9 +29,26 @@ h2 {
     margin: auto;
     line-height: 26px;
     letter-spacing: -0.04em;
-    /* font-weight: bold;  */
+    position: relative;
+    z-index: 9;
 }
-
+.tomato {
+    width: 416px;
+    height: 308px;
+    background-image: url("https://www.subway.co.kr/images/menu/img_visual_wrap01.jpg");
+    position: absolute;
+    left: 70%;
+    
+}
+.avocado {
+    position: absolute;
+    left: 50%;
+    margin-left: -818px;
+    background: url("https://www.subway.co.kr/images/menu/img_visual_wrap02.jpg") 0 0 no-repeat;
+    width: 670px;
+    height: 303px;
+    
+}
 .wrap_list {
     width: 1170px;
     height: 80px;
@@ -37,6 +57,8 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: 3;
 }
 
 
@@ -53,7 +75,6 @@ h2 {
     color: #666666;
     font-weight: bold;
 }
-
 .wrap_all {
     width: 1170px;
     margin: 0 auto;
