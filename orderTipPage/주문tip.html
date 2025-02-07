@@ -21,7 +21,6 @@
             border-top: 5px solid #009223;
             display: block;
             position: relative;
-            border-bottom: 0.5px solid #ddd;
         }
         .logo{
             height: 40px;
@@ -70,6 +69,17 @@
             align-items: center;
             justify-content: center;  
         }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
         .main_nav ul{
             margin: 0px;
             padding: 0px;
@@ -80,7 +90,6 @@
         }
         .nav_wrap{
             width: 100%;
-            background-color: antiquewhite;
             height: 230px;
             position: absolute;
             top: 65%;
@@ -102,7 +111,6 @@
             position: absolute;
             left: 0px;
             top: -10px;
-            background-color: white;
             transform: translateY(50px);
 
             z-index: 999;
@@ -117,9 +125,14 @@
             color:#009223;
             text-decoration: underline;
         }
-        .main_nav:hover .hidden_menu{
-            height: 230px; /* 마우스를 갖다 대면 높이 생기게 하기 */
-            transition: 0.5s; /* 천천히 나오게 하는 효과*/
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 240px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
         }
 
 
@@ -133,7 +146,7 @@
             align-items: center;
             justify-content: center;
             display: flex;
-            z-index:998;
+            z-index:888;
 
             position: sticky;
             top: 0px;
@@ -205,7 +218,7 @@
         }
         .sub_logo, .top {
             opacity: 0; 
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.3s ease;
         }
         .sub_header.sticky .sub_logo, .sub_header.sticky .top {
             opacity: 1;
@@ -280,9 +293,18 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
+            right: 10%;
+            top: 15%;
+
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
         }
+        .scroll.item1_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
         .item_order{
             width: 600px;
             position: absolute;
@@ -322,7 +344,7 @@
             color: #292929;
             margin: 0px;
             line-height: 25px;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.7px;
         }
 
         .item_bg{
@@ -400,9 +422,19 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
-        }.orderTip_img3{
+            right: 10%;
+            top: 15%;
+
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
+        }
+        .scroll.item2_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
+        .orderTip_img3{
             width: 100%;
             height: 520px;
             background-image: url("./image/bg_order_tip03.jpg");
@@ -418,12 +450,23 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
+            right: 10%;
+            top: 15%;
+
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
         }
+        .scroll.item3_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
+        
         
     </style>
     <script>
+        //서브헤더
         window.addEventListener('scroll', function() {
             const sub_header = document.querySelector('.sub_header');
             if (window.scrollY > 150) {
@@ -433,10 +476,28 @@
             }
         });
 
+        //샌드위치1
+        window.addEventListener('scroll', function(){
+            const sandwich1 = document.querySelector('.item1_img');
+            if(window.scrollY > 0 ){
+                sandwich1.classList.add('scroll');
+            }
+            const sandwich2 = document.querySelector('.item2_img');
+            if(window.scrollY > 650 ){
+                sandwich2.classList.add('scroll');
+            }
+            const sandwich3 = document.querySelector('.item3_img');
+            if(window.scrollY > 1400 ){
+                sandwich3.classList.add('scroll');
+            }
+        })
+
         function scrollToTop(){
             window.scrollTo({top:0, behavior:'smooth'});
         }
 
+
+        //...
         function tipTab(){
             //alert("dsfdsfd");확인용
 
@@ -460,6 +521,7 @@
             </ul>
         </div>
         <nav class="main_nav">
+            <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
                         <!--하위메뉴-->
@@ -472,10 +534,10 @@
                             <li><a href=""></a>단체메뉴</li>
                         </ul>
                 </li>
-                <li class="nav_item">이용방법
+                <li class="nav_item" style="color:#009223;">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 이용방법</li>
+                        <li style="color:#009223; text-decoration:underline;"><a href=""></a>써브웨이 이용방법</li>
                         <li><a href=""></a>단체메뉴 이용방법</li>
                         <li><a href=""></a>신선한 재료 소개</li>
                         <li><a href=""></a>App 이용방법</li>
@@ -549,11 +611,11 @@
             <div class="tipTab"onclick="tipTab()">주문 TIP</div>
         </div>
 
-        <!--주문페이지 넣어야되는거예요??????-->
+        <!--매장주문페이지 넣어야되는거예요??????-->
         <div class="order_menu"></div>
 
         <!--주문tip페이지-->
-        <div class="orderTip_menu" style="display:block;">
+        <div class="orderTip_menu">
             <!--스테이크&치즈-->
             <div class="orderTip_img1">
                 <div class="item_order">
