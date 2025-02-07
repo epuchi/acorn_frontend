@@ -366,8 +366,10 @@
             const slides = document.querySelectorAll('.subway_menu_slider li');
             const prevButton = document.querySelector('.menu_prev_button');
             const nextButton = document.querySelector('.menu_next_button');
-
+            //메뉴 슬라이더 화면에 보이는걸 4개로 정함함
             const visibleSlides = 4;
+            //현재 표기되는 화면 기준으로 슬라이더 폭 정하기위함
+            // 비율 100기준으로 현재 슬라이드 100 나누기 4 해서 폭 정함함
             const slideWidth = 100 / visibleSlides;
             let currentIndex = 0;
 
@@ -375,7 +377,8 @@
             slides.forEach(slide => {
                 slide.style.width = `${slideWidth}%`;
             });
-
+            
+            //슬라이더 이동 버튼 함수수
             function updateSliderPosition() {
                 slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
 
