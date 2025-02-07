@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
         *{
-            font-family: "Nanum Gothic", serif;
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
         }
@@ -20,7 +21,6 @@
             border-top: 5px solid #009223;
             display: block;
             position: relative;
-            border-bottom: 0.5px solid #ddd;
         }
         .logo{
             height: 40px;
@@ -69,6 +69,17 @@
             align-items: center;
             justify-content: center;  
         }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+
         .main_nav ul{
             margin: 0px;
             padding: 0px;
@@ -79,7 +90,6 @@
         }
         .nav_wrap{
             width: 100%;
-            background-color: antiquewhite;
             height: 230px;
             position: absolute;
             top: 65%;
@@ -101,7 +111,6 @@
             position: absolute;
             left: 0px;
             top: -10px;
-            background-color: white;
             transform: translateY(50px);
 
             z-index: 999;
@@ -109,18 +118,24 @@
         .hidden_menu li{
             margin: 15px 0 15px 0;
             font-size: 15px;
-            font-weight: 500;
             color: #666;
-            font-weight: 500;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
         }
         .hidden_menu li:hover{
             color:#009223;
             text-decoration: underline;
         }
-        .main_nav:hover .hidden_menu{
-            height: 230px; /* 마우스를 갖다 대면 높이 생기게 하기 */
-            transition: 0.5s; /* 천천히 나오게 하는 효과*/
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
         }
 
 
@@ -134,7 +149,7 @@
             align-items: center;
             justify-content: center;
             display: flex;
-            z-index:998;
+            z-index:888;
 
             position: sticky;
             top: 0px;
@@ -145,7 +160,7 @@
             height: 60px;
             align-content: center;
             text-align: center;
-            transform: translateX(-230px);
+            transform: translate(-230px, 3px);
         }
         /*메뉴*/
         .sub_header ul{
@@ -160,8 +175,8 @@
             text-decoration: none;
             font-size: 16px;
             color: #999;
-            letter-spacing: -2px;
-            font-weight: bold;
+            letter-spacing: -1px;
+            font-weight: 500;
             margin: 0 20px;
         }
         .sub_header li{
@@ -198,21 +213,32 @@
             background-position: center;
             background-size: contain;
             background-color: white;
-            transform: translateX(230px);
+            transform: translateX(220px);
             border: none;
         }
         .top:hover{
             cursor: pointer;
         }
+        .sub_logo, .top {
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .sub_header.sticky .sub_logo, .sub_header.sticky .top {
+            opacity: 1;
+        }
+
 
         /* 본문 orderTip 스타일 */
         .orderTip_title{
-            margin: 0px 0px 20px 0px;
+            width: 100%;
+            min-width: 1200px;
+            margin: 0px;
             line-height: 200px; /*height랑 같은 값이어야 가운데 정렬*/
             height: 200px;
             font-size: 40px;
-            font-weight: bold;
+            font-weight: 500;
             text-align: center;
+            letter-spacing: -2px;
         }
         .orderTip_wrap{
             width: 100%;
@@ -221,20 +247,41 @@
         }
 
         /*이용방법탭 스타일*/
-        .orderTip_tap{
-            height: 300px;
+        .orderTip_tab{
+            width: 1170px;
             height: 68px;
-            border: 1px solid black;
+            border: 1px solid #e5e5e5;
             position: relative;
             z-index: 2;
+            display: flex;
+            margin: 0 auto;
         }
+        .orderTip_tab > div{
+            width: 50%;
+            line-height: 68px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .orderTip_tab > div:hover{
+            cursor: pointer;
+        }
+        .orderTab{
+            background-color: white;
+            color: #666;
+        }
+        .tipTab{
+            background-color: #009223;
+            color: white;
+        }
+
+
+        /*주문tip 페이지*/
         .orderTip_menu{
             position: relative;
             z-index: 1px;
             top:-34px;
         }
-        /*샌드위치 메뉴 스타일*/
-        
+
         .orderTip_img1{
             width: 100%;
             height: 520px;
@@ -251,9 +298,18 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
+            right: 10%;
+            top: 15%;
+
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
         }
+        .scroll.item1_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
         .item_order{
             width: 600px;
             position: absolute;
@@ -264,7 +320,7 @@
             margin: 30px 0px;
             font-size: 22px;
             color: white;
-            width: 300px;
+            width: 290px;
             height: 50px;
             line-height: 50px;
             background-color: #ff8201;
@@ -282,20 +338,18 @@
         }
         .item_text h1{
             font-size: 54px;
-            font-weight: 900;
+            font-weight: 700;
             margin: 20px 0px;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
             color: #292929;
-            text-shadow: 2px 2px 2px rgba(41, 41, 41, 0.8);;
-            /*글자 너무 얇은것 같아서 그림자 넣엇슴*/
         }
         .item_text p{
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 500;
             color: #292929;
             margin: 0px;
             line-height: 25px;
-            letter-spacing: -1px;
+            letter-spacing: -0.7px;
         }
 
         .item_bg{
@@ -314,7 +368,7 @@
             margin:0px;
             padding: 30px 0px;
             font-size: 22px;
-            font-weight: 900;
+            font-weight: 700;
         }
 
         .topping_tip ul{
@@ -345,7 +399,10 @@
             margin: 15px 0px;
         }
         .topping_tip li h4 img{
-            margin: 0 10px 0 0;
+            margin: 0 8px 0 0;
+            width: 13px;
+            height: 13px;
+            object-fit: contain;
         }
         .topping_tip p{
             font-size: 16px;
@@ -370,9 +427,19 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
-        }.orderTip_img3{
+            right: 10%;
+            top: 15%;
+
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
+        }
+        .scroll.item2_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
+        .orderTip_img3{
             width: 100%;
             height: 520px;
             background-image: url("./image/bg_order_tip03.jpg");
@@ -388,15 +455,61 @@
             background-position: center;
             background-size: cover;
             position: absolute;
-            right: 8%;
-            top: 15%
-        }
-        
+            right: 10%;
+            top: 15%;
 
+            transform: translateX(10%);
+            opacity: 0;
+            transition-delay: 0.3s;
+            transition-duration: 0.7s;
+        }
+        .scroll.item3_img{
+            transform: translateX(0);
+            opacity: 1;
+        } 
+        
+        
     </style>
     <script>
+        //서브헤더
+        window.addEventListener('scroll', function() {
+            const sub_header = document.querySelector('.sub_header');
+            if (window.scrollY > 150) {
+                sub_header.classList.add('sticky');
+            } else {
+                sub_header.classList.remove('sticky');
+            }
+        });
+
+        //샌드위치1
+        window.addEventListener('scroll', function(){
+            const sandwich1 = document.querySelector('.item1_img');
+            if(window.scrollY > 0 ){
+                sandwich1.classList.add('scroll');
+            }
+            const sandwich2 = document.querySelector('.item2_img');
+            if(window.scrollY > 650 ){
+                sandwich2.classList.add('scroll');
+            }
+            const sandwich3 = document.querySelector('.item3_img');
+            if(window.scrollY > 1400 ){
+                sandwich3.classList.add('scroll');
+            }
+        })
+
         function scrollToTop(){
             window.scrollTo({top:0, behavior:'smooth'});
+        }
+
+
+        //...
+        function tipTab(){
+            //alert("dsfdsfd");확인용
+
+        }
+        function orderTab(){
+            alert("dsfjsdkf");
+
         }
     </script>
 </head>
@@ -413,6 +526,7 @@
             </ul>
         </div>
         <nav class="main_nav">
+            <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
                         <!--하위메뉴-->
@@ -425,10 +539,10 @@
                             <li><a href=""></a>단체메뉴</li>
                         </ul>
                 </li>
-                <li class="nav_item">이용방법
+                <li class="nav_item" style="color:#009223;">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 이용방법</li>
+                        <li style="color:#009223; text-decoration:underline;"><a href=""></a>써브웨이 이용방법</li>
                         <li><a href=""></a>단체메뉴 이용방법</li>
                         <li><a href=""></a>신선한 재료 소개</li>
                         <li><a href=""></a>App 이용방법</li>
@@ -476,7 +590,7 @@
     <div class="sub_header">
         <a href=#>
             <div class="sub_logo">
-                <img src="./image/logo_sub_header.png">
+                <img src="./image/logo_sub_header.png" alt="서브로고">
             </div>
         </a>
         <ul>
@@ -492,18 +606,22 @@
 
 
     <!-- 본문 -->
-    <h2 class=orderTip_title>써브웨이 이용방법</h2>
+    <h2 class="orderTip_title">써브웨이 이용방법</h2>
+
     <div class="orderTip_wrap">
         
-        <!--이용방법 탭-->
-        <div class="orderTip_tap">
-            <div></div>
-            <div></div>
+        <!--이용방법 탭메뉴-->
+        <div class="orderTip_tab">
+            <div class="orderTab" onclick="orderTab()">매장에서 주문하기</div>
+            <div class="tipTab"onclick="tipTab()">주문 TIP</div>
         </div>
 
-        <!--스테이크&치즈-->
+        <!--매장주문페이지 넣어야되는거예요??????-->
+        <div class="order_menu"></div>
+
+        <!--주문tip페이지-->
         <div class="orderTip_menu">
-            <!--사진,텍스트영역-->
+            <!--스테이크&치즈-->
             <div class="orderTip_img1">
                 <div class="item_order">
                     <p class="txt"><span class="bold_text">완벽한 한끼</span>를 원하신다면?</p>
@@ -517,10 +635,10 @@
                 </div>
                 <div class="item1_img"></div>
             </div>
-            <!---->
+                <!--토핑-->
             <div class="item_bg">
                 <div class="topping_tip">
-                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight: 900;">TIP</span></h3>
+                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
                     <ul>
                         <li><img src="./image/img_cheese.jpg">
                             <h4><img src="./image/bul01.png">CHEESE</h4>
@@ -535,16 +653,13 @@
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <!--로스트치킨-->
-        <div class="orderTip_menu">
-            <!--사진,텍스트영역-->
+            
+            <!--로스트치킨-->
             <div class="orderTip_img2">
                 <div class="item_order">
-                    <p class="txt"><span class="bold_text">다이어트</span>중이라면?</p>
+                    <p class="txt" style="width: 225px;"><span class="bold_text">다이어트</span>중이라면?</p>
                     <div class="item_text">
-                        <h1 style="color:white; text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.3);">로스트치킨</h1>
+                        <h1 style="color:white;">로스트치킨</h1>
                         <p style="color: white">퍽퍽한 닭가슴살은 이제 그만!<br>
                             로스트 치킨 샐러드는 가볍고 든든하게 즐길 수 있습니다.<br>
                             샌드위치와 샐러드로 맛있고 든든하게 즐기세요.
@@ -553,10 +668,10 @@
                 </div>
                 <div class="item2_img"></div>
             </div>
-            <!---->
+                <!--토핑-->
             <div class="item_bg">
                 <div class="topping_tip">
-                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight: 900;">TIP</span></h3>
+                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
                     <ul>
                         <li><img src="./image/img_salad.jpg">
                             <h4><img src="./image/bul01.png">SALAD</h4>
@@ -573,28 +688,25 @@
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <!--써브웨이클럽-->
-        <div class="orderTip_menu">
-            <!--사진,텍스트영역-->
+            
+            <!--써브웨이클럽-->
             <div class="orderTip_img3">
                 <div class="item_order">
-                    <p class="txt"><span class="bold_text">건강</span>을 생각한다면?</p>
+                    <p class="txt" style="width: 230px;"><span class="bold_text">건강</span>을 생각한다면?</p>
                     <div class="item_text">
-                        <h1 style="color:white; text-shadow: 2px 2px 2px rgba(255,255,255,0.3);">써브웨이 클럽</h1>
+                        <h1 style="color:white;">써브웨이 클럽</h1>
                         <p style="color: white">고기의 단백질과 야채의 비타민으로 영양UP!<br>
-                            절임류 야채를 제외해서 더 담백하게, 올리브오일을 넣어 부담은 DOWN!<br>
-                            써브웨이 클럽으로 건강한 하루를 보내세요.
+                                절임류 야채를 제외해서 더 담백하게, 올리브오일을 넣어 부담은 DOWN!<br>
+                                써브웨이 클럽으로 건강한 하루를 보내세요.
                         </p>
                     </div>
                 </div>
                 <div class="item3_img"></div>
             </div>
-            <!---->
+                <!--토핑-->
             <div class="item_bg">
                 <div class="topping_tip">
-                    <h3 >더 맛있게 즐기는 <span style="color:#ff8201; font-weight: 900;">TIP</span></h3>
+                    <h3 >더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
                     <ul>
                         <li><img src="./image/img_sauce03.jpg">
                             <h4><img src="./image/bul01.png">SAUCE</h4>
@@ -609,12 +721,11 @@
                             <p>올리브, 피클, 할라피뇨를 빼고 드시면,<br>
                                 담백하고 부드러운 로스트 치킨을<br>
                                 제대로 즐길 수 있습니다.<p></li>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </body>
 </html>

@@ -79,6 +79,7 @@
             border-top: 0.5px solid #ddd;
             z-index: 995;
         }
+
         .main_nav ul{
             margin: 0px;
             padding: 0px;
@@ -136,8 +137,185 @@
         .main_nav:hover .bg{
             border-bottom: 0.5px solid #ddd;
         }
-      
+
+
+        /* sub header 스타일 */
+        .sub_header{
+            width: 100%;
+            min-width: 1200px;
+            height: 60px;
+            border-bottom: 0.5px solid #ddd;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index:888;
+
+            position: sticky;
+            top: 0px;
+        }
+        /*서브로고*/
+        .sub_logo{
+            width: 120px;
+            height: 60px;
+            align-content: center;
+            text-align: center;
+            transform: translate(-230px, 3px);
+        }
+        /*메뉴*/
+        .sub_header ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            margin: 0;
+            transform: translateX(-50px);
+        }
+        .sub_header li a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #999;
+            letter-spacing: -1px;
+            font-weight: 500;
+            margin: 0 20px;
+        }
+        .sub_header li{
+            position: relative;
+            height: 60px;
+            align-content: center;
+        }
+        .sub_header li:nth-child(-n+3)::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: #dddddd;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+        }
+        .underline{
+            width: 73%;
+            height: 4px;
+            background-color: #009223;
+            border-radius: 0;
+            position: absolute;
+            bottom: -1px;
+            left: 15%
+        }
+        /*맨위로이동*/
+        .top{
+            width: 35px;
+            height: 60px;;
+            padding: 0px;
+            background-image: url("./image/ToTop.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-color: white;
+            transform: translateX(220px);
+            border: none;
+        }
+        .top:hover{
+            cursor: pointer;
+        }
+        .sub_logo, .top {
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .sub_header.sticky .sub_logo, .sub_header.sticky .top {
+            opacity: 1;
+        }
+
+
+        /* 본문 orderTip 스타일 */
+        .fastSub_title{
+            width: 100%;
+            min-width: 1200px;
+            margin: 0px;
+            line-height: 200px; /*height랑 같은 값이어야 가운데 정렬*/
+            height: 200px;
+            font-size: 40px;
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: -2px;
+        }
+        .fastSub_wrap{
+            width: 100%;
+            min-width: 1200px;
+            text-align: center;
+        }
+
+        /*이용방법탭 스타일*/
+        .fastSub_tab{
+            width: 1170px;
+            height: 68px;
+            border: 1px solid #e5e5e5;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            margin: 0 auto;
+        }
+        .fastSub_tab > div{
+            width: 50%;
+            line-height: 68px;
+            text-align: center;
+            font-size: 18px;
+            border: 1px solid #009223; /*지워지워지워지워지워지워*/
+        }
+        .fastSub_tab > div:hover{
+            cursor: pointer;
+        }
+
+
+        .fastSub_slider{
+            position: relative;
+            z-index: 1px;
+            top:-34px;
+            
+            width: 100%;
+            min-width: 1200px;
+            height: 1000px;
+            border: 1px solid black; /*지워지워지워지워지워지워지워*/
+            background-color: #f9f9f9;
+        }
+
+        .fastSub_step{
+            width: 100%;
+            min-width: 550px;
+            height: 200px;
+            border: 1px solid red;
+            /*이거 위치 내려야됨*/
+        }
+       
+        
     </style>
+    <script>
+        //서브헤더
+        window.addEventListener('scroll', function() {
+            const sub_header = document.querySelector('.sub_header');
+            if (window.scrollY > 150) {
+                sub_header.classList.add('sticky');
+            } else {
+                sub_header.classList.remove('sticky');
+            }
+        });
+        /*totop*/
+        function scrollToTop(){
+            window.scrollTo({top:0, behavior:'smooth'});
+        }
+
+      
+        //...
+        function tipTab(){
+            //alert("dsfdsfd");확인용
+
+        }
+        function orderTab(){
+            alert("dsfjsdkf");
+
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -165,13 +343,13 @@
                             <li><a href=""></a>단체메뉴</li>
                         </ul>
                 </li>
-                <li class="nav_item">이용방법
+                <li class="nav_item" style="color:#009223;">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>써브웨이 이용방법</li>
                         <li><a href=""></a>단체메뉴 이용방법</li>
                         <li><a href=""></a>신선한 재료 소개</li>
-                        <li><a href=""></a>App 이용방법</li>
+                        <li style="color:#009223; text-decoration:underline;"><a href=""></a>App 이용방법</li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
@@ -212,5 +390,43 @@
             </ul>
         </nav>
     </header>
+
+    <div class="sub_header">
+        <a href=#>
+            <div class="sub_logo">
+                <img src="./image/logo_sub_header.png" alt="서브로고">
+            </div>
+        </a>
+        <ul>
+            <li><a href="">써브웨이 이용방법</a></li>
+            <li><a href="">단체메뉴 이용방법</a></li>
+            <li><a href="">신선한 재료 소개</a></li>
+            <li><a href="" style="color:#009223;">APP 이용방법</a>
+                <div class="underline"></div></li>
+        </ul>
+        <div class="top" onclick="scrollToTop()"></div>
+        </div>
+    </div>
+
+
+    <!-- 본문 -->
+    <h2 class="fastSub_title">APP 이용방법</h2>
+
+    <div class="fastSub_wrap">
+
+        <!--이용방법 탭메뉴-->
+        <div class="fastSub_tab">
+          <div onclick="">FAST-SUB</div>
+          <div onclick="">HOME-SUB</div>
+          <div onclick="">단체주문</div>
+        </div> <!--이거 나중에할게염~~~ 아 이거 그림자줘야된다 박스에-->
+        
+        <div class="fastSub_slider">
+            <div class="fastSub_step"></div>
+        </div>
+    
+    </div>
+    
+
 </body>
 </html>
