@@ -33,7 +33,7 @@
         .log_menu{
             position: absolute;
             top: 40px;
-            right: 15%;
+            right: 13%;
         }
         .log_menu ul{
             padding: 0px;
@@ -58,7 +58,13 @@
         .signup{
             list-style: inside;
         }
+        .global{
+            width: 30px;
+            height: 30px;
+            padding-left: 6px;
+        }
 
+        /*헤더메인메뉴*/
         .main_nav{
             width: 100%;
             height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
@@ -228,7 +234,7 @@
         }
 
 
-        /* 본문 orderTip 스타일 */
+        /* 본문 스타일 */
         .fastSub_title{
             width: 100%;
             min-width: 1200px;
@@ -246,32 +252,44 @@
             text-align: center;
         }
 
-        /*이용방법탭 스타일*/
+        /*이용방법 탭메뉴? 스타일*/
         .fastSub_tab{
             width: 1170px;
             height: 68px;
-            border: 1px solid #e5e5e5;
+            border: 0.5px solid #e5e5e5;
             position: relative;
             z-index: 2;
             display: flex;
             margin: 0 auto;
+            box-shadow: 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
         }
         .fastSub_tab > div{
             width: 50%;
             line-height: 68px;
             text-align: center;
             font-size: 18px;
-            border: 1px solid #009223; /*지워지워지워지워지워지워*/
+            font-weight: 500;
         }
         .fastSub_tab > div:hover{
             cursor: pointer;
         }
+        .fastSub{
+            background-color: #009223;
+            color: white;
+        }
+        .homeSub, .groupOrder{
+            background-color: white;
+            color: #666;
+        }
+        .groupOrder{
+            border-left: 0.5px solid #e5e5e5;
+        }
 
-
+        /* 본문 스타일 */
         .fastSub_slider{
             position: relative;
             z-index: 1px;
-            top:-34px;
+            top:-46px;
             
             width: 100%;
             min-width: 1200px;
@@ -282,9 +300,10 @@
 
         .fastSub_step{
             width: 100%;
-            min-width: 550px;
-            height: 200px;
+            min-width: 1200px;
+            height: 120px;
             border: 1px solid red;
+            margin: 45px 0 0 0;
             /*이거 위치 내려야됨*/
         }
        
@@ -300,21 +319,14 @@
                 sub_header.classList.remove('sticky');
             }
         });
-        /*totop*/
+
+        //맨위로
         function scrollToTop(){
             window.scrollTo({top:0, behavior:'smooth'});
         }
 
-      
-        //...
-        function tipTab(){
-            //alert("dsfdsfd");확인용
+        //탭 함수 만들어야됨
 
-        }
-        function orderTab(){
-            alert("dsfjsdkf");
-
-        }
     </script>
 </head>
 <body>
@@ -326,7 +338,7 @@
             <ul>
                 <li><a href="">로그인</a></li>
                 <li class="signup"><a href="">회원가입</a></li>
-                <li><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
+                <li class="global"><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
         <nav class="main_nav">
@@ -416,9 +428,9 @@
 
         <!--이용방법 탭메뉴-->
         <div class="fastSub_tab">
-          <div onclick="">FAST-SUB</div>
-          <div onclick="">HOME-SUB</div>
-          <div onclick="">단체주문</div>
+          <div class="fastSub" onclick="">FAST-SUB</div>
+          <div class="homeSub" onclick="">HOME-SUB</div>
+          <div class="groupOrder" onclick="">단체주문</div>
         </div> <!--이거 나중에할게염~~~ 아 이거 그림자줘야된다 박스에-->
         
         <div class="fastSub_slider">
