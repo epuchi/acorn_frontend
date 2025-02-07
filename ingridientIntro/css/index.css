@@ -105,10 +105,7 @@ li{
 .ing_body_nav_ybar{
     color: lightgray;
 }
-.ing_body_nav_ybar:hover{
 
-    cursor: none;
-}
 .ing_body_nav_bar{
     content: '';
     position: absolute;
@@ -154,7 +151,7 @@ li{
     /* border: 1px solid black; */
     margin-top: 10%;
     margin-left: 12%;
-    height: 3300px;
+    /* height: 3300px; */
 }
 .ing_body_list_box{
     display: flex;
@@ -165,6 +162,7 @@ li{
     margin: 15px 0 0 0;
     padding:0;
     gap: 2%;
+    
 
     
 }
@@ -178,6 +176,7 @@ li{
     background-color: white;
     /* flex: 1;
     min-width: 32%; */
+    animation: onList 1s ease;
     
 
 
@@ -200,6 +199,7 @@ li{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    
 }
 .bread_text p{
     margin: 0;
@@ -229,7 +229,8 @@ li{
     /* border: 1px solid black; */
     width: 150px;
     /* height: 40px; */
-    margin: 0 auto;
+    margin-top: 30px;
+    margin-left: 43.5%;
     border-radius: 30px;
     padding: 13px;
     background-color: #008200;
@@ -252,7 +253,12 @@ li{
     font-weight: bold;
     padding: 1px;
     margin-top: 10px;
+    /* border: 1px solid black; */
+    
+
 }
+
+
 
 .bread_overlay_description{
     font-family: "Noto Sans Kr",serif;
@@ -260,13 +266,24 @@ li{
     /* margin-top: 3px; */
     padding: 1px;
     color: #c5e698;
+   
+   
+   
+   
+    
+    
 
 }
+
+
 .bread_overlay_eng{
     font-family: "Noto Sans Kr",serif;
     font-size: 16px;
-    margin-top: 3px;
-    padding: 1px;
+    padding: 0;
+    margin-bottom: 0px;
+   
+    /* transform: translate(-50%, -50%); */
+    
     color: #c5e698;
 
 }
@@ -296,11 +313,31 @@ li{
     opacity: 1;
 }
 
+@keyframes breadOverlayDescription{
+    0% {transform: translateY(300%);}
+    100%{transform: translateY(0%);}
+}
+
+.ing_body_list_box li:hover .bread_overlay .bread_overlay_title{
+    animation: breadOverlayDescription 0.3s ease;
+}
+.ing_body_list_box li:hover .bread_overlay .bread_overlay_eng{
+    animation: breadOverlayDescription 0.3s ease;
+}
+.ing_body_list_box li:hover .bread_overlay .bread_overlay_description{
+    animation: breadOverlayDescription 0.5s ease;
+}
+
 
 .ing_body_list_box li:hover .bread_img,
 .ing_body_list_box li:hover .bread_text {
     opacity: 0;
     transition: opacity 0.3s ease;
+}
+@keyframes onList{
+    0% {opacity: 1;}
+    1% {opacity: 0;}
+    100% {opacity: 1;};
 }
 
 
