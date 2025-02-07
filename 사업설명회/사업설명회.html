@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hd{
+            position:sticky;
+            top:0;
+            z-index: 1000;
+            width:100%;
+            display: flex;
+            border-top:1px solid #e0dede;
+            border-bottom:1px solid #e0dede;
+            height:60px;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.1);
+        }
+
+        .hd ul{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 0;
+            position:relative;
+        }
+
+        .hd li{
+            margin:0 auto;
+            color: #999999;
+        }
+
+        .hd li a, .hd a{
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            text-decoration: none;
+            color: #999999;
+        }
+        
+        .logo_img{
+            width:110px;
+            height:60px;
+            background-image: url(https://www.subway.co.kr/images/common/logo_sub_header.png);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position:absolute;
+            left:-350px;
+        }
+
+        .top{
+            position:absolute;
+            top:-20px;
+            right:-330px;
+            width:40px;
+            height:32px;
+            box-sizing: border-box;
+            line-height: 60px;
+            font-size:13px;
+            color:#BBBBBB;
+        }
+
+        .business_info{
+            font-size: 16px;
+            color: #666666;
+            line-height: 120%;
+            background-color: #f6f6f6;
+            margin-top: 30px;
+            padding-bottom: 130px;
+        }
+
+        .b_title{
+            color:#292929;
+            font-size:40px;
+            text-align: center;
+            letter-spacing: -3px;
+            padding:70px;
+        }
+
+        .tab{
+            position:relative;
+            top:-30px;
+            background-color: #FFFFFF;
+            width:1200px;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 80px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab ul{
+            list-style: none;
+            display: flex;
+            height:60px;
+            padding:0;
+        }
+
+        .tab li{
+            width:50%;
+            height:100%;
+            border:1px solid #e5e5e5;
+        }
+
+        .tab a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height:100%;
+            width:100%;
+            font-size: 16px;
+            color:#999999;
+        }
+
+        .tab_gr {
+            background-color: green;
+        }
+        .tab_gr a{
+            color:#FFFFFF;
+        }
+
+
+        .business_list h3{
+            color:#292929;
+            font-size: 28px;
+            text-align: center;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+        }
+
+        .list_wrap{
+            width:1200px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .list_wrap table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            width:100%;
+            border-top: 4px solid #009223;
+            margin-bottom: 50px;
+        }
+
+        .list_wrap table th{
+            height:80px;
+            padding: 0;
+            color: #009223;
+            font-size: 16px;
+            font-weight: bolder;
+            border-bottom: 1px solid #009223;
+            letter-spacing: -1px;
+        }
+
+        .list_wrap table td{
+            padding: 0;
+            height: 80px;
+            border-bottom: 1px solid #dddddd;
+            font-size: 16px;
+            color:#666;
+            letter-spacing:  -1.5px;
+        }
+
+        .list_wrap table tr td:nth-child(1){
+            color:#292929;
+        }
+    </style>
+</head>
+<body>
+    <div class="business_wraps">
+        <div class="hd">
+            <ul>
+            <a class="logo_img" href=""></a>
+            <a href="">써브웨이 프랜차이즈</a>
+            <li><a href="">가맹관련FAQ</a></li>
+            <li><a href="">가맹신청ㆍ문의</a></li>
+            <li><a href="">지사안내</a></li>
+            <li><a href="">사업설명회</a></li>
+            <div class="top"></div>
+            <a class="top" href="">TOP</a>
+            </ul>
+        </div>
+        <div class="content">
+            <h2 class="b_title">사업설명회(대표번호 02-797-5036)</h2>
+            <div class="business_info">
+                <div class="tab">
+                    <ul>
+                        <li class="tab_gr"><a href="">서울-수도권 지역</a></li>
+                        <li><a href="">지방 지역</a></li>
+                    </ul>
+                </div>
+                <div class="business_list">
+                    <h3>서울강남지사 사업설명회</h3>
+                    <div class="list_wrap">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>지사</th>
+                                <th>일자</th>
+                                <th>시간</th>
+                                <th>지역</th>
+                                <th>장소</th>
+                                <th>문의전화</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>서울강남지사</td>
+                                <td>개별 문의</td>
+                                <td>개별 문의</td>
+                                <td>서초, 강남, 송파, 강동, 관악, 동작,<br>영등포, 금천, 양천, 구로, 강서</td>
+                                <td>서울특별시 서초구 <br>사평대로 55길 112-7, 2F</td>
+                                <td>010-7592-5661</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>서울강북/경기남부/경기서부인천지사 사업설명회 </h3>
+                    <div class="list_wrap">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>지사</th>
+                                <th>일자</th>
+                                <th>시간</th>
+                                <th>지역</th>
+                                <th>장소</th>
+                                <th>문의전화</th>
+                                <th>문의전화</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>서울강북지사</td>
+                                <td>개별 문의</td>
+                                <td>개별 문의</td>
+                                <td>종로, 중구, 서대문, 용산, 성동, 동대문, 광진,<br>성북, 중랑, 노원, 도봉, 강북, 마포, 은평</td>
+                                <td>서울특별시 서초구<br>강남대로 535 13층</td>
+                                <td>010-4920-1965</td>
+                            </tr>
+                            <tr>
+                                <td>경기남부지사</td>
+                                <td>개별 문의</td>
+                                <td>개별 문의</td>
+                                <td>안양, 군포,  안산, 화성, 평택,<br>과천, 의왕, 수원, 오산, 성남, 용인, 안성</td>
+                                <td>서울특별시 서초구<br>강남대로 535 13층</td>
+                                <td>010-4920-1965</td>
+                            </tr>
+                            <tr>
+                                <td>경기서부인천지사</td>
+                                <td>개별 문의</td>
+                                <td>개별 문의</td>
+                                <td>인천, 부천, 김포, 고양, 시흥, 광명</td>
+                                <td>서울특별시 서초구<br>강남대로 535 13층</td>
+                                <td>010-4920-1965</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>경기북강원지사 가맹문의</h3>
+                    <div class="list_wrap">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>지사</th>
+                                <th>지역</th>
+                                <th>설명회</th>
+                                <th>문의전화 </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>경기북강원지사</td>
+                                <td>파주, 동두천, 양주, 의정부, 남양주, 구리,<br>하남, 포천, 가평, 양평, 광주, 여주, 이천<br>강원도 전지역</td>
+                                <td>개별문의</td>
+                                <td>031-877-1146</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p>“사업설명회 일정은 변동될 수 있습니다. 개설 희망지역별 사업설명회 일정을 확인해 주시고, 반드시 사전 문의 후 참석해 주시기 바랍니다”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded"  ,function () {
+        const tabSeoul = document.querySelector(".tab ul li:first-child a");
+        const tabLocal = document.querySelector(".tab ul li:last-child a");
+        const seoulContent = document.querySelector(".business_list");
+        const localContent = document.createElement("div");
+
+        localContent.classList.add("business_list");
+        localContent.style.display = "none";
+        
+        localContent.innerHTML = `
+            <h3>지방 지역 가맹상담</h3>
+            <div class="list_wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>지사</th>
+                            <th>지역</th>
+                            <th>설명회</th>
+                            <th>문의전화</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>대전충청지사</td>
+                            <td>대전, 세종, 충남, 충북 전지역</td>
+                            <td>개별문의</td>
+                            <td>042-321-1151</td>
+                        </tr>
+                        <tr>
+                            <td>대구경북지사</td>
+                            <td>대구, 경북 전지역</td>
+                            <td>개별문의</td>
+                            <td>053-951-7803</td>
+                        </tr>
+                        <tr>
+                            <td>울산경남지사</td>
+                            <td>울산, 경남 전지역</td>
+                            <td>개별문의</td>
+                            <td>010-4920-1965</td>
+                        </tr>
+                        <tr>
+                            <td>부산김해지사</td>
+                            <td>부산, 김해 전지역</td>
+                            <td>개별문의</td>
+                            <td>010-4920-1965</td>
+                        </tr>
+                        <tr>
+                            <td>광주전라지사</td>
+                            <td>광주, 전북, 전남 전지역</td>
+                            <td>개별문의</td>
+                            <td>010-6462-3900</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>“사업설명회 일정은 변동될 수 있습니다. 개설 희망지역별 사업설명회 일정을 확인해 주시고, 반드시 사전 문의 후 참석해 주시기 바랍니다”</p>
+            </div>
+        `;
+
+        seoulContent.parentNode.appendChild(localContent);
+
+        tabLocal.addEventListener("click", function (event) {
+            event.preventDefault(); 
+            seoulContent.style.display = "none";  
+            localContent.style.display = "block";
+            tabSeoul.parentNode.classList.remove("tab_gr");  
+            tabLocal.parentNode.classList.add("tab_gr");  
+        });
+
+        tabSeoul.addEventListener("click", function (event) {
+            event.preventDefault(); 
+            localContent.style.display = "none";  
+            seoulContent.style.display = "block"; 
+            tabLocal.parentNode.classList.remove("tab_gr");  
+            tabSeoul.parentNode.classList.add("tab_gr"); 
+        });
+    });
+
+    </script>
+</body>
+</html>

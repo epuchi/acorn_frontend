@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        .title-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: white;
+            margin-top: 30px;
+        }
+
+        .step-area {
+            width: 100%;
+            height: 170px;
+
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .menu {
+            box-sizing: border-box;
+            width: 1150px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: -40px;
+            margin-bottom: 100px;
+        }
+
+        .menu-top-select {
+            width: 100%;
+            box-shadow: 7px 7px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-top-select:hover {
+
+            cursor: pointer;
+        }
+
+        .menu-top-select ul {
+            list-style: none;
+            display: flex;
+
+        }
+
+        .menu-top-select li {
+            width: calc(100% / 6);
+            height: 75px;
+            line-height: 75px;
+            border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+
+        .notselect {
+            color: #666666;
+            background-color: #ffffff;
+
+        }
+
+        .onselect {
+            color: white;
+            background-color: #009223;
+        }
+
+        .menu-list {
+            width: 100%;
+            display: none;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .menu-box {
+            width: 370px;
+            height: 330px;
+            margin: 10px 0;
+            margin-left: calc((1150px - (370px * 3))/6);
+            position: relative;
+        }
+
+        .none-menu-box {
+            width: 100%;
+            height: 480px;
+            align-items: center;
+            line-height: 480px;
+            font-size: 32px;
+            position: relative;
+        }
+
+        .none-menu-box::before {
+            content: '';
+            position: absolute;
+            top: 160px;
+            left: 50%;
+            background: url(./image/icon_exc_sm.png) no-repeat;
+            width: 40px;
+            height: 40px;
+        }
+
+        .menu-box:hover {
+            cursor: pointer;
+        }
+
+        .new-icon {
+            position: absolute;
+            top: 0;
+            left: -8px;
+            transform: translateY(-50%);
+            z-index: 999;
+            width: 70px;
+            height: 30px;
+            color: white;
+            font-weight: bold;
+            background-color: #FFC300;
+        }
+
+        .menu-img-box {
+            width: 100%;
+            height: 190px;
+        }
+
+        .menu-img-box img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .menu-name {
+            width: 100%;
+            height: 140px;
+        }
+
+        .menu-name p:nth-child(1) {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu-name p:nth-child(2) {
+            font-size: 16px;
+        }
+
+        .menu-name p:nth-child(3) {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFC300;
+            margin-top: 10px;
+        }
+
+        .menu-box:hover .menu-img-box>img {
+            transform: scale(1.2);
+        }
+
+        .menu-info {
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 90%;
+            background-color: white;
+        }
+
+        .menu-info-top {
+            border: 1px solid black;
+            display: flex;
+        }
+
+        .menu-info-top>div {
+            border: 1px solid black;
+            width: 50%;
+
+        }
+
+        .menu-info-img {
+            background-image: url(./image/샌드위치/참치.png);
+            background-position: center;
+            background-size: contain;
+            width: 100%;
+            height: 440px;
+        }
+
+        .menu-info-text {
+            width: 100%;
+            height: 440px;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: baseline;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .type {
+            color: #009223;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .menuname {
+            display: block;
+            color: #292929;
+            font-size: 50px;
+            font-weight: 300;
+            line-break: anywhere;
+        }
+
+        .menuEngNam {
+            color: #999;
+            font-size: 18px;
+        }
+
+        .menuinfo {
+            color: #999;
+            font-size: 18px;
+            line-break: anywhere;
+            text-align: left;
+        }
+
+        .orderbtn {
+            color: white;
+            background-color: #009223;
+            border-radius: 30px;
+            font-size: 18px;
+            width: 130px;
+            height: 40px;
+            padding-right: 25px;
+            line-height: 40px;
+            position: relative;
+        }
+
+        .orderbtn::after {
+            content: '';
+            position: absolute;
+            top: 13px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            background: url(./image/icon_check.png) no-repeat;
+        }
+
+        .menu-info-middle {
+            border: 1px solid black;
+        }
+
+        .menu-info-middle>p:nth-child(1) {
+            text-align: justify;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .Nutrition-Facts-head {
+            border-top: 4px solid #009223;
+            border-bottom: 1px solid #009223;
+            margin-top: 30px;
+            display: flex;
+
+        }
+
+        .Nutrition-Facts-head p {
+            width: calc(100% / 6);
+            box-sizing: border-box;
+            padding: 20px;
+            font-size: 16px;
+            color: #005a15;
+        }
+
+        .Nutrition-Facts-body {
+            border-bottom: 1px solid #dddddd;
+            display: flex;
+        }
+
+        .Nutrition-Facts-body p {
+            width: calc(100% / 6);
+            box-sizing: border-box;
+            padding: 20px;
+            font-size: 16px;
+            color: #292929;
+        }
+
+        .menu-info-middle>p:nth-child(4) {
+            text-align: justify;
+            font-size: 13px;
+            color: #999;
+        }
+    </style>
+    <script>
+        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
+        function step(num) {
+            const area = document.querySelector(".step-area");
+            for (let i = 0; i < 4; i++) {
+                const imgBox1 = document.createElement("div");
+                const imgBox2 = document.createElement("div");
+
+                const stepImg = document.createElement("img");
+                const pointArea = document.createElement("img");
+                const on = `_on`
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointArea.style.marginLeft = `${margin}px`;
+                pointArea.style.marginRight = `${margin}px`;
+                if (num == i + 1) {
+                    stepImg.src = `./image/step${(i + 1) + on}.png`;
+                    stepImg.style.marginRight = '-45px';
+                    stepImg.style.marginTop = '-15px'
+                    stepImg.classList = 'onStep';
+                    pointArea.src = `./image/step_point_on.png`;
+                } else {
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    if (i == 3) {
+                        pointArea.style.display = 'none'
+                    } else {
+                        pointArea.src = `./image/step_point_off.png`;
+                    }
+                }
+                pointArea.style.marginTop = '30px';
+                area.appendChild(imgBox1);
+                imgBox1.appendChild(stepImg);
+                area.appendChild(imgBox2);
+                imgBox2.appendChild(pointArea);
+
+
+            }
+            const onstep = document.querySelector(".onStep").parentElement;
+            const stepText1 = document.createElement("p");
+            stepText1.innerHTML = `STEP${num}`
+            const stepText2 = document.createElement("p");
+            stepText2.innerHTML = `${stepTitle[num - 1]}`
+            onstep.appendChild(stepText1);
+            onstep.appendChild(stepText2);
+            onstep.style.position = "relative"
+            stepText1.style.position = "absolute"
+            stepText1.style.top = "5px"
+            stepText1.style.left = "110px"
+            stepText1.style.fontSize = "16px"
+            stepText1.style.fontWeight = "bold"
+            stepText1.style.color = "#ffc300"
+
+            stepText2.style.position = "absolute"
+            stepText2.style.top = "25px"
+            stepText2.style.left = "110px"
+            stepText2.style.fontSize = "24px"
+            stepText2.style.fontWeight = "bold"
+            stepText2.style.color = "white"
+
+        }
+
+        const data = [
+            [
+                {
+                    "name": "콰트로 치즈 스테이크&머쉬룸",
+                    "engName": "Quattro Cheese Steak&Mushroom",
+                    "kcal": 446,
+                    "new": 1
+                },
+                {
+                    "name": "콰트로 치즈 햄&오믈렛",
+                    "engName": "Quattro Cheese Ham&Omelet",
+                    "kcal": 465,
+                    "new": 1
+                },
+                {
+                    "name": "모닝 콰트로 치즈 스테이크&머쉬룸",
+                    "engName": "Morning Quattro Cheese Steak&Mushroom",
+                    "kcal": 429,
+                    "new": 1
+                },
+                {
+                    "name": "모닝 콰트로 치즈 햄&오믈렛",
+                    "engName": "Morning Quattro Cheese Ham&Omelet",
+                    "kcal": 448,
+                    "new": 1
+                },
+                {
+                    "name": "안창 비프&머쉬룸",
+                    "engName": "Beef & Mushroom",
+                    "kcal": 292,
+                    "new": 0
+                },
+                {
+                    "name": "스테이크 & 치즈",
+                    "engName": "Steak & Cheese",
+                    "kcal": 355,
+                    "new": 0
+                },
+                {
+                    "name": "이탈리안 비엠티",
+                    "engName": "Italian B.M.T.™",
+                    "kcal": 388,
+                    "new": 0
+                },
+                {
+                    "name": "로티세리 바비큐 치킨",
+                    "engName": "Rotisserie Barbecue Chicken",
+                    "kcal": 327,
+                    "new": 0
+                },
+                {
+                    "name": "에그마요",
+                    "engName": "Egg Mayo",
+                    "kcal": 416,
+                    "new": 0
+                },
+                {
+                    "name": "안창 비프",
+                    "engName": "Beef",
+                    "kcal": 342,
+                    "new": 0
+                },
+                {
+                    "name": "터키 베이컨 아보카도",
+                    "engName": "Turkey Bacon Avocado",
+                    "kcal": 355,
+                    "new": 0
+                },
+                {
+                    "name": "스파이시 쉬림프",
+                    "engName": "Spicy Shrimp",
+                    "kcal": 245,
+                    "new": 0
+                },
+                {
+                    "name": "쉬림프",
+                    "engName": "Shrimp",
+                    "kcal": 241,
+                    "new": 0
+                },
+                {
+                    "name": "로스트 치킨",
+                    "engName": "Roasted Chicken",
+                    "kcal": 300,
+                    "new": 0
+                },
+                {
+                    "name": "풀드 포크 바비큐",
+                    "engName": "Pulled Pork Barbecue",
+                    "kcal": 327,
+                    "new": 0
+                },
+                {
+                    "name": "써브웨이 클럽",
+                    "engName": "Subway Club",
+                    "kcal": 299,
+                    "new": 0
+                },
+                {
+                    "name": "치킨 데리야끼",
+                    "engName": "Chicken Teriyaki",
+                    "kcal": 314,
+                    "new": 0
+                },
+                {
+                    "name": "스파이시 이탈리안",
+                    "engName": "Spicy Italian",
+                    "kcal": 464,
+                    "new": 0
+                },
+                {
+                    "name": "비엘티",
+                    "engName": "B.L.T.",
+                    "kcal": 300,
+                    "new": 0
+                },
+                {
+                    "name": "터키",
+                    "engName": "Turkey",
+                    "kcal": 265,
+                    "new": 0
+                },
+                {
+                    "name": "머쉬룸",
+                    "engName": "Mushroom",
+                    "kcal": 245,
+                    "new": 0
+                },
+                {
+                    "name": "참치",
+                    "engName": "Tuna",
+                    "kcal": 316,
+                    "new": 0
+                },
+                {
+                    "name": "햄",
+                    "engName": "Ham",
+                    "kcal": 262,
+                    "new": 0
+                },
+                {
+                    "name": "에그 슬라이스",
+                    "engName": "Egg Slice",
+                    "kcal": 279,
+                    "new": 0
+                },
+                {
+                    "name": "베지",
+                    "engName": "Veggie Delite",
+                    "kcal": 209,
+                    "new": 0
+                }
+            ],
+            [
+                {
+                    "name": "안창 비프",
+                    "engName": "Beef",
+                    "kcal": 180,
+                    "new": 0
+                },
+                {
+                    "name": "안창 비프&머쉬룸",
+                    "engName": "Beef & Mushroom",
+                    "kcal": 130,
+                    "new": 0
+                },
+                {
+                    "name": "터키 베이컨 아보카도",
+                    "engName": "Turkey Bacon Avocado",
+                    "kcal": 200,
+                    "new": 0
+                },
+                {
+                    "name": "스테이크 & 치즈",
+                    "engName": "Steak & Cheese",
+                    "kcal": 193,
+                    "new": 0
+                },
+                {
+                    "name": "스파이시 쉬림프",
+                    "engName": "Spicy Shrimp",
+                    "kcal": 83,
+                    "new": 0
+                },
+                {
+                    "name": "쉬림프",
+                    "engName": "Shrimp",
+                    "kcal": 79,
+                    "new": 0
+                },
+                {
+                    "name": "로스트 치킨",
+                    "engName": "Roasted Chicken",
+                    "kcal": 138,
+                    "new": 0
+                },
+                {
+                    "name": "로티세리 바비큐 치킨",
+                    "engName": "Rotisserie Barbecue Chicken",
+                    "kcal": 165,
+                    "new": 0
+                },
+                {
+                    "name": "풀드 포크 바비큐",
+                    "engName": "Pulled Pork Barbecue",
+                    "kcal": 165,
+                    "new": 0
+                },
+                {
+                    "name": "써브웨이 클럽",
+                    "engName": "Subway Club",
+                    "kcal": 144,
+                    "new": 0
+                },
+                {
+                    "name": "치킨 데리야끼",
+                    "engName": "Chicken Teriyaki",
+                    "kcal": 152,
+                    "new": 0
+                },
+                {
+                    "name": "이탈리안 비엠티",
+                    "engName": "Italian B.M.T™",
+                    "kcal": 226,
+                    "new": 0
+                },
+                {
+                    "name": "스파이시 이탈리안",
+                    "engName": "Spicy Italian",
+                    "kcal": 302,
+                    "new": 0
+                },
+                {
+                    "name": "비엘티",
+                    "engName": "B.L.T.",
+                    "kcal": 153,
+                    "new": 0
+                },
+                {
+                    "name": "터키",
+                    "engName": "Turkey",
+                    "kcal": 103,
+                    "new": 0
+                },
+                {
+                    "name": "머쉬룸",
+                    "engName": "Mushroom",
+                    "kcal": 83,
+                    "new": 0
+                },
+                {
+                    "name": "참치",
+                    "engName": "Tuna",
+                    "kcal": 153,
+                    "new": 0
+                },
+                {
+                    "name": "햄",
+                    "engName": "Ham",
+                    "kcal": 99.5,
+                    "new": 0
+                },
+                {
+                    "name": "에그마요",
+                    "engName": "Egg Mayo",
+                    "kcal": 254,
+                    "new": 0
+                },
+                {
+                    "name": "에그 슬라이스",
+                    "engName": "Egg Slice",
+                    "kcal": 117,
+                    "new": 0
+                },
+                {
+                    "name": "베지",
+                    "engName": "Veggie Delite™",
+                    "kcal": 46.7,
+                    "new": 0
+                },
+                {
+                    "name": "미니 로티세리 치킨 샐러드",
+                    "engName": "Mini Rotisserie Chicken Salad",
+                    "kcal": 42,
+                    "new": 0
+                }
+            ],
+            [
+                {
+                    "name": "쉬림프 에그마요 랩",
+                    "engName": "Shrimp Egg Mayo Wrap",
+                    "kcal": 516,
+                    "new": 1
+                },
+                {
+                    "name": "스테이크 & 치즈 아보카도 랩",
+                    "engName": "Steak Cheese Avocado Wrap",
+                    "kcal": 478,
+                    "new": 1
+                },
+                {
+                    "name": "치킨 베이컨 미니 랩",
+                    "engName": "Chicken Bacon Mini Wrap",
+                    "kcal": 391,
+                    "new": 1
+                }
+            ],
+            [
+                {
+                    "name": "민트 초코 쿠키",
+                    "engName": "Mint Choco",
+                    "kcal": 199,
+                    "new": 0
+                },
+                {
+                    "name": "초코칩 쿠키",
+                    "engName": "Chocolate Chip",
+                    "kcal": 228,
+                    "new": 0
+                },
+                {
+                    "name": "더블 초코칩 쿠키",
+                    "engName": "Double Chocolate Chip",
+                    "kcal": 212,
+                    "new": 0
+                },
+                {
+                    "name": "오트밀 레이즌 쿠키",
+                    "engName": "Oatmeal Raisin",
+                    "kcal": 200,
+                    "new": 0
+                },
+                {
+                    "name": "라즈베리 치즈케익 쿠키",
+                    "engName": "Raspberry Cheese Cake",
+                    "kcal": 204,
+                    "new": 0
+                },
+                {
+                    "name": "화이트 초코 마카다미아 쿠키",
+                    "engName": "White Choco Macadamia",
+                    "kcal": 245,
+                    "new": 0
+                },
+                {
+                    "name": "쿠키 3개",
+                    "engName": "3 Cookies",
+                    "new": 0
+                },
+                {
+                    "name": "쿠키박스",
+                    "engName": "Cookie Box",
+                    "new": 0
+                },
+                {
+                    "name": "쿠키 6개",
+                    "engName": "6 Cookies",
+                    "new": 0
+                },
+                {
+                    "name": "칩 (랜덤발송)",
+                    "engName": "Chip",
+                    "new": 0
+                },
+                {
+                    "name": "Cheesy 웨지 포테이토",
+                    "engName": "Cheesy Ovenbaked Wedge Potatoes",
+                    "kcal": 223,
+                    "new": 0
+                },
+                {
+                    "name": "웨지 포테이토",
+                    "engName": "Ovenbaked Wedge Potatoes",
+                    "kcal": 179,
+                    "new": 0
+                },
+                {
+                    "name": "Bacon Cheesy 웨지 포테이토",
+                    "engName": "Bacon Cheesy Ovenbaked Wedge Potatoes",
+                    "kcal": 276,
+                    "new": 0
+                },
+                {
+                    "name": "탄산음료 16oz",
+                    "engName": "Soda",
+                    "new": 0
+                },
+                {
+                    "name": "아메리카노",
+                    "engName": "Coffee",
+                    "new": 0
+                },
+                {
+                    "name": "아이스 아메리카노",
+                    "engName": "Ice Coffee",
+                    "new": 0
+                },
+                {
+                    "name": "코카콜라(355ml)",
+                    "engName": "CocaCola",
+                    "new": 0
+                },
+                {
+                    "name": "스프라이트(355ml)",
+                    "engName": "Sprite",
+                    "new": 0
+                },
+                {
+                    "name": "코카콜라 제로(355ml)",
+                    "engName": "CocaCola Zero",
+                    "new": 0
+                },
+                {
+                    "name": "스프라이트 제로(355ml)",
+                    "engName": "Sprite Zero",
+                    "new": 1
+                },
+                {
+                    "name": "닥터페퍼(350ml)",
+                    "engName": "Doctor Pepper",
+                    "new": 0
+                },
+                {
+                    "name": "씨그램",
+                    "engName": "Seagram",
+                    "new": 0
+                },
+                {
+                    "name": "미닛메이드",
+                    "engName": "Minute Maid",
+                    "new": 0
+                },
+                {
+                    "name": "생수",
+                    "engName": "Water",
+                    "new": 0
+                }
+            ]
+
+        ]
+
+        window.addEventListener("load", (e) => {
+            const menulist = document.querySelector(".menu-list");
+            menu(data[0], "샌드위치");
+        })
+
+        function menu(menuData, type) {
+            const menulist = document.querySelector(".menu-list")
+            menulist.replaceChildren()
+            menuData.forEach((item, index) => {
+                const menuBox = document.createElement("div");
+                menuBox.classList = 'menu-box';
+                menulist.appendChild(menuBox);
+
+                if (item.new == 1) {
+                    const newIcon = document.createElement("div");
+                    newIcon.classList = 'new-icon';
+                    newIcon.innerHTML = 'new';
+                    menuBox.appendChild(newIcon);
+                }
+
+                const imgBox = document.createElement("div");
+                imgBox.classList = 'menu-img-box';
+                menuBox.appendChild(imgBox);
+
+                const img = document.createElement("img");
+                img.src = `./image/${type}/${item.name}.png`;
+                img.alt = `${item.name}.png`;
+                imgBox.appendChild(img);
+
+                const menuName = document.createElement("div");
+                menuName.classList = 'menu-name';
+                menuBox.appendChild(menuName);
+
+                const menuinfo1 = document.createElement("p");
+                menuinfo1.innerHTML = item.name;
+                menuName.appendChild(menuinfo1);
+
+                const menuinfo2 = document.createElement("p");
+                menuinfo2.innerHTML = item.engName;
+                menuName.appendChild(menuinfo2);
+
+                if (item.kcal) {
+                    const menuinfo3 = document.createElement("p");
+                    menuinfo3.innerHTML = `${item.kcal}kcal`;
+                    menuName.appendChild(menuinfo3);
+                }
+            })
+        }
+
+        function nomenu(text) {
+            const menulist = document.querySelector(".menu-list")
+            menulist.replaceChildren()
+
+            const menuBox = document.createElement("div");
+            menuBox.classList = 'none-menu-box';
+            menuBox.innerHTML = `${text} (이/가) 없습니다`
+            menulist.appendChild(menuBox);
+        }
+
+        function select(obj) {
+            notslect();
+            obj.classList = "onselect";
+            const selectMenu = obj.innerHTML;
+            let dataNum = null;
+            switch (selectMenu) {
+                case "샌드위치": dataNum = 1; break;
+                case "샐러드": dataNum = 2; break;
+                case "랩 기타": dataNum = 3; break;
+                case "사이드 음료": dataNum = 4; break;
+            }
+            dataNum ?
+                menu(data[dataNum - 1], selectMenu) : nomenu(selectMenu);
+        }
+
+        function notslect() {
+            const lis = document.querySelectorAll(".menu-top-select li");
+            lis.forEach((item) => {
+                item.classList = "notselect";
+            })
+
+        }
+    </script>
+</head>
+
+<body onload="step(2)">
+    <div class="wrap">
+        <div class="title-area">
+            <p class="title">Fast-Sub</p>
+            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+        <div class="step-area">
+
+        </div>
+        <div class="menu">
+            <div class="menu-top-select">
+                <ul>
+                    <li onclick="select(this)">즐겨찾는 메뉴</li>
+                    <li onclick="select(this)">프로모션</li>
+                    <li onclick="select(this)" class="onselect">샌드위치</li>
+                    <li onclick="select(this)">샐러드</li>
+                    <li onclick="select(this)">랩 기타</li>
+                    <li onclick="select(this)">사이드 음료</li>
+                </ul>
+            </div>
+
+            <div class="menu-list">
+
+            </div>
+
+            <div class="menu-info">
+                <div class="menu-info-top">
+                    <div class="menu-info-img">
+                    </div>
+                    <div class="menu-info-text">
+                        <p class="type">type</p>
+                        <p class="menuname">menunameme</p>
+                        <p class="menuEngNam">menuEngNam</p>
+                        <p class="menuinfo">
+                            menuinfomenuinfomenuinfomenuinfomenuinfomenuinfomenuinfomenuinfomenuinfomenuinfomenuinfo</p>
+                        <p class="orderbtn">주문시작하기</p>
+                    </div>
+                </div>
+                <div class="menu-info-middle">
+                    <p>영양성분표</p>
+                    <div class="Nutrition-Facts-head">
+                        <p>중량(g)</p>
+                        <p>열량(kcal)</p>
+                        <p>단백질(g)</p>
+                        <p>포화지방(g)</p>
+                        <p>당류(g)</p>
+                        <p>나트륨(mg)</p>
+                    </div>
+                    <div class="Nutrition-Facts-body">
+                        <p>302</p>
+                        <p>465</p>
+                        <p>30.9(56%)</p>
+                        <p>9.9(66%)</p>
+                        <p>8.7</p>
+                        <p>929(46%)</p>
+                    </div>
+                    <p>
+                        ※ 15cm 샌드위치의 영양 정보는 기본 야채 5종(양상추, 토마토, 오이, 피망(파프리카), 양파), 15cm 위트 브레드 및 제품에 따른 미트류가 포함되어 있으며,
+                        치즈와
+                        소스는 제외됩니다.
+                        <br>
+                        ※ 샐러드의 영양 정보는 기본 야채 5종(양상추, 토마토, 오이, 피망(파프리카), 양파) 및 제품에 따른 미트류가 포함되어 있으며, 치즈와 소스는 제외됩니다.
+                        <br>
+                        ※ 단, 메뉴명에 ‘치즈’가 포함되는 경우 치즈의 영양정보도 포함됩니다.
+                        <br>
+                        ※ 랩의 영양 정보는 치즈와 소스를 포함한 고정 레시피를 기준으로 합니다.
+                        <br>
+                        <br>
+                        ※ 아침메뉴의 영양 정보는 15cm 위트 브레드 및 제품에 따른 미트류, 야채, 아메리칸 치즈가 포함되어 있으며, 소스는 제외됩니다.
+                        <br>
+                        ※ 영양 정보표에 표시된 제품의 영양 정보/중량은 표준 레시피를 기준으로 하나, 계절의 변화, 공급사의 변화, 원재료의 수급 상황 및 제품 제조시에 발생하는 중량의 차이
+                        등에 따라 실제 제공되는 제품의 영양 정보/중량과 차이가 있을 수 있습니다.
+                        <br>
+                        ※ 괄호 안 %는 1일 영양소 기준치에 대한 비율입니다.
+                    </p>
+                    <div class="info-btn">
+                        원산지 정보
+                    </div>
+                    <div class="info-btn">
+                        알레르기 정보
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

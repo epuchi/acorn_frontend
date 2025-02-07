@@ -36,64 +36,12 @@
         }
 
         .step-area {
-            display: flex;
-            align-items: center;
-            height: 110px;
-        }
-
-        .step {
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        .step:nth-child(1) {
-            margin-top: 80px;
-            margin-right: -45px;
-            width: 266px;
+            width: 100%;
             height: 170px;
-            position: relative;
-        }
 
-        .step>div {
-            width: 70px;
-            height: 70px;
-        }
+            display: flex;
+            justify-content: center;
 
-        .step-point-on {
-            background: url(./image/step_point_on.png) no-repeat 0 0;
-            background-position: center;
-            width: 45px;
-            height: 5px;
-            padding: 0 15px;
-
-        }
-
-        .step-point-off {
-            background: url(./image/step_point_off.png) no-repeat 0 0;
-            background-position: center;
-            width: 45px;
-            height: 5px;
-            padding: 0 15px;
-
-        }
-
-        .step-num {
-            font-size: 16px;
-            position: absolute;
-            font-weight: bold;
-            color: rgb(255, 195, 0);
-            top: 15px;
-            left: 100px;
-        }
-
-        .step-title {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            position: absolute;
-            top: 35px;
-            left: 100px;
         }
 
         .map-area {
@@ -108,7 +56,7 @@
         }
 
         .btn {
-            width: 50%;
+            width: 100%;
             height: 80px;
             line-height: 80px;
             font-size: 22px;
@@ -283,9 +231,9 @@
             font-size: 14px;
             color: #bcbcbc;
         }
-
+        
         .place-marker {
-            display: flex;
+            display: none;
             flex-direction: column;
             background-color: white;
             width: 300px;
@@ -315,7 +263,7 @@
             flex-direction: row;
             width: 80%;
             margin: 0 auto;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .marker-middle li {
@@ -341,7 +289,7 @@
 
         .orderbutton {
             margin: 0 auto;
-            margin-top: 20px;
+            margin-top: 10px;
             background-color: green;
             text-align: center;
             width: 40%;
@@ -364,6 +312,99 @@
             height: 16px;
             margin-left: 5px;
         }
+
+        .select-order {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 0%;
+            z-index: 9;
+            top: 0;
+        }
+
+        .popup {
+            display: none;
+            box-sizing: border-box;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            width: 500px;
+            height: 460px;
+            background-color: #FFC300;
+            z-index: 10;
+            border-radius: 40px;
+            padding: 30px;
+        }
+
+        .inside {
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 40px;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .inside-top {
+            border-bottom: 5px solid #008A12;
+            text-align: center;
+            padding: 30px;
+            margin: 0 30px;
+        }
+
+        .inside-top p,
+        span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .inside-top span {
+            color: #FF850D;
+        }
+
+        .inside-bottom {
+            width: 100%;
+            margin-top: 45px;
+            display: flex;
+
+        }
+
+        .how-btn {
+            width: 50%;
+            text-align: center;
+        }
+
+        .how-btn a {
+            display: block;
+            margin: 0 auto;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            color: white;
+            font-size: 26px;
+            font-weight: 500;
+            background-color: #008A12;
+            border-radius: 30px;
+        }
+
+        .x-btn {
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            position: absolute;
+            top: 5px;
+            right: -10px;
+            transform: translateX(100%);
+        }
+
+        .how-btn:hover, .x-btn:hover, .order-btn:hover, .orderbutton:hover, .marker-top p:nth-child(2):hover {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+        }
     </style>
     <script>
         window.addEventListener("load", (e) => {
@@ -371,7 +412,13 @@
             console.log(steps)
             steps.forEach((item, index) => {
                 console.log(item)
-                item.style.backgroundImage = `url(./image/step${index + 1}.png)`
+                if (index == 0) {
+                    item.style.backgroundImage = `url(./image/step${index + 1}_on.png)`
+
+                } else {
+                    item.style.backgroundImage = `url(./image/step${index + 1}.png)`
+
+                }
             })
         })
 
@@ -389,6 +436,67 @@
             rawFile.send(null);
         }
 
+        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
+        function step(num) {
+            const area = document.querySelector(".step-area");
+            for (let i = 0; i < 4; i++) {
+                const imgBox1 = document.createElement("div");
+                const imgBox2 = document.createElement("div");
+
+                const stepImg = document.createElement("img");
+                const pointArea = document.createElement("img");
+                const on = `_on`
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointArea.style.marginLeft = `${margin}px`;
+                pointArea.style.marginRight = `${margin}px`;
+                if (num == i + 1) {
+                    stepImg.src = `./image/step${(i + 1) + on}.png`;
+                    stepImg.style.marginRight = '-45px';
+                    stepImg.style.marginTop = '-15px'
+                    stepImg.classList = 'onStep';
+                    pointArea.src = `./image/step_point_on.png`;
+                } else {
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    if (i == 3) {
+                        pointArea.style.display = 'none'
+                    } else {
+                        pointArea.src = `./image/step_point_off.png`;
+                    }
+                }
+                pointArea.style.marginTop = '30px';
+                area.appendChild(imgBox1);
+                imgBox1.appendChild(stepImg);
+                area.appendChild(imgBox2);
+                imgBox2.appendChild(pointArea);
+
+
+            }
+            const onstep = document.querySelector(".onStep").parentElement;
+            const stepText1 = document.createElement("p");
+            stepText1.innerHTML = `STEP${num}`
+            const stepText2 = document.createElement("p");
+            stepText2.innerHTML = `${stepTitle[num - 1]}`
+            onstep.appendChild(stepText1);
+            onstep.appendChild(stepText2);
+            onstep.style.position = "relative"
+            stepText1.style.position = "absolute"
+            stepText1.style.top = "5px"
+            stepText1.style.left = "110px"
+            stepText1.style.fontSize = "16px"
+            stepText1.style.fontWeight = "bold"
+            stepText1.style.color = "#ffc300"
+
+            stepText2.style.position = "absolute"
+            stepText2.style.top = "25px"
+            stepText2.style.left = "110px"
+            stepText2.style.fontSize = "24px"
+            stepText2.style.fontWeight = "bold"
+            stepText2.style.color = "white"
+
+        }
+
         function orderCheck() {
             const marker = document.querySelector(".place-marker");
             marker.style.display = 'flex';
@@ -398,10 +506,24 @@
             const marker = document.querySelector(".place-marker");
             marker.style.display = 'none';
         }
+
+        function Popup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "100%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'block'
+        }
+
+        function cenclelPopup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "0%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'none'
+        }
     </script>
 </head>
 
-<body>
+<body onload="step(1)">
     <header id="header" class="fixed-top">
         <script>loadHTML("../header/header.html");</script>
     </header>
@@ -412,38 +534,12 @@
             <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
         </div>
         <div class="step-area">
-            <div class="step">
-                <p class="step-num">STEP 1</p>
-                <p class="step-title">매장선택</p>
-            </div>
-            <div class="step-point-on">
-
-            </div>
-            <div class="step">
-                <div class=""></div>
-            </div>
-            <div class="step-point-off">
-
-            </div>
-            <div class="step">
-                <div class=""></div>
-
-            </div>
-            <div class="step-point-off">
-
-            </div>
-            <div class="step">
-                <div class=""></div>
-
-            </div>
+            
         </div>
         <div class="map-area">
             <div class="button-area">
                 <div class="btn on">
                     매장찾기
-                </div>
-                <div class="btn">
-                    자주 찾는 매장
                 </div>
             </div>
             <div class="map">
@@ -458,7 +554,7 @@
                         </div>
                     </div>
                     <div class="search">
-                        <p>'<span id="search-place">홍대</span>' 검색 결과 <span>1</span>건</p>
+                        <p><span id="search-place">'홍대'</span> 검색 결과 <span>1</span>건</p>
                     </div>
                     <div class="place-area">
                         <div class="place">
@@ -504,7 +600,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="orderbutton">
+                    <div class="orderbutton" onclick="Popup()">
                         주문하기
                         <div class="checkIcon"></div>
                     </div>
@@ -513,6 +609,28 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="select-order">
+
+    </div>
+    <div class="popup">
+        <div class="inside">
+            <div class="inside-top">
+                <p><span>주문 방법</span>을</p>
+                <p>선택해주세요.</p>
+            </div>
+            <div class="inside-bottom">
+                <div class="how-btn">
+                    <a href="./order_stop2.html">방문 포장</a>
+                </div>
+                <div class="how-btn">
+                    <a href="./order_stop2.html">매장 식사</a>
+                </div>
+            </div>
+        </div>
+        <div class="x-btn" onclick="cenclelPopup()">
+            ⨉
         </div>
     </div>
 </body>
