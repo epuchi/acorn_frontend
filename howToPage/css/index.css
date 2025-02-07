@@ -36,7 +36,7 @@
     margin-top: 50px;
 }
 .how_body_nav{
-    width: 70%;
+    width: 75%;
     border: 1px solid black;
     height: 60px;
     position: absolute;
@@ -56,6 +56,7 @@
     color: white;
     text-align: center;
     font-size: 18px;
+    padding: 0;
    
 }.how_body_nav_left:hover{
     cursor: pointer;
@@ -71,7 +72,145 @@
     color: #495057;
     text-align: center;
     font-size: 18px;
+    padding: 0;
 }
 .how_body_nav_right:hover{
     cursor: pointer;
 }
+.how_body_wrap{
+    width: 100%;
+    border: 1px solid black;
+    background-color: #e9ecef;
+    height: 800px;
+}
+.how_step_icon_section{
+    width: 100%;
+    height: 80px;
+    /* border: 1px solid black; */
+    background-color: transparent;
+    margin-top: 70px;
+}
+.how_step_icon_list{
+    display: flex;
+    list-style: none;
+    border: 1px solid black;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+}
+.how_step_icon_list li{
+    position: relative;
+    
+}
+.step{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #adb5ad;
+}
+.icon_box{
+    border: 5px solid #adb5ad;
+    width: 70px;
+    height: 70px;
+    margin: 0;
+    padding: 0;
+    border-radius: 50%;
+}
+li{
+    list-style: none;
+}
+
+/* 슬라이더 */
+
+
+.how_img_slider{
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: left 0.5s ease-out;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+.how_img_slider li{
+    width: 360px;
+    height: 280px;
+    flex-shrink: 0;
+    margin-right: 200px;
+}
+.how_img_slider li img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* border-radius: 30px; */
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+
+.how_img_slide_section {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 50px;
+}
+
+
+.how_img_slide_wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden; 
+    border: 1px solid black;
+}
+
+
+.slider_button {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.prev_button, .next_button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.prev_button:hover, .next_button:hover {
+    background-color: #f8f9fa;
+}
+
+
+.icon_box.active {
+    border-color: #009223;
+}
+
+.icon_box.active .step {
+    color: #009223;
+}
+
+
+
+
+
