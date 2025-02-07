@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        .title-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: white;
+            margin-top: 30px;
+        }
+
+        .step-area {
+            width: 100%;
+            height: 170px;
+
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .menu-selector {
+            width: 100%;
+            height: 500px;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
+        function step(num) {
+            const area = document.querySelector(".step-area");
+            for (let i = 0; i < 4; i++) {
+                const imgBox1 = document.createElement("div");
+                const imgBox2 = document.createElement("div");
+
+                const stepImg = document.createElement("img");
+                const pointArea = document.createElement("img");
+                const on = `_on`
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointArea.style.marginLeft = `${margin}px`;
+                pointArea.style.marginRight = `${margin}px`;
+                if (num == i + 1) {
+                    stepImg.src = `./image/step${(i + 1) + on}.png`;
+                    stepImg.style.marginRight = '-45px';
+                    stepImg.style.marginTop = '-15px'
+                    stepImg.classList = 'onStep';
+                    pointArea.src = `./image/step_point_on.png`;
+                } else {
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    if (i == 3) {
+                        pointArea.style.display = 'none'
+                    } else {
+                        pointArea.src = `./image/step_point_off.png`;
+                    }
+                }
+                pointArea.style.marginTop = '30px';
+                area.appendChild(imgBox1);
+                imgBox1.appendChild(stepImg);
+                area.appendChild(imgBox2);
+                imgBox2.appendChild(pointArea);
+
+
+            }
+            const onstep = document.querySelector(".onStep").parentElement;
+            const stepText1 = document.createElement("p");
+            stepText1.innerHTML = `STEP${num}`
+            const stepText2 = document.createElement("p");
+            stepText2.innerHTML = `${stepTitle[num - 1]}`
+            onstep.appendChild(stepText1);
+            onstep.appendChild(stepText2);
+            onstep.style.position = "relative"
+            stepText1.style.position = "absolute"
+            stepText1.style.top = "5px"
+            stepText1.style.left = "110px"
+            stepText1.style.fontSize = "16px"
+            stepText1.style.fontWeight = "bold"
+            stepText1.style.color = "#ffc300"
+
+            stepText2.style.position = "absolute"
+            stepText2.style.top = "25px"
+            stepText2.style.left = "110px"
+            stepText2.style.fontSize = "24px"
+            stepText2.style.fontWeight = "bold"
+            stepText2.style.color = "white"
+
+        }
+    </script>
+</head>
+
+<body onload="step(2)">
+    <div class="wrap">
+        <div class="title-area">
+            <p class="title">Fast-Sub</p>
+            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+        <div class="step-area">
+
+        </div>
+        <div class="menu-selector">
+            
+        </div>
+    </div>
+</body>
+
+</html>

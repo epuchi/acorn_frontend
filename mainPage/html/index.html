@@ -51,7 +51,7 @@
                 <span class="subway_menu_nav_title">Subway's Menu</span>
                 <div class="subway_menu_nav_section_text">
                     <div class="subway_menu_nav_text">
-                        <span onclick="navClick()" name="text1">클래식</span>
+                        <span name="text1">클래식</span>
                         <div class="bar_locate3">
                             <div class="section_subway_menu_gray"></div>
                         </div>
@@ -314,6 +314,8 @@
     <script>
 
 
+        //DOMContentLoaded 페이지 내 요소 랜더링 후에 함수 실행
+        //랜더링 이전에 함수 실행되서 문제 생기는거 방지용이에요
         document.addEventListener('DOMContentLoaded', function () {
             const slider = document.querySelector('.subway_s2_slider');
             const slides = document.querySelectorAll('.subway_s2_slider li');
@@ -323,6 +325,10 @@
             let currentIndex = 0;
             const slideCount = slides.length;
 
+            //각 슬라이드 위치 이동 로직
+            //슬라이드 폭 구해서 본인 인덱스와 나열된 인덱스 참고하여
+            //폭과 인덱스를 곱하여 이동거리 계산함
+            //이 내용을 아래 이벤트리스너 함수에서 활용
             function moveSlide(index) {
                 const slideWidth = slides[0].offsetWidth;
                 slider.style.left = `-${slideWidth * index}px`;
@@ -360,8 +366,10 @@
             const slides = document.querySelectorAll('.subway_menu_slider li');
             const prevButton = document.querySelector('.menu_prev_button');
             const nextButton = document.querySelector('.menu_next_button');
-
+            //메뉴 슬라이더 화면에 보이는걸 4개로 정함함
             const visibleSlides = 4;
+            //현재 표기되는 화면 기준으로 슬라이더 폭 정하기위함
+            // 비율 100기준으로 현재 슬라이드 100 나누기 4 해서 폭 정함함
             const slideWidth = 100 / visibleSlides;
             let currentIndex = 0;
 
@@ -369,7 +377,8 @@
             slides.forEach(slide => {
                 slide.style.width = `${slideWidth}%`;
             });
-
+            
+            //슬라이더 이동 버튼 함수수
             function updateSliderPosition() {
                 slider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
 
