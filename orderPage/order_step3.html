@@ -2,20 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            user-select: none;
         }
 
         .wrap {
+            position: relative;
             display: flex;
             flex-direction: column;
             min-width: 1280px;
-            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            background: url("./image/orderBackground.jpg") no-repeat 50% 0 #89cd2f;
             text-align: center;
             align-items: center;
         }
@@ -38,93 +45,318 @@
         .step-area {
             width: 100%;
             height: 170px;
-
             display: flex;
             justify-content: center;
-
         }
 
         .menu-selector {
-            width: 100%;
+            width: 900px;
             height: 500px;
-            border: 1px solid black;
+            overflow: hidden;
+            margin: 0 auto 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .slide1 {
+            background-color: #ffeb3b;
+            position: relative;
+        }
+
+        .slide2 {
+            background-color: #8bc34a;
+        }
+
+        .slide3 {
+            background-color: #2196f3;
+        }
+
+        .slide4 {
+            background-color: #ff5722;
+        }
+
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            border: none;
+            font-size: 40px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .arrow-btn:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .prev-btn {
+            left: calc(50% - 450px);
+            margin-left: 10px;
+        }
+
+        .next-btn {
+            right: calc(50% - 450px);
+            margin-right: 10px;
+        }
+
+        .bread-selection-wrap {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+        }
+
+        .bread-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .bread-header .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00972c;
+        }
+
+        .bread-header .selected-bread {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .bread-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .bread-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            background-color: #fff;
+        }
+
+        .bread-item:hover {
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bread-item img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .bread-item p {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .bread-item.selected {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: #fff;
+        }
+
+        .bread-item.selected p {
+            color: #fff;
         }
     </style>
     <script>
-        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
+        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""];
         function step(num) {
             const area = document.querySelector(".step-area");
             for (let i = 0; i < 4; i++) {
                 const imgBox1 = document.createElement("div");
                 const imgBox2 = document.createElement("div");
-
                 const stepImg = document.createElement("img");
                 const pointArea = document.createElement("img");
-                const on = `_on`
+                const on = `_on`;
                 const margin = 10;
-                stepImg.style.marginLeft = `${margin}px`;
-                stepImg.style.marginRight = `${margin}px`;
-                pointArea.style.marginLeft = `${margin}px`;
-                pointArea.style.marginRight = `${margin}px`;
-                if (num == i + 1) {
-                    stepImg.src = `./image/step${(i + 1) + on}.png`;
-                    stepImg.style.marginRight = '-45px';
-                    stepImg.style.marginTop = '-15px'
-                    stepImg.classList = 'onStep';
-                    pointArea.src = `./image/step_point_on.png`;
+                stepImg.style.marginLeft = margin + "px";
+                stepImg.style.marginRight = margin + "px";
+                pointArea.style.marginLeft = margin + "px";
+                pointArea.style.marginRight = margin + "px";
+                if (num === i + 1) {
+                    stepImg.src = "./image/step" + (i + 1) + on + ".png";
+                    stepImg.style.marginRight = "-45px";
+                    stepImg.style.marginTop = "-15px";
+                    stepImg.classList = "onStep";
+                    pointArea.src = "./image/step_point_on.png";
                 } else {
-                    stepImg.src = `./image/step${i + 1}.png`;
-                    if (i == 3) {
-                        pointArea.style.display = 'none'
+                    stepImg.src = "./image/step" + (i + 1) + ".png";
+                    if (i === 3) {
+                        pointArea.style.display = "none";
                     } else {
-                        pointArea.src = `./image/step_point_off.png`;
+                        pointArea.src = "./image/step_point_off.png";
                     }
                 }
-                pointArea.style.marginTop = '30px';
+                pointArea.style.marginTop = "30px";
                 area.appendChild(imgBox1);
                 imgBox1.appendChild(stepImg);
                 area.appendChild(imgBox2);
                 imgBox2.appendChild(pointArea);
-
-
             }
             const onstep = document.querySelector(".onStep").parentElement;
             const stepText1 = document.createElement("p");
-            stepText1.innerHTML = `STEP${num}`
+            stepText1.innerHTML = "STEP" + num;
             const stepText2 = document.createElement("p");
-            stepText2.innerHTML = `${stepTitle[num - 1]}`
+            stepText2.innerHTML = stepTitle[num - 1];
             onstep.appendChild(stepText1);
             onstep.appendChild(stepText2);
-            onstep.style.position = "relative"
-            stepText1.style.position = "absolute"
-            stepText1.style.top = "5px"
-            stepText1.style.left = "110px"
-            stepText1.style.fontSize = "16px"
-            stepText1.style.fontWeight = "bold"
-            stepText1.style.color = "#ffc300"
-
-            stepText2.style.position = "absolute"
-            stepText2.style.top = "25px"
-            stepText2.style.left = "110px"
-            stepText2.style.fontSize = "24px"
-            stepText2.style.fontWeight = "bold"
-            stepText2.style.color = "white"
-
+            onstep.style.position = "relative";
+            stepText1.style.position = "absolute";
+            stepText1.style.top = "5px";
+            stepText1.style.left = "110px";
+            stepText1.style.fontSize = "16px";
+            stepText1.style.fontWeight = "bold";
+            stepText1.style.color = "#ffc300";
+            stepText2.style.position = "absolute";
+            stepText2.style.top = "25px";
+            stepText2.style.left = "110px";
+            stepText2.style.fontSize = "24px";
+            stepText2.style.fontWeight = "bold";
+            stepText2.style.color = "white";
         }
+        let currentIndex = 0;
+        function moveSlide(newIndex) {
+            const slideCount = document.querySelectorAll(".slide").length;
+            if (newIndex < 0) newIndex = 0;
+            if (newIndex >= slideCount) newIndex = slideCount - 1;
+            currentIndex = newIndex;
+            const slider = document.querySelector(".slider");
+            const offset = -(currentIndex * slider.offsetWidth);
+            slider.style.transform = "translateX(" + offset + "px)";
+        }
+        function goPrev() {
+            moveSlide(currentIndex - 1);
+        }
+        function goNext() {
+            moveSlide(currentIndex + 1);
+        }
+        const breadData = [
+            {
+                name: "화이트",
+                img: "https://via.placeholder.com/100x60?text=화이트"
+            },
+            {
+                name: "파마산 오레가노",
+                img: "https://via.placeholder.com/100x60?text=파마산"
+            },
+            {
+                name: "위트",
+                img: "https://via.placeholder.com/100x60?text=위트"
+            },
+            {
+                name: "허니오트",
+                img: "https://via.placeholder.com/100x60?text=허니오트"
+            },
+            {
+                name: "하티",
+                img: "https://via.placeholder.com/100x60?text=하티"
+            },
+            {
+                name: "플랫브레드",
+                img: "https://via.placeholder.com/100x60?text=플랫브레드"
+            }
+        ];
+        function initBreadSelection() {
+            const breadGrid = document.querySelector(".bread-grid");
+            const selectedBreadText = document.querySelector(".selected-bread");
+            selectedBreadText.innerText = "";
+            breadData.forEach(function (bread) {
+                const item = document.createElement("div");
+                item.classList.add("bread-item");
+                item.dataset.name = bread.name;
+                const imgTag = document.createElement("img");
+                imgTag.src = bread.img;
+                imgTag.alt = bread.name;
+                const pTag = document.createElement("p");
+                pTag.innerText = bread.name;
+                item.appendChild(imgTag);
+                item.appendChild(pTag);
+                item.addEventListener("click", function () {
+                    document.querySelectorAll(".bread-item").forEach(function (el) {
+                        el.classList.remove("selected");
+                    });
+                    this.classList.add("selected");
+                    selectedBreadText.innerText = this.dataset.name;
+                });
+                breadGrid.appendChild(item);
+            });
+        }
+        window.onload = function () {
+            step(2);
+            document.querySelector(".prev-btn").addEventListener("click", goPrev);
+            document.querySelector(".next-btn").addEventListener("click", goNext);
+            initBreadSelection();
+        };
     </script>
 </head>
 
-<body onload="step(2)">
+<body>
     <div class="wrap">
         <div class="title-area">
             <p class="title">Fast-Sub</p>
-            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+            <p class="sub-title">
+                온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.
+            </p>
         </div>
-        <div class="step-area">
-
-        </div>
+        <div class="step-area"></div>
+        <button class="arrow-btn prev-btn">&laquo;</button>
+        <button class="arrow-btn next-btn">&raquo;</button>
         <div class="menu-selector">
-            
+            <div class="slider">
+                <div class="slide slide1">
+                    <div class="bread-selection-wrap">
+                        <div class="bread-header">
+                            <span class="title">빵 선택</span>
+                            <span class="selected-bread"></span>
+                        </div>
+                        <div class="bread-grid"></div>
+                    </div>
+                </div>
+                <div class="slide slide2">
+                    <p>야채 선택</p>
+                </div>
+                <div class="slide slide3">
+                    <p>치즈 선택</p>
+                </div>
+                <div class="slide slide4">
+                    <p>소스 선택</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
