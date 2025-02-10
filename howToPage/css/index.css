@@ -249,13 +249,14 @@ span {
 
 .how_wrap {
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* height: 3000px; */
 }
 
 .how_header_wrap {
     width: 100%;
-    border: 1px solid black;
+    border-top: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
     height: 60px;
     position: relative;
 
@@ -284,18 +285,20 @@ span {
     font-weight: 450;
     font-size: 40px;
     width: 100%;
-    border: 1px solid black;
-    height: 250px;
+    /* border: 1px solid black; */
+    height: 200px;
     text-align: center;
 }
 
 .how_main_title_text {
     margin-top: 50px;
+    font-weight: 500;
+    font-family: "Noto Sans KR",serif;
 }
 
 .how_body_nav {
     width: 75%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 60px;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -346,7 +349,7 @@ span {
 
 .how_body_wrap {
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: #e9ecef;
     height: 800px;
 }
@@ -356,7 +359,9 @@ span {
     height: 80px;
     /* border: 1px solid black; */
     background-color: transparent;
-    margin-top: 70px;
+    /* margin-top: 70px; */
+    
+    
 }
 
 .how_step_icon_list {
@@ -366,7 +371,7 @@ span {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 40px;
 
 }
 
@@ -407,7 +412,7 @@ li {
     width: 1400px;
     margin: 0 auto;
     position: relative;
-    margin-top: 50px;
+    margin-top: 80px;
     background-color: #e9ecef;
 }
 
@@ -610,7 +615,7 @@ li {
 
 .description-content p {
     opacity: 0;
-    animation: slideUp 0.5s ease-out forwards;
+    animation: slideUp 0.2s ease-out forwards;
 }
 
 .description-content p:nth-child(1) { animation-delay: 0.1s; }
@@ -619,6 +624,6 @@ li {
 .description-content p:nth-child(4) { animation-delay: 0.4s; }
 .description-content .additional_button { 
     opacity: 0;
-    animation: slideUp 0.5s ease-out forwards;
-    animation-delay: 0.5s; 
+    animation: slideUp 0.2s ease-out forwards;
+    animation-delay: 0.2s; 
 }
