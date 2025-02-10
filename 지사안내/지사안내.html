@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hd {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            display: flex;
+            border-top: 1px solid #e0dede;
+            border-bottom: 1px solid #e0dede;
+            height: 60px;
+            justify-content: center;
+            align-items: center;
+            background-color: #FFFFFF;
+            box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.1);
+        }
+
+        .hd ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 0;
+            position: relative;
+        }
+
+        .hd li {
+            margin: 0 auto;
+            color: #999999;
+        }
+
+        .hd li a,
+        .hd a {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: -2px;
+            text-decoration: none;
+            color: #999999;
+        }
+
+        .logo_img {
+            width: 110px;
+            height: 60px;
+            background-image: url(https://www.subway.co.kr/images/common/logo_sub_header.png);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: -350px;
+        }
+
+        .top {
+            position: absolute;
+            top: -20px;
+            right: -330px;
+            width: 40px;
+            height: 32px;
+            box-sizing: border-box;
+            line-height: 60px;
+            font-size: 13px;
+            color: #BBBBBB;
+        }
+
+        .branch_title{
+            color:#292929;
+            font-size:40px;
+            text-align: center;
+            letter-spacing: -3px;
+            padding:70px;
+        }
+
+        .tab{
+            position:relative;
+            top:-30px;
+            background-color: #FFFFFF;
+            width:1200px;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 80px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab ul{
+            list-style: none;
+            display: flex;
+            height:60px;
+            padding:0;
+        }
+
+        .tab li{
+            width:50%;
+            height:100%;
+            border:1px solid #e5e5e5;
+        }
+
+        .tab a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            height:100%;
+            width:100%;
+            font-size: 16px;
+            color:#999999;
+        }
+
+        .tab_gr {
+            background-color: green;
+        }
+        .tab_gr a{
+            color:#FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="branchwrap">
+        <div class="hd">
+            <ul>
+                <a class="logo_img" href=""></a>
+                <a href="">써브웨이 프랜차이즈</a>
+                <li><a href="#">가맹관련FAQ</a></li>
+                <li><a href="#">가맹신청ㆍ문의</a></li>
+                <li><a href="#">지사안내</a></li>
+                <li><a href="#">사업설명회</a></li>
+                <div class="top"></div>
+                <a class="top" href="#">TOP</a>
+            </ul>
+        </div>
+        <!-- 지사안내 wrap -->
+        <div class="branch_content">
+            <h2 class="branch_title">지사안내</h2>
+            <div class="branch_info">
+                <div class="tab">
+                    <ul>
+                        <li class="tab_gr"><a href="#">서울</a></li>
+                        <li><a href="#">수도권</a></li>
+                        <li><a href="#">지방</a></li>
+                    </ul>
+                </div>
+                <div class="branch_map">
+                    <div class="map_img">
+                        <img src="https://www.subway.co.kr/images/franchise/branch_map01.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

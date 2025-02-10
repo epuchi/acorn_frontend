@@ -1,93 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .hd{
-            position:sticky;
-            top:0;
+        .hd {
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            width:100%;
+            width: 100%;
             display: flex;
-            border-top:1px solid #e0dede;
-            border-bottom:1px solid #e0dede;
-            height:60px;
+            border-top: 1px solid #e0dede;
+            border-bottom: 1px solid #e0dede;
+            height: 60px;
             justify-content: center;
             align-items: center;
             background-color: #FFFFFF;
             box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.1);
         }
 
-        .hd ul{
-            display:flex;
+        .hd ul {
+            display: flex;
             justify-content: center;
             align-items: center;
             gap: 40px;
             padding: 0;
-            position:relative;
+            position: relative;
         }
 
-        .hd li{
-            margin:0 auto;
+        .hd li {
+            margin: 0 auto;
             color: #999999;
         }
 
-        .hd li a, .hd a{
+        .hd li a,
+        .hd a {
             font-size: 16px;
             font-weight: bold;
             letter-spacing: -2px;
             text-decoration: none;
             color: #999999;
         }
-        
-        .logo_img{
-            width:110px;
-            height:60px;
+
+        .logo_img {
+            width: 110px;
+            height: 60px;
             background-image: url(https://www.subway.co.kr/images/common/logo_sub_header.png);
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
-            position:absolute;
-            left:-350px;
+            position: absolute;
+            left: -350px;
         }
 
-        .top{
-            position:absolute;
-            top:-20px;
-            right:-330px;
-            width:40px;
-            height:32px;
+        .top {
+            position: absolute;
+            top: -20px;
+            right: -330px;
+            width: 40px;
+            height: 32px;
             box-sizing: border-box;
             line-height: 60px;
-            font-size:13px;
-            color:#BBBBBB;
+            font-size: 13px;
+            color: #BBBBBB;
         }
 
         /* 영역부분 */
-        .groupMenu_wrap{
-            height:2000px;
-        }
-        .group_title{
+
+        .group_title {
             text-align: center;
             font-size: 40px;
-            color:#292929;
+            color: #292929;
             letter-spacing: -3px;
-            padding:70px;
+            padding: 70px;
         }
 
-        .slider_wrap{
-            width:100%;
-            height:640px;
+        .slider_wrap {
+            width: 100%;
+            height: 640px;
             background-image: url("https://www.subway.co.kr/images/utilization/bg_group_menu_slider.jpg");
             background-position: center;
             background-size: cover;
             text-align: center;
-            position:relative;
+            position: relative;
         }
 
-        .slider_title{
+        .slider_title {
             line-height: 100%;
             margin-top: 120px;
             text-align: center;
@@ -104,13 +104,36 @@
             letter-spacing: -1px;
         }
 
-        .move_content{
-            width:100%;
+        .move_content {
+            width: 100%;
             text-align: center;
+            position: absolute;
+            /* 절대적인 위치 (겹쳐짐)*/
+            opacity: 0;
+            /* 안보이게 숨기기*/
+            transform: translateY(50px);
+            /* 위치 50px 만큼 밑으로*/
+            transition: 1s;
+            /* 요소 바뀌면 1초동안 나오기*/
         }
 
-        .move_h{
-            color:#FFFFFF;
+        .mv1 {
+            opacity: 1;
+            /* 보이게함*/
+            transform: translateY(0);
+            /* 원래 위치*/
+        }
+
+
+        .mv2,
+        .mv3 {
+            opacity: 0;
+            /* 안보이게 숨기기*/
+        }
+
+
+        .move_h {
+            color: #FFFFFF;
             font-size: 60px;
             font-weight: bold;
             margin: 32px 0 30px;
@@ -118,125 +141,133 @@
             transform: scaleY(0.9);
         }
 
-        .move_p{
-            color:#FFFFFF;
+        .move_p {
+            color: #FFFFFF;
             font-size: 16px;
             font-weight: bold;
             letter-spacing: -1px;
         }
 
-        .move_btn{
-            width:100%;
-            position:absolute;
+        .move_btn {
+            width: 100%;
+            position: absolute;
             display: flex;
             justify-content: space-between;
-            top:40%;
+            top: 40%;
         }
-        .prev{
+
+        .prev {
             display: inline-block;
             background-image: url(./btn_img/prev_img.png);
             background-size: cover;
             background-position: center;
-            width:50px;
-            height:50px;
+            width: 50px;
+            height: 50px;
             transform: translateX(300px);
         }
 
-        .next{
+        .next {
             display: inline-block;
             background-image: url(./btn_img/next_img.png);
             background-size: cover;
             background-position: center;
-            width:50px;
-            height:50px;
+            width: 50px;
+            height: 50px;
             transform: translateX(-300px);
         }
 
-        .prev:hover{
+        .prev:hover {
             background-image: url(./btn_img/prev_hoverimg.png);
+            cursor: pointer;
         }
 
-        .next:hover{
+        .next:hover {
             background-image: url(./btn_img/next_hoverimg.png);
+            cursor: pointer;
         }
 
-        .pager_wrap{
-            width:100%;
+        .pager_wrap {
+            width: 100%;
             display: flex;
             position: absolute;
-            bottom:100px;
+            bottom: 100px;
             justify-content: center;
         }
 
-        .pager1{
-            width:70px;
-            height:70px;
+        .pager1 {
+            width: 70px;
+            height: 70px;
             background-image: url(./btn_img/pager1_img.png);
             background-size: cover;
             background-position: center;
             margin: 0 20px;
         }
 
-        .pager2{
-            width:70px;
-            height:70px;
+        .pager2 {
+            width: 70px;
+            height: 70px;
             background-image: url(./btn_img/pager2_img.png);
             background-size: cover;
             background-position: center;
             margin: 0 20px;
         }
 
-        .pager3{
-            width:70px;
-            height:70px;
+        .pager3 {
+            width: 70px;
+            height: 70px;
             background-image: url(./btn_img/pager3_img.png);
             background-size: cover;
             background-position: center;
             margin: 0 20px;
         }
 
-        .pager1:hover{
+        .pager1:hover {
             background-image: url(./btn_img/pager1_hoverimg.png);
+            cursor: pointer;
         }
 
-        .pager2:hover{
+        .pager2:hover {
             background-image: url(./btn_img/pager2_hoverimg.png);
+            cursor: pointer;
         }
 
-        .pager3:hover{
+        .pager3:hover {
             background-image: url(./btn_img/pager3_hoverimg.png);
+            cursor: pointer;
         }
 
-        .group_order{
+        .group_order {
             background-color: #fff;
-            width:1200px;
+            width: 1200px;
             padding-top: 45px;
             text-align: center;
-            margin :-60px auto 0;
+            margin: -60px auto 0;
             position: relative;
         }
 
-        .group_order h3{
-            color:#292929;
+        .group_order h3 {
+            color: #292929;
             font-size: 28px;
             font-weight: bold;
             letter-spacing: -2px;
-            margin-bottom:  30px;
+            margin: 0 0 35px;
         }
 
-        .group_order ol{
-            width:80%;
+        .group_order ol {
+            width: 80%;
             list-style: none;
             display: flex;
-            margin:0 auto;
+            margin: 0 auto;
             position: relative;
+            padding: 0;
         }
 
-        .group_order li{
-            width:33.33%;
+        .group_order li {
+            width: 33.33%;
             text-align: center;
         }
-        .step1{
+
+        .step1 {
             width: 100px;
             height: 100px;
             background-image: url(./btn_img/step1_img.jpg);
@@ -245,7 +276,7 @@
             margin: 0 auto 20px;
         }
 
-        .step2{
+        .step2 {
             width: 100px;
             height: 100px;
             background-image: url(./btn_img/step2_img.jpg);
@@ -254,7 +285,7 @@
             margin: 0 auto 20px;
         }
 
-        .step3{
+        .step3 {
             width: 100px;
             height: 100px;
             background-image: url(./btn_img/step3_img.jpg);
@@ -263,93 +294,104 @@
             margin: 0 auto 20px;
         }
 
-        .group_order li p{
-            font-size:16px;
-            color:#009223;
+        .group_order li p {
+            font-size: 16px;
+            color: #009223;
             font-weight: bold;
             letter-spacing: -1px;
-            margin : 0;
+            margin: 0;
         }
 
-        .group_order li dt{
-            font-size:22px;
+        .group_order li dt {
+            font-size: 22px;
             color: #292929;
             font-weight: bold;
             letter-spacing: -2px;
         }
 
-        .group_order li dd{
-            color:#888888;
+        .group_order li dd {
+            color: #888888;
             font-size: 16px;
             font-weight: bold;
             line-height: 24px;
-            margin: 13px 0 0 ;
+            margin: 13px 0 0;
             letter-spacing: -1px;
         }
 
-        .step_item1, .step_item2{
-            position:absolute;
-            width:45px;
-            height:5px;
+        .step_item1,
+        .step_item2 {
+            position: absolute;
+            width: 45px;
+            height: 5px;
             background-image: url("https://www.subway.co.kr/images/utilization/bul04.png");
         }
 
-        .step_item1{
+        .step_item1 {
             top: 50px;
-            left: 340px;
+            left: 300px;
         }
 
-        .step_item2{
+        .step_item2 {
             top: 50px;
             right: 300px;
         }
 
-        .btn_wrap{
-            margin: 0;
-            height:50px;
-            line-height: 120%;
+        .btn_wrap {
             margin-top: 80px;
-            text-align: center;
-            display:flex;
+            display: flex;
             justify-content: center;
+            gap: 15px;
         }
 
-        .point_btn{
+        .point_btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-decoration: none;
-            color:#fff;
+            color: #fff;
             background-color: #009223;
             font-size: 18px;
             font-weight: bold;
-            text-align: center;
-            margin: 5px;
             border-radius: 30px;
             letter-spacing: -1px;
-            line-height: 50px;
+            height: 50px;
+            padding: 0 0 5px;
+            transition: 0.5s;
         }
 
-        .point_btn:nth-child(1){
-            width:160px;
-            height:50px;
+        .point_btn:hover {
+            background-color: #03741d;
         }
 
-        .point_btn:nth-child(2){
-            width:125px;
-            height:50px;
+        .point_btn img {
+            margin-top: 3px;
+            margin-left: 8px;
+        }
+
+        .point_btn:nth-child(1) {
+            width: 160px;
+            height: 50px;
+        }
+
+        .point_btn:nth-child(2) {
+            width: 125px;
+            height: 50px;
         }
     </style>
 </head>
+
 <body>
     <div class="groupMenu_wrap">
         <!-- 서브헤더 -->
         <div class="hd">
             <ul>
-            <a class="logo_img" href=""></a>
-            <a href="">써브웨이 이용방법</a>
-            <li><a href="">단체메뉴 이용방법</a></li>
-            <li><a href="">신선한 재료 소개</a></li>
-            <li><a href="">APP이용방법</a></li>
-            <div class="top"></div>
-            <a class="top" href="">TOP</a>
+                <a class="logo_img" href=""></a>
+                <a href="">써브웨이 이용방법</a>
+                <li><a href="">단체메뉴 이용방법</a></li>
+                <li><a href="">신선한 재료 소개</a></li>
+                <li><a href="">APP이용방법</a></li>
+                <div class="top"></div>
+                <a class="top" href="#">TOP</a>
             </ul>
         </div>
 
@@ -361,19 +403,29 @@
                 <!-- 움직이는 요소 -->
                 <div class="slider_wrap">
                     <div class="slider_title">특별한 날엔 써브웨이와 함께!</div>
-                    <div class="move_content">
+                    <div class="move_content mv1">
                         <h2 class="move_h">Special Day</h2>
                         <p class="move_p">생일 파티,홈 파티 등 다양한 파티에<br>
-                        즐거움과 행복을 더해줄 써브웨이 샌드위치</p>
+                            즐거움과 행복을 더해줄 써브웨이 샌드위치</p>
+                    </div>
+                    <div class="move_content mv2">
+                        <h2 class="move_h">Travel Day</h2>
+                        <p class="move_p">설레는 여행에 빠질수 없는 먹는 즐거움!<br>
+                            써브웨이 샌드위치와 함께 한다면 여행의 추억이 배가 됩니다.</p>
+                    </div>
+                    <div class="move_content mv3">
+                        <h2 class="move_h">Meeting Day</h2>
+                        <p class="move_p">바쁜 회의에서 간편하고 건강하게!<br>
+                            써브웨이 샌드위치와 함께라면 활기차고 든든한 회의가 됩니다.</p>
                     </div>
                     <div class="move_btn">
-                        <a class= "prev" href></a>
-                        <a class= "next" href></a>
+                        <div class="prev" href="#" onclick="prev_btn()"></div>
+                        <div class="next" href="#" onclick="next_btn()"></div>
                     </div>
                     <div class="pager_wrap">
-                        <a class="pager1" href></a>
-                        <a class="pager2" href></a>
-                        <a class="pager3" href></a>
+                        <div class="pager1" href="#" onclick="pager_btn(0)" ></div>
+                        <div class="pager2" href="#" onclick="pager_btn(1)"></div>
+                        <div class="pager3" href="#" onclick="pager_btn(2)"></div>
                     </div>
                 </div>
                 <!-- 하단부 영역 -->
@@ -391,8 +443,8 @@
                             <p>STEP 2</p>
                             <dt>매장 문의</dt>
                             <dd>단체주문은 가까운 매장 또는 써브웨이 고객<br>
-                            센터(02-797-5036)로 문의·주문해 주세요.<br>
-                            ※ 최소 1일 전 문의하시기 바랍니다.</dd>
+                                센터(02-797-5036)로 문의·주문해 주세요.<br>
+                                ※ 최소 1일 전 문의하시기 바랍니다.</dd>
                         </li>
                         <li>
                             <div class="step3"></div>
@@ -405,11 +457,85 @@
                     </ol>
                 </div>
                 <div class="btn_wrap">
-                    <a class="point_btn" href>단체메뉴 보기<img src="https://www.subway.co.kr/images/common/icon_arr_r01.png"></a>
-                    <a class="point_btn" href>매장 찾기<img src="https://www.subway.co.kr/images/common/icon_arr_r01.png"></a>
+                    <a class="point_btn" href>단체메뉴 보기<img
+                            src="https://www.subway.co.kr/images/common/icon_arr_r01.png"></a>
+                    <a class="point_btn" href>매장 찾기<img
+                            src="https://www.subway.co.kr/images/common/icon_arr_r01.png"></a>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        let num = 0;
+        let autoMove ;
+        
+        function next_btn() {
+            const move_content = document.querySelectorAll(".move_content");
+
+            move_content.forEach((item, index) => {
+                item.style.opacity = "0";
+                /* move_content 요소들 일단 다 숨기기 */
+                item.style.transform = "translateY(50px)";
+                /* 위치 밑으로 내려놓기 */
+            });
+
+            if (num === 2) {
+                num = 0;
+            } else {
+                num++;
+            }
+
+            move_content[num].style.opacity = "1";
+            move_content[num].style.transform = "translateY(0)";
+            /* 원래 위치로 돌아가기*/
+        }
+
+        function prev_btn() {
+            const move_content = document.querySelectorAll(".move_content");
+
+            move_content.forEach((item, index) => {
+                item.style.opacity = "0";
+                /* move_content 요소들 일단 다 숨기기 */
+                item.style.transform = "translateY(50px)";
+                /* 위치 밑으로 내려놓기 */
+            });
+
+            if (num === 0) {
+                num = 2;
+            } else {
+                num--;
+            }
+
+            move_content[num].style.opacity = "1";
+            move_content[num].style.transform = "translateY(0)";
+            /* 원래 위치로 돌아가기*/
+        }
+
+    function pager_btn(index) {
+        const move_content = document.querySelectorAll(".move_content");
+
+        move_content.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(50px)";
+        });
+
+        num = index;
+
+        move_content[num].style.opacity = "1";
+        move_content[num].style.transform = "translateY(0)";
+
+    }        
+    
+    function startautoMove(){
+        autoMove = setTimeout(()=>{
+            next_btn();
+            startautoMove();
+        },3000);
+    }
+
+    startautoMove();
+    </script>
+
 </body>
+
 </html>
