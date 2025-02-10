@@ -1,8 +1,217 @@
 
+/* 헤더 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        *{
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        /* header 스타일 */
+        header{
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            display: block;
+            position: relative;
+        }
+        .logo{
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        
+        .log_menu{
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+        .log_menu ul{
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .log_menu a{
+            text-decoration: none;
+            color: #666;
+        }
+        .log_menu li{
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .log_menu li::marker {
+            color: #ddd;
+        }
+        .signup{
+            list-style: inside;
+        }
 
+        .main_nav{
+            width: 100%;
+            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;  
+        }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+        .main_nav ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        .main_nav ul:hover{
+            cursor: pointer
+        }
+        .nav_wrap{
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+        .nav_item{
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+        .nav_item:hover{
+            color: #009223;
+        }
+        .hidden_menu{
+            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+            width: 100%;
+            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+
+            z-index: 999;
+        }
+        .hidden_menu li{
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
+        }
+        .hidden_menu li:hover{
+            color:#009223;
+            text-decoration: underline;
+        }
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
+        }
+/* 헤더 끝 */
+
+/* 푸터 */
+/*글꼴*/
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+*{
+    font-family: 'font_ns', sans-serif;
+}
+/*푸터*/
+footer{
+    background-color: rgb(41, 41, 41);
+    color: rgb(102, 102, 102);
+    position: relative;
+    margin-top: 5px;
+}
+/*상단*/
+.footer_menu{
+    padding: 5px;
+    border-bottom: 1px solid #3b3b3b;
+}
+ul{
+    list-style: none;
+    display: flex;
+    font-size: 14px;
+}
+li{
+    margin-right: 29px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+strong{
+    font-weight: bold;
+    color: #bbbbbb;
+}
+/*하단*/
+.footer_info{
+    font-size: 13px;
+    display: flex;
+    padding: 10px 0px 0px 45px;
+}
+p{
+    padding-right: 5px;
+}
+span{
+    font-weight: bold;
+}
+.copyright{
+    font-size: 13px;
+    margin-top: -10px;
+    padding: 5px 0px 25px 45px;
+}
+/*sns*/
+.instagram{
+    width: 50px;
+    height: 50px;
+    background-image: url("imgs/instagram.png");
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+}
+.instagram:hover{
+    background-image: url("/imgs/instagram_hover.png");
+}
+.facebook{
+    width: 50px;
+    height: 50px;
+    background-image: url("/imgs/facebook.png");
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+}
+.facebook:hover{
+    background-image: url("/imgs/facebook_hover.png");
+}
+/* 푸터 끝 */
 
 .main_wrap {
     width: 100%;
+
     
 }
 
@@ -10,7 +219,7 @@
     height: 490px;
     position: relative;
     overflow: hidden;
-    width: 100vw; 
+    /* width: 100;  */
 }
 
 .event_wrap {
@@ -79,7 +288,7 @@
     /* border: 1px solid black; */
     position: absolute;
     left: 750px;
-    top: 450px;
+    top: 620px;
     display: flex;
     /* border-top-left-radius: 30px;
     border-bottom-right-radius: 30px; */
@@ -117,6 +326,7 @@
     position: absolute;
     left: 110px;
     top: 25px;
+    color: black;
 }
 
 .event_button_sec2_text {
@@ -325,6 +535,7 @@
     position: absolute;
     bottom: 20px;
     left: 38px;
+    font-size: 16px;
 }
 
 .section_subway_f1_button:hover {
@@ -410,7 +621,7 @@
     position: absolute;
     font-family: "Noto Sans KR", serif;
     font-weight: bold;
-    top: 90px;
+    top: 130px;
     left: 15px;
     text-align: center;
     color: gray;
@@ -423,7 +634,7 @@
     /* border: 1px solid black; */
     font-family: "Noto Sans KR", serif;
     position: absolute;
-    left: 350px;
+    left: 320px;
     top: 40px;
     font-weight: 400;
 
@@ -436,13 +647,13 @@
     background-color: white;
 }
 
-span {
+.underline {
     padding-bottom: 2px;
     background-size: 0 2px;
     transition: background-size 0.5s;
 }
 
-p:hover span {
+p:hover .underline {
     background-size: 100% 2px;
     background-image: linear-gradient(#008000, #008000);
     background-repeat: no-repeat;
@@ -528,6 +739,7 @@ ul{
     width: 360px;
     height: 280px;
     flex-shrink: 0;
+    margin: 0;
 }
 
 .slider_img1, .slider_img2, .slider_img3, .slider_img4, .slider_img5 {
