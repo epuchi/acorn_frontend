@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            min-width: 1280px;
+            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            text-align: center;
+            align-items: center;
+        }
+
+        .title-area {
+            padding: 60px 0;
+        }
+
+        .title {
+            color: white;
+            font-size: 80px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: white;
+            margin-top: 30px;
+        }
+
+        .step-area {
+            width: 100%;
+            height: 170px;
+
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .map-area {
+            margin-top: 80px;
+            margin-bottom: 160px;
+            width: 1180px;
+        }
+
+        .button-area {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .btn {
+            width: 100%;
+            height: 80px;
+            line-height: 80px;
+            font-size: 22px;
+            background-color: white;
+            box-shadow: 7px 7px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .on {
+            background-color: rgb(0, 146, 35);
+            color: white;
+        }
+
+        .map {
+            border: 1px solid black;
+            width: 100%;
+            height: 820px;
+            background-image: url(./image/map.JPG);
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .find {
+            width: 400px;
+            height: 760px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        .find-text {
+            font-size: 32px;
+            font-weight: bold;
+            padding: 40px 0 20px 0;
+        }
+
+        .find-input {
+            margin: 0 auto;
+            border: 2px solid #dddddd;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        .find-input>input {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            font-size: 16px;
+            text-indent: 14px;
+            outline: none;
+            font-family: font_ns, sans-serif;
+            border: none;
+        }
+
+        .find-icon::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 2px;
+            height: 17px;
+            background-color: #e5e5e5;
+        }
+
+        .find-icon {
+            position: relative;
+            box-sizing: border-box;
+            width: 10%;
+            height: 100%;
+        }
+
+        .find-icon>div {
+            width: 50%;
+            height: 50%;
+            margin: 8px;
+            background-image: url(./image/icon_search.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .search {
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .place-area {
+            width: 100%;
+            height: 65%;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .place {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 25px;
+        }
+
+        .place-info-top {
+            display: flex;
+        }
+
+        .placeName {
+            width: 80%;
+            height: 25px;
+            text-align: left;
+            display: flex;
+        }
+
+        .placeName>p {
+            line-height: 25px;
+        }
+
+        .star-icon {
+            background: url(./image/icon_star.png) no-repeat center;
+            background-color: rgb(221, 221, 221);
+            background-size: 15px;
+
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-left: 10px;
+            box-sizing: border-box;
+
+        }
+
+        .order-btn {
+            width: 20%;
+            background-color: green;
+            color: white;
+            border-radius: 13px;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .place-info-middle {
+            margin-top: 5px;
+            display: flex;
+        }
+
+        .place-info-middle>p {
+            text-align: left;
+            width: 50%;
+            font-weight: bold;
+        }
+
+        .place-info-bottom {
+            margin-top: 5px;
+            text-align: left;
+            color: rgb(180, 180, 180);
+        }
+
+        .place-info-bottom>p {
+            font-weight: bold;
+        }
+
+        .page {
+            margin-top: 15px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .page span {
+            margin: 0 35px;
+            font-size: 14px;
+            color: #bcbcbc;
+        }
+        
+        .place-marker {
+            display: none;
+            flex-direction: column;
+            background-color: white;
+            width: 300px;
+            height: 260px;
+            position: absolute;
+            top: 113px;
+            left: 658px;
+            border: 1px solid black;
+        }
+
+        .marker-top {
+            width: 100%;
+            height: 55px;
+            background-color: #FFCE32;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .marker-top>p {
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 55px;
+            margin: 0 25px;
+        }
+
+        .marker-middle {
+            flex-direction: row;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .marker-middle li {
+            width: 100%;
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .marker-middle div {
+            font-size: 15px;
+
+        }
+
+        .marker-middle div:nth-child(1) {
+            width: 40%;
+            text-align: left;
+        }
+
+        .marker-middle div:nth-child(2) {
+            width: 60%;
+            text-align: left;
+        }
+
+        .orderbutton {
+            margin: 0 auto;
+            margin-top: 10px;
+            background-color: green;
+            text-align: center;
+            width: 40%;
+            padding: 10px 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkIcon {
+            background: url(./image/icon_check.png);
+            background-position: center;
+            background-size: 20px;
+            background-size: cover;
+            width: 25px;
+            height: 16px;
+            margin-left: 5px;
+        }
+
+        .select-order {
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.4);
+            width: 100%;
+            height: 0%;
+            z-index: 9;
+            top: 0;
+        }
+
+        .popup {
+            display: none;
+            box-sizing: border-box;
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            width: 500px;
+            height: 460px;
+            background-color: #FFC300;
+            z-index: 10;
+            border-radius: 40px;
+            padding: 30px;
+        }
+
+        .inside {
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 40px;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .inside-top {
+            border-bottom: 5px solid #008A12;
+            text-align: center;
+            padding: 30px;
+            margin: 0 30px;
+        }
+
+        .inside-top p,
+        span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .inside-top span {
+            color: #FF850D;
+        }
+
+        .inside-bottom {
+            width: 100%;
+            margin-top: 45px;
+            display: flex;
+
+        }
+
+        .how-btn {
+            width: 50%;
+            text-align: center;
+        }
+
+        .how-btn a {
+            display: block;
+            margin: 0 auto;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            color: white;
+            font-size: 26px;
+            font-weight: 500;
+            background-color: #008A12;
+            border-radius: 30px;
+        }
+
+        .x-btn {
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            position: absolute;
+            top: 5px;
+            right: -10px;
+            transform: translateX(100%);
+        }
+
+        .how-btn:hover, .x-btn:hover, .order-btn:hover, .orderbutton:hover, .marker-top p:nth-child(2):hover {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", (e) => {
+            const steps = document.querySelectorAll(".step");
+            console.log(steps)
+            steps.forEach((item, index) => {
+                console.log(item)
+                if (index == 0) {
+                    item.style.backgroundImage = `url(./image/step${index + 1}_on.png)`
+
+                } else {
+                    item.style.backgroundImage = `url(./image/step${index + 1}.png)`
+
+                }
+            })
+        })
+
+        function loadHTML(file) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        var allText = rawFile.responseText;
+                        document.write(allText);
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+
+        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
+        function step(num) {
+            const area = document.querySelector(".step-area");
+            for (let i = 0; i < 4; i++) {
+                const imgBox1 = document.createElement("div");
+                const imgBox2 = document.createElement("div");
+
+                const stepImg = document.createElement("img");
+                const pointArea = document.createElement("img");
+                const on = `_on`
+                const margin = 10;
+                stepImg.style.marginLeft = `${margin}px`;
+                stepImg.style.marginRight = `${margin}px`;
+                pointArea.style.marginLeft = `${margin}px`;
+                pointArea.style.marginRight = `${margin}px`;
+                if (num == i + 1) {
+                    stepImg.src = `./image/step${(i + 1) + on}.png`;
+                    stepImg.style.marginRight = '-45px';
+                    stepImg.style.marginTop = '-15px'
+                    stepImg.classList = 'onStep';
+                    pointArea.src = `./image/step_point_on.png`;
+                } else {
+                    stepImg.src = `./image/step${i + 1}.png`;
+                    if (i == 3) {
+                        pointArea.style.display = 'none'
+                    } else {
+                        pointArea.src = `./image/step_point_off.png`;
+                    }
+                }
+                pointArea.style.marginTop = '30px';
+                area.appendChild(imgBox1);
+                imgBox1.appendChild(stepImg);
+                area.appendChild(imgBox2);
+                imgBox2.appendChild(pointArea);
+
+
+            }
+            const onstep = document.querySelector(".onStep").parentElement;
+            const stepText1 = document.createElement("p");
+            stepText1.innerHTML = `STEP${num}`
+            const stepText2 = document.createElement("p");
+            stepText2.innerHTML = `${stepTitle[num - 1]}`
+            onstep.appendChild(stepText1);
+            onstep.appendChild(stepText2);
+            onstep.style.position = "relative"
+            stepText1.style.position = "absolute"
+            stepText1.style.top = "5px"
+            stepText1.style.left = "110px"
+            stepText1.style.fontSize = "16px"
+            stepText1.style.fontWeight = "bold"
+            stepText1.style.color = "#ffc300"
+
+            stepText2.style.position = "absolute"
+            stepText2.style.top = "25px"
+            stepText2.style.left = "110px"
+            stepText2.style.fontSize = "24px"
+            stepText2.style.fontWeight = "bold"
+            stepText2.style.color = "white"
+
+        }
+
+        function orderCheck() {
+            const marker = document.querySelector(".place-marker");
+            marker.style.display = 'flex';
+        }
+
+        function orderCencle() {
+            const marker = document.querySelector(".place-marker");
+            marker.style.display = 'none';
+        }
+
+        function Popup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "100%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'block'
+        }
+
+        function cenclelPopup() {
+            const bg = document.querySelector(".select-order")
+            bg.style.height = "0%"
+            const popup = document.querySelector(".popup")
+            popup.style.display = 'none'
+        }
+    </script>
+</head>
+
+<body onload="step(1)">
+    <header id="header" class="fixed-top">
+        <script>loadHTML("../header/header.html");</script>
+    </header>
+    <div class="wrap">
+
+        <div class="title-area">
+            <p class="title">Fast-Sub</p>
+            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
+        <div class="step-area">
+            
+        </div>
+        <div class="map-area">
+            <div class="button-area">
+                <div class="btn on">
+                    매장찾기
+                </div>
+            </div>
+            <div class="map">
+                <div class="find">
+                    <div class="find-text">
+                        매장찾기
+                    </div>
+                    <div class="find-input">
+                        <input type="text" placeholder="지역 또는 매장명 입력">
+                        <div class="find-icon">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <p><span id="search-place">'홍대'</span> 검색 결과 <span>1</span>건</p>
+                    </div>
+                    <div class="place-area">
+                        <div class="place">
+                            <div class="place-info-top">
+                                <div class="placeName">
+                                    <p>홍대아트</p>
+                                    <div class="star-icon"></div>
+                                </div>
+                                <div class="order-btn" onclick="orderCheck()">주문하기</div>
+                            </div>
+                            <div class="place-info-middle">
+                                <p>예상 소요시간</p>
+                                <p>10분</p>
+                            </div>
+                            <div class="place-info-bottom">
+                                <p>서울특별시 마포구 와우산로 117 102호</p>
+                                <p>02-336-0522</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page">
+                        <p><span>◀</span>1<span>▶</span></p>
+                    </div>
+                </div>
+                <div class="place-marker">
+                    <div class="marker-top">
+                        <p>홍대아트</p>
+                        <p onclick="orderCencle()">⨉</p>
+                    </div>
+                    <div class="marker-middle">
+                        <ul>
+                            <li>
+                                <div>주소</div>
+                                <div>서울특별시 마포구 와우산로 117 102호</div>
+                            </li>
+                            <li>
+                                <div>연락처</div>
+                                <div>02-336-0522</div>
+                            </li>
+                            <li>
+                                <div>영업시간</div>
+                                <div>08:00 ~ 22:00</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="orderbutton" onclick="Popup()">
+                        주문하기
+                        <div class="checkIcon"></div>
+                    </div>
+                    <div
+                        style="margin: 0px; padding: 0px; width: 0px; height: 0px; position: absolute; border-width: 24px 10px 0px; border-style: solid; border-color: rgb(0, 128, 40) transparent transparent; border-image: initial; pointer-events: none; box-sizing: content-box !important; bottom: -22px; left: 140px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="select-order">
+
+    </div>
+    <div class="popup">
+        <div class="inside">
+            <div class="inside-top">
+                <p><span>주문 방법</span>을</p>
+                <p>선택해주세요.</p>
+            </div>
+            <div class="inside-bottom">
+                <div class="how-btn">
+                    <a href="./order_step2.html">방문 포장</a>
+                </div>
+                <div class="how-btn">
+                    <a href="./order_step2.html">매장 식사</a>
+                </div>
+            </div>
+        </div>
+        <div class="x-btn" onclick="cenclelPopup()">
+            ⨉
+        </div>
+    </div>
+</body>
+
+</html>
