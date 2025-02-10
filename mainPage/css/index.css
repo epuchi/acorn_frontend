@@ -1,18 +1,63 @@
-/* 폰트 */
+
 
 
 .main_wrap {
     width: 100%;
-    border: 1px solid black;
-
-
+    
 }
 
 .main_slide {
     height: 490px;
-    border: 1px solid black;
     position: relative;
+    overflow: hidden;
+    width: 100vw; 
 }
+
+.event_wrap {
+    display: flex;
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.event_wrap img {
+    position: absolute; 
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+.event_wrap img.active {
+    opacity: 1;
+}
+.slide_pagination {
+    position: absolute;
+    bottom: 65px;
+    left: 83%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slide_pagination_dot.active {
+    width: 24px;
+    border-radius: 6px;
+    background-color: #ffc300; 
+}
+
+.slide_pagination_dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
 
 .section_subway_menu {
     height: 560px;
@@ -34,7 +79,7 @@
     /* border: 1px solid black; */
     position: absolute;
     left: 750px;
-    top: 410px;
+    top: 450px;
     display: flex;
     /* border-top-left-radius: 30px;
     border-bottom-right-radius: 30px; */
@@ -93,7 +138,7 @@
 }
 
 .subway_menu_nav {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 100%;
     height: 80px;
     padding: 0;
@@ -110,24 +155,52 @@
     padding-top: 20px;
     padding-left: 20px;
     position: absolute;
-    left: 180px;
+    left: 80px;
 }
 
 .subway_menu_nav_text {
-    color: black;
-    /* border-left: 1px solid gray; */
-    font-size: 20px;
-    padding: 10px;
     font-family: "Noto Sans KR", serif;
+    margin-left: 48px;
+    position: relative;
+}
 
+.subway_menu_nav_text span {
+    font-size: 16px;
+    color: #666666;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.subway_menu_nav_text span::after {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 13px;
+    background-color: #ddd;
 }
 
 .subway_menu_nav_section_text {
     display: flex;
     position: absolute;
-    left: 1050px;
+    right: 50px;
     top: 23px;
-    cursor: pointer;
+}
+
+.subway_menu_nav_text:first-child span::after {
+    display: none;
+}
+
+.subway_menu_nav_text span.active {
+    color: #009223;
+    font-weight: bold;
+}
+
+.subway_menu_nav_text span:hover {
+    color: #009223;
 }
 
 .section_subway_menu_gray {
@@ -551,4 +624,128 @@ ul{
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 50%;
+}
+
+.subway_menu_slider_wrap {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden; 
+}
+
+
+.slide-left-enter {
+    transform: translateX(100%);
+}
+
+.slide-left-enter-active {
+    transform: translateX(0);
+    transition: transform 0.5s ease-out;
+}
+
+.slide-left-exit {
+    transform: translateX(0);
+}
+
+.slide-left-exit-active {
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-out;
+}
+
+.subway_menu_slider_section {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.subway_menu_slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 0;
+}
+
+.subway_menu_slider li {
+    flex: 0 0 25%;
+    height: 360px;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.subway_menu_slider li .search_icon {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 11;
+    background-color: transparent;
+}
+
+.subway_menu_slider li .search_icon img {
+    width: 80px;
+    height: 80px;
+}
+
+.subway_menu_slider li:hover .search_icon {
+    opacity: 1;
+}
+
+.subway_menu_slider li:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+.subway_menu_slider li:hover p:not([style]) {
+    display: none;
+}
+
+.subway_menu_slider li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+.menu_prev_button, .menu_next_button {
+    position: absolute;
+    background: transparent;
+    color: #666;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+
+.menu_prev_button { left: 10px; }
+.menu_next_button { right: 10px; }
+
+
+.menu_prev_button:disabled,
+.menu_next_button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.menu_prev_button:hover:not(:disabled),
+.menu_next_button:hover:not(:disabled) {
+    background: #fac608;
+    color: #000;
 }
