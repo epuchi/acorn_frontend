@@ -27,17 +27,18 @@
             align-items: center;
         }
 
-        
+
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-        *{
+
+        * {
             font-family: "Noto Sans KR", serif;
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
         }
-        
+
         /* header 스타일 */
-        header{
+        header {
             width: 100%;
             min-width: 1200px;
             height: 165px;
@@ -45,20 +46,22 @@
             display: block;
             position: relative;
         }
-        .logo{
+
+        .logo {
             height: 40px;
             position: absolute;
             top: 35px;
             left: 50%;
             transform: translateX(-50%)
         }
-        
-        .log_menu{
+
+        .log_menu {
             position: absolute;
             top: 40px;
             right: 15%;
         }
-        .log_menu ul{
+
+        .log_menu ul {
             padding: 0px;
             margin: 0px;
             height: 30px;
@@ -66,32 +69,38 @@
             list-style: none;
             align-items: center;
         }
-        .log_menu a{
+
+        .log_menu a {
             text-decoration: none;
             color: #666;
         }
-        .log_menu li{
+
+        .log_menu li {
             margin: 5px;
             font-size: 13px;
             font-weight: bold;
         }
+
         .log_menu li::marker {
             color: #ddd;
         }
-        .signup{
+
+        .signup {
             list-style: inside;
         }
 
-        .main_nav{
+        .main_nav {
             width: 100%;
-            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            height: 60px;
+            /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
             position: absolute;
             top: 65%;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content: center;  
+            justify-content: center;
         }
+
         .bg {
             top: 100%;
             transform: translateY(-4px);
@@ -102,34 +111,42 @@
             border-top: 0.5px solid #ddd;
             z-index: 995;
         }
-        .main_nav ul{
+
+        .main_nav ul {
             margin: 0px;
             padding: 0px;
             list-style: none;
         }
-        .main_nav ul:hover{
+
+        .main_nav ul:hover {
             cursor: pointer
         }
-        .nav_wrap{
+
+        .nav_wrap {
             width: 100%;
             height: 230px;
             position: absolute;
             top: 65%;
         }
-        .nav_item{
+
+        .nav_item {
             float: left;
             width: 165px;
             font-size: 18px;
             font-weight: bold;
             position: relative;
         }
-        .nav_item:hover{
+
+        .nav_item:hover {
             color: #009223;
         }
-        .hidden_menu{
-            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+
+        .hidden_menu {
+            overflow: hidden;
+            /* 영역 넘어가면 안보이게 하기*/
             width: 100%;
-            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            height: 0;
+            /* 평소에는 높이 0으로 둬서 안보이게 하기*/
             position: absolute;
             left: 0px;
             top: -10px;
@@ -137,30 +154,36 @@
 
             z-index: 999;
         }
-        .hidden_menu li{
+
+        .hidden_menu li {
             margin: 15px 0 15px 0;
             font-size: 15px;
             color: #666;
             letter-spacing: -1px;
         }
-        .hidden_menu li:nth-child(1){
+
+        .hidden_menu li:nth-child(1) {
             margin-top: 20px;
         }
-        .hidden_menu li:hover{
-            color:#009223;
+
+        .hidden_menu li:hover {
+            color: #009223;
             text-decoration: underline;
         }
-        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
             height: 260px;
             /* 마우스를 갖다 대면 높이 생기게 하기 */
             transition: 0.5s;
             /* 천천히 나오게 하는 효과*/
         }
-        .main_nav:hover .bg{
+
+        .main_nav:hover .bg {
             border-bottom: 0.5px solid #ddd;
         }
-      
-    
+
+
 
         /* 상단 타이틀 영역 */
         .header-area {
@@ -558,6 +581,87 @@
         .store-marker-order-btn:hover,
         .store-marker-header p:nth-child(2):hover {
             cursor: pointer;
+        }
+
+        /*푸터*/
+        footer {
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+
+        /*상단*/
+        .footer_menu {
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+
+        footer li {
+            margin-right: 29px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer strong {
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+
+        /*하단*/
+        .footer_info {
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+
+        footer p {
+            padding-right: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        .copyright {
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+
+        /*sns*/
+        .instagram {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+
+        .facebook {
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
         }
     </style>
 
@@ -1101,6 +1205,32 @@
         </div>
         <div class="popup-close-btn" onclick="closeOrderMethodPopup()">⨉</div>
     </div>
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights
+            Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
 </body>
 
 </html>
