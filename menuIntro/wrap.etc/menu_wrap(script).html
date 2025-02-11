@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/menuIntro/wrap.etc/menu_wrap.css">
+
+</head>
+<script>
+    function animate_text(){
+        const h2 = document.querySelector("h2");
+        h2.classList.add("slideUp")
+        };
+    window.onload = function(){
+        animate_text();
+    }
+</script>
+<body>
+    <div class="menu_wrap">
+        <div class="wrap_intro">
+            <div class="menu_list">
+                <ul>
+                    <li><a href="/menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                    <li><a href="/menuIntro/wrap.etc/menu_wrap(script).html" class="action">랩ㆍ기타</a></li>
+                    <li><a href="/menuIntro/salad/salad.html">샐러드</a></li>
+                    <li><a href="/menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                    <li><a href="/menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                    <li><a href="/menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                </ul>
+            </div>
+            <h2>Wrap</h2>
+            <p>
+                Subway를 더 맛있고 간편하게 즐기는 방법<br>
+                최상의 레시피로 만들어진 써브웨이 랩 시리즈, 이젠 고민하지 마세요!<br>
+                * 그릴드 랩은 일부 매장에서만 제공 가능합니다.<br>
+                * 그릴드 랩을 제공하는 매장에서는 시그니처랩을 제공하지 않습니다.매장찾기의 매장정보를 확인해주세요.
+            </p>
+            <div class="tomato" style="opacity: 1; bottom: 0px; transform: matrix(1, 0, 0, 1, 50, 0);"></div>
+            <div class="avocado" style="opacity: 1; top: 0px;"></div>
+        </div>
+        <div class="wrap_list">
+            <ul>
+                <li onclick="makeMenu(this)">All</li>
+                <li onclick="makeMenu(this)">시그니처 랩</li>
+                <li onclick="makeMenu(this)">미니 랩</li>
+            </ul>
+        </div>
+        <div id="wrapAll"></div>
+    </div>
+    <script>
+        const wrapsData = [
+            {
+                tag: "시그니처 랩",
+                img: "/menuIntro/wrap.etc/imgs/스테이크 & 치즈 아보카도 랩.jpg",
+                alt: "스테이크 & 치즈 아보카도 랩",
+                kor: "스테이크 & 치즈 아보카도 랩",
+                eng: "Steak & Cheese Avocado Wrap",
+                desc: `육즙 가득 스테이크에 프레쉬함을 더해줄<br>
+                    아보카도와 슈레드치즈 그리고<br>
+                    모차렐라치즈까지!<br>
+                    최상의 야채와 소스 조합으로 탄생한<br>
+                    스테이크 & 치즈 아보카도 랩!`
+            },
+            {
+                tag: "시그니처 랩",
+                img: "/menuIntro/wrap.etc/imgs/쉬림프 에그마요 랩.jpg",
+                alt: "쉬림프 에그마요 랩",
+                kor: "쉬림프 에그마요 랩",
+                eng: "Shrimp Egg Mayo Wrap",
+                desc: `고소한 에그마요와 탱글한 통새우의 만남, 부드럽고<br>
+                    담백한 조화를 즐겨보세요!<br><br>
+                    * 일부매장에 한하여 그릴드 랩으로 제공되며, 메뉴<br>
+                    특성상 양상추는 제외, 에그마요는 에그지단으로 변경되어 제공됩니다.`
+            },
+            {
+                tag: "미니 랩",
+                img: "/menuIntro/wrap.etc/imgs/치킨 베이컨 미니 랩.jpg",
+                alt: "치킨 베이컨 미니 랩",
+                kor: "치킨 베이컨 미니 랩",
+                eng: "Chicken Bacon Mini Wrap",
+                desc: `담백한 치킨, 바삭한 베이컨 비츠가<br>
+                    쫀득한 통밀 랩에 쏘옥!<br>
+                    치킨 베이컨 미니 랩`
+            }
+        ];
+
+        let isFirstLoad = true;
+
+        window.addEventListener("load", (e) => {
+            // console.log("실행됨")
+            show("All", isFirstLoad);
+            isFirstLoad = false;
+        });
+
+        function makeMenu(obj) {
+            show(obj.innerHTML);
+            const menuItems = document.querySelectorAll('.wrap_list li');
+        menuItems.forEach(item => item.classList.remove('active'));
+
+        // 클릭한 항목에 active 클래스 추가
+        obj.classList.add('active');
+        }
+
+        function show(text) {
+            const wrapAll = document.getElementById('wrapAll');
+            wrapAll.replaceChildren();
+            wrapAll.classList.add("wrap_all");
+            const wrapAllul = document.createElement("ul");
+            for (let i = 0; i < wrapsData.length; i++) {
+                if (text == wrapsData[i].tag || text == "All") {
+                    const wrap = wrapsData[i];
+                    const li = document.createElement("li");
+                    const img = document.createElement("img");
+                    img.src = wrap.img;
+                    img.alt = wrap.alt;
+                    const strong = document.createElement("strong");
+                    strong.classList.add("kor");
+                    strong.textContent = wrap.kor;
+                    const span = document.createElement("span");
+                    span.classList.add("eng");
+                    span.textContent = wrap.eng;
+                    const p = document.createElement("p");
+                    p.innerHTML = wrap.desc;
+                    const a = document.createElement("a");
+                    a.href = "#";
+                    a.classList.add("btn_view");
+
+                    li.appendChild(img);
+                    li.appendChild(strong);
+                    li.appendChild(span);
+                    li.appendChild(p);
+                    li.appendChild(a);
+
+                     if (!isFirstLoad) {
+                li.style.animation = "scaleInOut 0.6s ease-out";  // 클릭 시에만 애니메이션 효과 적용
+            }
+                    wrapAllul.appendChild(li);
+                }
+
+            }
+            wrapAll.appendChild(wrapAllul);
+
+            if (isFirstLoad) {
+        const allMenuItem = document.querySelector('.wrap_list li'); // "All" 메뉴
+        if (allMenuItem) {
+            allMenuItem.classList.add('active'); // "All" 메뉴에만 active 클래스를 추가
+        }
+    }
+        }
+    </script>
+</body>
+
+</html>
