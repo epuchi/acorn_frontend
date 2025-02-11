@@ -11,6 +11,22 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script>
+        window.addEventListener('scroll', function () {
+            const sub_header = document.querySelector('.sub_header');
+            if (window.scrollY > 150) {
+                sub_header.classList.add('sticky');
+            } else {
+                sub_header.classList.remove('sticky');
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -45,7 +61,8 @@
                         <li onclick="window.location.href='../../howToPage/html/index.html'"><a href=""></a>써브웨이 이용방법
                         </li>
                         <li><a href=""></a>단체메뉴 이용방법</li>
-                        <li onclick="window.location.href='../../ingridientIntro/html/index.html'"><a href=""></a>신선한 재료 소개</li>
+                        <li onclick="window.location.href='../../ingridientIntro/html/index.html'"><a href=""></a>신선한 재료
+                            소개</li>
                         <li><a href=""></a>App 이용방법</li>
                     </ul>
                 </li>
@@ -61,7 +78,7 @@
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>써브웨이 역사</li>
-                        <li><a href=""></a>써브웨이 약속</li>
+                        <li onclick="window.location.href='../../promisePage/써브웨이약속.html'"><a href=""></a>써브웨이 약속</li>
                         <li><a href=""></a>샌드위치 아티스트 지원</li>
                         <li><a href=""></a>매장찾기</li>
                     </ul>
@@ -73,13 +90,13 @@
                         <li><a href=""></a>가맹관련 FAQ</li>
                         <li><a href=""></a>가맹신청ㆍ문의</li>
                         <li><a href=""></a>지사안내</li>
-                        <li><a href=""></a>사업설명회</li>
+                        <li onclick="window.location.href='../../사업설명회/사업설명회.html'"><a href=""></a>사업설명회</li>
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>FAST-SUB</li>
+                        <li onclick="window.location.href='../../orderPage/order_step1.html'"><a href=""></a>FAST-SUB</li>
                         <li><a href=""></a>HOME-SUB</li>
                         <li><a href=""></a>단체주문</li>
                     </ul>
@@ -88,19 +105,21 @@
         </nav>
     </header>
     <div class="how_wrap">
-        <header class="how_header_wrap">
-            <div class="how_header_nav">
-                <p>써브웨이 이용방법</p>
-                <p>·
-                </p>
-                <p>단체메뉴 이용방법</p>
-                <p>·
-                </p>
-                <p onclick="window.location.href = '../../ingridientIntro/html/index.html'">신선한 재료 소개</p>
-                <p>·
-                </p>
-                <p>APP 이용방법</p>
-            </div>
+        <div class="sub_header">
+            <a href="#" class="sub_logo">
+                <img src="../image/logo_sub_header.png" alt="서브로고">
+            </a>
+            <ul>
+                <li>
+                    <a href="" style="color:#009223">써브웨이 이용방법</a>
+                    <div class="underline"></div>
+                </li>
+                <li><a href="../../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                <li><a href="../../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                <li><a href="">APP 이용방법</a></li>
+            </ul>
+            <div class="top" onclick="scrollToTop()"></div>
+        </div>
         </header>
         <div class="how_main_title_wrap">
             <p class="how_main_title_text">써브웨이 이용방법</p>
@@ -289,8 +308,14 @@
 
 
             function updateNavs() {
-                let left = document.querySelector('.body_nav_left');
-                let right = document.querySelector('.boyd_nav_right');
+                // 잘못된 클래스명:
+                // let left = document.querySelector('.body_nav_left');
+                // let right = document.querySelector('.boyd_nav_right');
+
+                // 올바른 클래스명:
+                let left = document.querySelector('.how_body_nav_left');
+                let right = document.querySelector('.how_body_nav_right');
+
                 left.addEventListener('click', function () {
                     if (left.classList.contains('active')) {
                         left.classList.remove('active');
@@ -298,36 +323,35 @@
                         left.classList.add('active');
                     }
                 });
+
                 right.addEventListener('click', function () {
                     if (right.classList.contains('active')) {
                         right.classList.remove('active');
-                    }
-                    else {
+                    } else {
                         right.classList.add('active');
                     }
-                })
-
+                });
             }
 
             function moveSlide(index) {
-    // 슬라이드 범위 제한 (순환 제거)
-    if (index < 0 || index >= slideCount) {
-        return;
-    }
+                // 슬라이드 범위 제한 (순환 제거)
+                if (index < 0 || index >= slideCount) {
+                    return;
+                }
 
-    // Remove active class from all slides
-    slides.forEach(slide => slide.classList.remove('active'));
+                // Remove active class from all slides
+                slides.forEach(slide => slide.classList.remove('active'));
 
-    // Add active class to current slide
-    slides[index].classList.add('active');
+                // Add active class to current slide
+                slides[index].classList.add('active');
 
-    const slideWidth = slides[0].offsetWidth;
-    slider.style.transition = 'left 0.5s ease-out';
-    slider.style.left = `-${slideWidth * index}px`;
-    currentIndex = index;
-    updateSteps(currentIndex);
-    renderDescription();
-}
+                const slideWidth = slides[0].offsetWidth;
+                slider.style.transition = 'left 0.5s ease-out';
+                slider.style.left = `-${slideWidth * index}px`;
+                currentIndex = index;
+                updateSteps(currentIndex);
+                renderDescription();
+            }
 
             function startAutoSlide() {
                 autoSlideInterval = setInterval(() => {
@@ -383,7 +407,7 @@
 
                 howDes.appendChild(des);
             }
-            window.onload(renderDescription());
+            renderDescription();
 
 
 
@@ -425,26 +449,7 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // 상단 네비게이션 활성화
-            const headerNavItems = document.querySelectorAll('.how_header_nav p');
-
-            // 첫 번째 아이템(써브웨이 이용방법)을 활성화
-            headerNavItems[0].classList.add('active');
-
-            // 클릭 이벤트 추가 (구분점 제외)
-            headerNavItems.forEach((item, index) => {
-                // 구분점(·)이 아닌 경우에만 클릭 이벤트 추가
-                if (index % 2 === 0) {
-                    item.addEventListener('click', function () {
-                        // 모든 아이템의 활성화 상태 제거
-                        headerNavItems.forEach(nav => nav.classList.remove('active'));
-                        // 클릭된 아이템 활성화
-                        this.classList.add('active');
-                    });
-                }
-            });
-        });
+        
 
 
 
