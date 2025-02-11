@@ -56,7 +56,7 @@
 
         .main_nav{
             width: 100%;
-            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            height: 58px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
             position: absolute;
             top: 65%;
             display: flex;
@@ -71,13 +71,20 @@
             width: 100%;
             height: 0;
             background-color: white;
-            border-top: 0.5px solid #ddd;
+            box-shadow: 0 1px 0 #ddd;  
             z-index: 995;
         }
-        .main_nav ul{
-            margin: 0px;
-            padding: 0px;
+        .main_nav:hover .bg {
+            height: 260px;
+            box-shadow: 0 1px 0 #ddd;  
+        }
+        .main_nav > ul {
+            margin: 0;
+            padding: 0;
             list-style: none;
+            display: flex; 
+            position: relative;  
+            z-index: 996;  
         }
         .main_nav ul:hover{
             cursor: pointer
@@ -98,15 +105,18 @@
         .nav_item:hover{
             color: #009223;
         }
-        .hidden_menu{
-            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
-            width: 100%;
-            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+        .hidden_menu {
             position: absolute;
-            left: 0px;
-            top: -10px;
-            transform: translateY(50px);
-
+            top: 100%;  /* 변경 */
+            left: 0;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            display: flex;  /* 추가 */
+            flex-direction: column;  /* 추가 */
+            background-color: white;  /* 추가 */
+            padding: 0;
+            margin: 0;
             z-index: 999;
         }
         .hidden_menu li{

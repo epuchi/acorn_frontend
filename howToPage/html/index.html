@@ -48,7 +48,7 @@
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>샌드위치</li>
-                        <li><a href=""></a>랩ㆍ기타</li>
+                        <li onclick="window.location.href='../../menu_wrap.etc/menu_wrap(script).html'"><a href=""></a>랩ㆍ기타</li>
                         <li><a href=""></a>샐러드</li>
                         <li><a href=""></a>아침메뉴</li>
                         <li><a href=""></a>스마일 썹</li>
@@ -249,8 +249,8 @@
             let autoSlideInterval;
 
             updateSteps(0); // 첫 번째 스텝 활성화
-            slides[0].classList.add('active'); // 첫 번째 슬라이드 활성화
-            // prevBtn.style.display = 'none'; // 첫 슬라이드에서는 이전 버튼 숨김
+            slides[0].classList.add('active'); 
+            
 
 
             const descriptionList = [
@@ -308,11 +308,7 @@
 
 
             function updateNavs() {
-                // 잘못된 클래스명:
-                // let left = document.querySelector('.body_nav_left');
-                // let right = document.querySelector('.boyd_nav_right');
-
-                // 올바른 클래스명:
+                
                 let left = document.querySelector('.how_body_nav_left');
                 let right = document.querySelector('.how_body_nav_right');
 
@@ -339,10 +335,10 @@
                     return;
                 }
 
-                // Remove active class from all slides
+                
                 slides.forEach(slide => slide.classList.remove('active'));
 
-                // Add active class to current slide
+                
                 slides[index].classList.add('active');
 
                 const slideWidth = slides[0].offsetWidth;
@@ -377,16 +373,12 @@
             });
 
 
-            // stepIcons.forEach((icon, index) => {
-            //     icon.addEventListener('click', () => {
-            //         moveSlide(index);
-            //     });
-            // });
+            
 
             function renderDescription() {
                 let howDes = document.querySelector('.how_description');
 
-                // 새로운 content div 생성
+                
                 const des = document.createElement('div');
                 des.className = 'description-content';
                 const bread = descriptionList;
@@ -399,7 +391,7 @@
         <div class="additional_button">${bread[currentIndex].button1}</div>
     `;
 
-                // 기존 content를 제거하고 새로운 content 추가
+                
                 const oldContent = howDes.querySelector('.description-content');
                 if (oldContent) {
                     oldContent.remove();
@@ -433,7 +425,7 @@
             const leftNav = document.querySelector('.how_body_nav_left');
             const rightNav = document.querySelector('.how_body_nav_right');
 
-            // Set initial state (left nav active by default)
+            
             leftNav.classList.add('active');
 
             leftNav.addEventListener('click', function () {
