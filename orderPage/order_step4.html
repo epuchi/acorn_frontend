@@ -596,7 +596,7 @@
 
     <script>
         // 스텝 인디케이터 표시 (상단)
-        function showStepIndicator(stepNum) {
+        function renderStepIndicator(stepNum) {
             const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""];
             const stepArea = document.querySelector(".step-section");
             stepArea.innerHTML = "";
@@ -606,7 +606,6 @@
                 const imgBox2 = document.createElement("div");
                 const stepImg = document.createElement("img");
                 const pointImg = document.createElement("img");
-                const onSuffix = `_on`;
                 const margin = 10;
 
                 stepImg.style.marginLeft = `${margin}px`;
@@ -616,7 +615,7 @@
                 pointImg.style.marginTop = "30px";
 
                 if (stepNum === i + 1) {
-                    stepImg.src = `./image/step${i + 1}${onSuffix}.png`;
+                    stepImg.src = `./image/step${i + 1}_on.png`;
                     stepImg.style.marginRight = "-45px";
                     stepImg.style.marginTop = "-15px";
                     stepImg.classList.add("onStep");
@@ -663,12 +662,12 @@
         }
 
         window.addEventListener("DOMContentLoaded", function () {
-            showStepIndicator(3);
+            renderStepIndicator(3);
             loadOrderInfo();
             setupPaymentButtons();
         });
 
-        // 주문 정보 불러와서 화면에 표시 (localStorage 사용 예)
+        // 주문 정보 불러와서 화면에 표시
         function loadOrderInfo() {
             const orderInfo = JSON.parse(localStorage.getItem("orderInfo")) || {};
 
@@ -683,12 +682,10 @@
             // 주문내역 제목
             orderInfoDiv.innerHTML = `<h2>주문내역</h2>`;
 
-            // 주문내역을 감싸는 요소 (여러 개 있을 경우 반복)
             const orderList = document.createElement("div");
             orderList.classList.add("order-list");
             orderInfoDiv.appendChild(orderList);
 
-            // 단일 아이템(샌드위치 1개) 예시
             const orderItem = document.createElement("div");
             orderItem.classList.add("order-item");
             orderList.appendChild(orderItem);
@@ -714,7 +711,7 @@
 
             const qtySpan = document.createElement("div");
             qtySpan.classList.add("order-item-qty");
-            qtySpan.textContent = "1개"; // 여기선 1개라고 가정
+            qtySpan.textContent = "1개"; // 1개라고 가정
             itemRight.appendChild(qtySpan);
 
             const priceSpan = document.createElement("div");

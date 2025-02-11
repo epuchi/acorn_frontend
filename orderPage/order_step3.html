@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+<!--
+  lang="ko" : 페이지의 기본 언어가 한국어임을 나타냅니다.
+-->
 
 <head>
     <meta charset="UTF-8">
-    <title>step3</title>
+    <title></title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
@@ -14,12 +17,12 @@
             font-style: normal;
         }
 
-        /* header 스타일 */
         header {
             width: 100%;
             min-width: 1200px;
             height: 165px;
             border-top: 5px solid #009223;
+            /* 상단에 녹색 테두리 */
             display: block;
             position: relative;
         }
@@ -29,7 +32,8 @@
             position: absolute;
             top: 35px;
             left: 50%;
-            transform: translateX(-50%)
+            transform: translateX(-50%);
+            /* 중앙 정렬 */
         }
 
         .log_menu {
@@ -66,10 +70,11 @@
             list-style: inside;
         }
 
+        /* 메인 네비게이션 바 */
         .main_nav {
             width: 100%;
             height: 60px;
-            /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            /* 네비게이션 영역 높이 */
             position: absolute;
             top: 65%;
             display: flex;
@@ -78,12 +83,14 @@
             justify-content: center;
         }
 
+        /* 네비게이션 바 하위 배경 (마우스 오버 시 나타남) */
         .bg {
             top: 100%;
             transform: translateY(-4px);
             position: absolute;
             width: 100%;
             height: 0;
+            /* 기본 숨김 */
             background-color: white;
             border-top: 0.5px solid #ddd;
             z-index: 995;
@@ -96,7 +103,7 @@
         }
 
         .main_nav ul:hover {
-            cursor: pointer
+            cursor: pointer;
         }
 
         .nav_wrap {
@@ -118,17 +125,17 @@
             color: #009223;
         }
 
+        /* 드롭다운 하위 메뉴 */
         .hidden_menu {
             overflow: hidden;
-            /* 영역 넘어가면 안보이게 하기*/
+            /* 내용이 넘치면 숨김 */
             width: 100%;
             height: 0;
-            /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            /* 기본 높이 0 (숨김) */
             position: absolute;
             left: 0px;
             top: -10px;
             transform: translateY(50px);
-
             z-index: 999;
         }
 
@@ -148,21 +155,20 @@
             text-decoration: underline;
         }
 
+        /* 마우스 오버 시 하위 메뉴와 배경 높이 확장 (transition 효과 포함) */
         .main_nav:hover .hidden_menu,
         .main_nav:hover .bg {
             height: 260px;
-            /* 마우스를 갖다 대면 높이 생기게 하기 */
             transition: 0.5s;
-            /* 천천히 나오게 하는 효과*/
         }
 
         .main_nav:hover .bg {
             border-bottom: 0.5px solid #ddd;
         }
 
-
-
-        /* 기본 리셋 및 공통 스타일  */
+        /*─────────────────────────────────────────────*/
+        /* 3. 기본 리셋 및 공통 스타일 */
+        /*─────────────────────────────────────────────*/
         * {
             margin: 0;
             padding: 0;
@@ -172,9 +178,12 @@
         body {
             font-family: sans-serif;
             user-select: none;
+            /* 텍스트 선택 방지 */
         }
 
-        /* 전체 래퍼 스타일  */
+        /*─────────────────────────────────────────────*/
+        /* 4. 전체 래퍼 및 타이틀 영역 */
+        /*─────────────────────────────────────────────*/
         .wrap {
             position: relative;
             display: flex;
@@ -185,7 +194,6 @@
             align-items: center;
         }
 
-        /* 타이틀 영역  */
         .title-area {
             padding: 60px 0;
         }
@@ -201,7 +209,9 @@
             margin-top: 30px;
         }
 
-        /* 단계 표시 영역 */
+        /*─────────────────────────────────────────────*/
+        /* 5. 단계(스텝) 표시 영역 */
+        /*─────────────────────────────────────────────*/
         .step-section {
             width: 100%;
             height: 170px;
@@ -209,7 +219,9 @@
             justify-content: center;
         }
 
-        /* ── 주문 요약 영역 (상단, 샌드위치 기본 선택 포함)  */
+        /*─────────────────────────────────────────────*/
+        /* 6. 주문 요약 영역 (주문 선택 내역 표시) */
+        /*─────────────────────────────────────────────*/
         .summary {
             width: 900px;
             text-align: justify;
@@ -242,7 +254,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 주문 요약 내 각 항목의 값 */
         .summary span {
             font-size: 20px;
             font-weight: 500;
@@ -252,7 +263,9 @@
             border-radius: 4px;
         }
 
-        /* ── 슬라이더 영역  */
+        /*─────────────────────────────────────────────*/
+        /* 7. 슬라이더 및 메뉴 선택 영역 */
+        /*─────────────────────────────────────────────*/
         .menu-selector {
             width: 900px;
             overflow: hidden;
@@ -282,42 +295,35 @@
             overflow: auto;
         }
 
-        /* ── 슬라이드 배경색 (순서대로)  */
+        /* 슬라이드별 배경색 지정 */
         .slide1 {
             background-color: #ffc43b;
         }
 
-        /* 빵 선택 */
         .slide2 {
             background-color: #8bc34a;
         }
 
-        /* 치즈 선택 */
         .slide3 {
             background-color: #2196f3;
         }
 
-        /* 야채 선택 */
         .slide4 {
             background-color: #ff5722;
         }
 
-        /* 소스 선택 */
         .slide5 {
             background-color: #795548;
         }
 
-        /* 추가 선택 */
         .slide6 {
             background-color: #9e9e9e;
         }
 
-        /* 최종 주문 내역 */
-
-        /* 좌우 이동 버튼  */
+        /* 좌우 이동 버튼 (슬라이더 내비게이션) */
         .arrow-btn {
             position: absolute;
-            top: 70%;
+            top: 75%;
             transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.4);
             color: #fff;
@@ -344,7 +350,9 @@
             margin-right: 10px;
         }
 
-        /* 선택 항목 그리드 및 항목 박스  */
+        /*─────────────────────────────────────────────*/
+        /* 8. 선택 항목 그리드 및 항목 박스 스타일 */
+        /*─────────────────────────────────────────────*/
         .selection-wrap {
             width: 100%;
             margin: 0 auto;
@@ -408,6 +416,7 @@
             margin-bottom: 5px;
         }
 
+        /* 선택된 항목의 스타일 (배경색, 테두리 등 변경) */
         .item-box.selected {
             background-color: #28a745;
             border-color: #28a745;
@@ -420,7 +429,9 @@
             color: #fff;
         }
 
-        /* 빵 토스팅 옵션  */
+        /*─────────────────────────────────────────────*/
+        /* 9. 빵 토스팅 옵션 영역 */
+        /*─────────────────────────────────────────────*/
         .bread-toasting {
             display: flex;
             justify-content: center;
@@ -440,7 +451,9 @@
             transform: scale(1.6);
         }
 
-        /* 최종 주문 내역 영역  */
+        /*─────────────────────────────────────────────*/
+        /* 10. 최종 주문 내역 영역 */
+        /*─────────────────────────────────────────────*/
         .final-summary {
             border: 1px solid #bbb;
             border-radius: 10px;
@@ -489,52 +502,64 @@
             background-color: #007a24;
         }
 
-        /*푸터*/
-        footer{
+        /*─────────────────────────────────────────────*/
+        /* 11. 푸터 영역 스타일 */
+        /*─────────────────────────────────────────────*/
+        footer {
             background-color: rgb(41, 41, 41);
             color: rgb(102, 102, 102);
             position: relative;
         }
-        /*상단*/
-        .footer_menu{
+
+        /* 푸터 상단 메뉴 */
+        .footer_menu {
             padding: 5px;
             border-bottom: 1px solid #3b3b3b;
         }
-        footer ul{
+
+        footer ul {
             list-style: none;
             display: flex;
             font-size: 14px;
         }
-        footer li{
+
+        footer li {
             margin-right: 29px;
         }
-        footer a{
+
+        footer a {
             text-decoration: none;
             color: inherit;
         }
-        footer strong{
+
+        footer strong {
             font-weight: bold;
             color: #bbbbbb;
         }
-        /*하단*/
-        .footer_info{
+
+        /* 푸터 하단 정보 */
+        .footer_info {
             font-size: 13px;
             display: flex;
             padding: 10px 0px 0px 45px;
         }
-        footer p{
+
+        footer p {
             padding-right: 5px;
         }
-        footer span{
+
+        footer span {
             font-weight: bold;
         }
-        .copyright{
+
+        .copyright {
             font-size: 13px;
             margin-top: -10px;
             padding: 5px 0px 25px 45px;
         }
-        /*sns*/
-        .instagram{
+
+        /* SNS 아이콘 (인스타그램, 페이스북) */
+        .instagram {
             width: 50px;
             height: 50px;
             background-image: url("../footer/imgs/instagram.png");
@@ -542,10 +567,12 @@
             right: 100px;
             bottom: 20px;
         }
-        .instagram:hover{
+
+        .instagram:hover {
             background-image: url("../footer/imgs/instagram_hover.png");
         }
-        .facebook{
+
+        .facebook {
             width: 50px;
             height: 50px;
             background-image: url("../footer/imgs/facebook.png");
@@ -553,29 +580,34 @@
             right: 35px;
             bottom: 20px;
         }
-        .facebook:hover{
+
+        .facebook:hover {
             background-image: url("../footer/imgs/facebook_hover.png");
         }
     </style>
 </head>
 
 <body>
+    <!--─────────────────────────────────────────────-->
+    <!-- 헤더 영역: 로고, 로그인/회원가입, 네비게이션 바 -->
+    <!--─────────────────────────────────────────────-->
     <header>
         <div class="logo">
-            <a href=../mainpage/html/index.html><img src="../header/image/logo_w.png"></a>
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
         </div>
         <div class="log_menu">
             <ul>
                 <li><a href="">로그인</a></li>
                 <li class="signup"><a href="">회원가입</a></li>
-                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"></a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
             </ul>
         </div>
         <nav class="main_nav">
             <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
-                    <!--하위메뉴-->
+                    <!-- 드롭다운 하위 메뉴 -->
                     <ul class="hidden_menu">
                         <li><a href=""></a>샌드위치</li>
                         <li><a href=""></a>랩ㆍ기타</li>
@@ -586,7 +618,6 @@
                     </ul>
                 </li>
                 <li class="nav_item">이용방법
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>써브웨이 이용방법</li>
                         <li><a href=""></a>단체메뉴 이용방법</li>
@@ -595,7 +626,6 @@
                     </ul>
                 </li>
                 <li class="nav_item">새소식
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>이벤트ㆍ프로모션</li>
                         <li><a href=""></a>뉴스ㆍ공지사항</li>
@@ -603,7 +633,6 @@
                     </ul>
                 </li>
                 <li class="nav_item">써브웨이
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>써브웨이 역사</li>
                         <li><a href=""></a>써브웨이 약속</li>
@@ -612,7 +641,6 @@
                     </ul>
                 </li>
                 <li class="nav_item">가맹점
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>써브웨이 프랜차이즈</li>
                         <li><a href=""></a>가맹관련 FAQ</li>
@@ -622,7 +650,6 @@
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
                         <li><a href=""></a>FAST-SUB</li>
                         <li><a href=""></a>HOME-SUB</li>
@@ -632,15 +659,21 @@
             </ul>
         </nav>
     </header>
+
+    <!--─────────────────────────────────────────────-->
+    <!-- 메인 컨테이너 영역 -->
+    <!--─────────────────────────────────────────────-->
     <div class="wrap">
-        <!-- 타이틀 영역 -->
+        <!-- 상단 타이틀 영역 -->
         <div class="title-area">
             <p class="title">Fast-Sub</p>
             <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
         </div>
-        <!-- 단계 표시 영역  -->
+
+        <!-- 단계(스텝) 표시 영역 -->
         <div class="step-section"></div>
-        <!-- 주문 요약 영역 (상단, 기본 샌드위치 정보 및 토스팅 옵션 포함) -->
+
+        <!-- 주문 요약 영역: 선택한 주문 내역 요약을 표시 -->
         <div class="summary">
             <h3>주문 요약</h3>
             <p>샌드위치: <span class="summary-sandwich"></span></p>
@@ -652,21 +685,23 @@
             <p>소스: <span class="summary-sauce"></span></p>
             <p>추가 선택: <span class="summary-addons"></span></p>
         </div>
-        <!-- 좌우 이동 버튼 -->
+
+        <!-- 좌우 슬라이드 이동 버튼 -->
         <button class="arrow-btn prev-btn">&laquo;</button>
         <button class="arrow-btn next-btn">&raquo;</button>
 
-        <!-- 슬라이더 영역 -->
+        <!-- 슬라이더 영역: 각 슬라이드마다 주문 옵션(빵, 치즈, 야채, 소스, 추가 선택, 최종 주문 내역) -->
         <div class="menu-selector">
             <div class="slider">
-                <!-- 슬라이드 1: 빵 선택 (단일) -->
+                <!-- 슬라이드 1: 빵 선택 (단일 선택) -->
                 <div class="slide slide1">
                     <div class="selection-wrap">
                         <div class="header-area">
                             <span class="title">빵 선택 (단일)</span>
                         </div>
+                        <!-- 빵 선택 그리드 -->
                         <div class="grid-box bread-grid"></div>
-                        <!-- 토스팅 옵션 -->
+                        <!-- 빵 토스팅 옵션: '토스팅' 또는 '토스팅 안 함' -->
                         <div class="bread-toasting">
                             <label><input type="radio" name="toasting" value="토스팅">토스팅</label>
                             <label><input type="radio" name="toasting" value="토스팅 안 함" checked>토스팅 안 함</label>
@@ -674,22 +709,24 @@
                     </div>
                 </div>
 
-                <!-- 슬라이드 2: 치즈 선택 및 치즈 추가 (단일) -->
+                <!-- 슬라이드 2: 치즈 선택 -->
                 <div class="slide slide2">
                     <div class="selection-wrap">
                         <div class="header-area">
                             <span class="title">치즈 선택 (단일)</span>
                         </div>
+                        <!-- 기본 치즈 선택 그리드 -->
                         <div class="grid-box cheese-grid"></div>
                         <hr>
                         <div class="header-area" style="margin-top:20px;">
                             <span class="title">치즈 추가 (단일)</span>
                         </div>
+                        <!-- 추가 치즈(Extra) 선택 그리드 -->
                         <div class="grid-box cheese-grid-extra"></div>
                     </div>
                 </div>
 
-                <!-- 슬라이드 3: 야채 선택 (다중) -->
+                <!-- 슬라이드 3: 야채 선택 (다중 선택) -->
                 <div class="slide slide3">
                     <div class="selection-wrap">
                         <div class="header-area">
@@ -699,7 +736,7 @@
                     </div>
                 </div>
 
-                <!-- 슬라이드 4: 소스 선택 (다중, 최대 3개) -->
+                <!-- 슬라이드 4: 소스 선택 (다중 선택, 최대 3개) -->
                 <div class="slide slide4">
                     <div class="selection-wrap">
                         <div class="header-area">
@@ -709,7 +746,7 @@
                     </div>
                 </div>
 
-                <!-- 슬라이드 5: 추가 선택 (다중) -->
+                <!-- 슬라이드 5: 추가 선택 (다중 선택) -->
                 <div class="slide slide5">
                     <div class="selection-wrap">
                         <div class="header-area">
@@ -719,7 +756,7 @@
                     </div>
                 </div>
 
-                <!-- 슬라이드 6: 최종 주문 내역 (주문하기 버튼 포함) -->
+                <!-- 슬라이드 6: 최종 주문 내역 및 가격 표시 -->
                 <div class="slide slide6">
                     <div class="selection-wrap final-summary">
                         <h2>최종 주문 내역</h2>
@@ -734,7 +771,6 @@
                         <hr>
                         <div class="summary-line"><strong>총 가격:</strong> <span id="final-price" class="price"></span> 원
                         </div>
-                        <!-- 주문하기 버튼 -->
                         <button id="order-button">주문하기</button>
                     </div>
                 </div>
@@ -742,32 +778,29 @@
         </div>
     </div>
 
-    <!-- 스크립트: 기능 구현 및 이벤트 처리 -->
     <script>
-        // 스텝 인디케이터 표시 (상단)
-        function showStepIndicator(stepNum) {
-            // 스텝 타이틀
-            const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""];
-
+        function renderStepIndicator(stepNum) {
+            const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""]; // 스텝 제목 배열
             const stepArea = document.querySelector(".step-section");
-            stepArea.innerHTML = "";
+            stepArea.innerHTML = ""; // 기존 내용 초기화
 
             for (let i = 0; i < 4; i++) {
                 const imgBox1 = document.createElement("div");
                 const imgBox2 = document.createElement("div");
                 const stepImg = document.createElement("img");
                 const pointImg = document.createElement("img");
-                const onSuffix = `_on`;
                 const margin = 10;
 
+                // 이미지 간 마진 설정
                 stepImg.style.marginLeft = `${margin}px`;
                 stepImg.style.marginRight = `${margin}px`;
                 pointImg.style.marginLeft = `${margin}px`;
                 pointImg.style.marginRight = `${margin}px`;
                 pointImg.style.marginTop = "30px";
 
+                // 현재 스텝이면 활성화 이미지 사용
                 if (stepNum === i + 1) {
-                    stepImg.src = `./image/step${i + 1}${onSuffix}.png`;
+                    stepImg.src = `./image/step${i + 1}_on.png`;
                     stepImg.style.marginRight = "-45px";
                     stepImg.style.marginTop = "-15px";
                     stepImg.classList.add("onStep");
@@ -786,9 +819,9 @@
                 stepArea.appendChild(imgBox2);
             }
 
+            // 활성화된 스텝 이미지의 부모 요소에 스텝 번호와 제목 텍스트 추가
             const onStepParent = document.querySelector(".onStep")?.parentElement;
             if (!onStepParent) return;
-
             const stepText1 = document.createElement("p");
             stepText1.textContent = `STEP${stepNum}`;
             const stepText2 = document.createElement("p");
@@ -797,6 +830,7 @@
             onStepParent.appendChild(stepText1);
             onStepParent.appendChild(stepText2);
 
+            // 텍스트의 위치와 스타일 설정
             onStepParent.style.position = "relative";
             stepText1.style.position = "absolute";
             stepText1.style.top = "5px";
@@ -804,7 +838,6 @@
             stepText1.style.fontSize = "16px";
             stepText1.style.fontWeight = "bold";
             stepText1.style.color = "#ffc300";
-
             stepText2.style.position = "absolute";
             stepText2.style.top = "25px";
             stepText2.style.left = "110px";
@@ -813,7 +846,6 @@
             stepText2.style.color = "white";
         }
 
-        /* 데이터 정의 (각 카테고리별 항목 정보) */
         const data = {
             sandwich: [
                 { name: "에그마요", price: 5400 }
@@ -875,9 +907,8 @@
             ]
         };
 
-        /* 선택된 항목 저장 객체 (실제로 이 데이터를 localStorage로 저장할 예정) */
+        /* 선택된 주문 옵션 저장 객체 */
         const selected = {
-            // 샌드위치는 일단 "에그마요" (1개)로 고정 가정
             sandwich: "에그마요",
             breadLength: "",
             bread: "",
@@ -886,7 +917,7 @@
             veggies: [],
             sauces: [],
             addons: [],
-            toasting: "토스팅 안 함",
+            toasting: "",
             totalPrice: 0
         };
 
@@ -897,6 +928,7 @@
             document.querySelector(".summary-bread").textContent = selected.bread || "";
             document.querySelector(".summary-toasting").textContent = selected.toasting || "";
 
+            // 치즈 선택 시 기본 치즈와 추가 치즈를 함께 표시 (추가 치즈가 있으면)
             const cheeseStr = selected.cheese + (selected.cheeseExtra ? ` (+${selected.cheeseExtra})` : "");
             document.querySelector(".summary-cheese").textContent = cheeseStr.trim();
 
@@ -905,9 +937,8 @@
             document.querySelector(".summary-addons").textContent = selected.addons.join(", ");
         }
 
-        /* 최종 주문 내역 렌더링 함수 (슬라이드 6 진입 시 실행) */
+        /* 최종 주문 내역 렌더링 함수 */
         function renderFinalSummary() {
-            // 화면 표시
             document.getElementById("final-sandwich").textContent = selected.sandwich;
             document.getElementById("final-breadLength").textContent = selected.breadLength;
             document.getElementById("final-bread").textContent = selected.bread;
@@ -920,32 +951,26 @@
             document.getElementById("final-sauce").textContent = selected.sauces.join(", ");
             document.getElementById("final-addons").textContent = selected.addons.join(", ");
 
-            // 총 가격 계산
+            // 총 가격 계산: 샌드위치 가격, 추가 치즈 가격, 및 추가 선택 가격 합산
             let total = 0;
-            // 샌드위치 가격 (기본 5400원)
             total += getItemPrice(selected.sandwich, data.sandwich);
-
-            // 치즈 추가 가격
             if (selected.cheeseExtra) {
                 total += getItemPrice(selected.cheeseExtra, data.cheeseExtra);
             }
-
-            // 추가 선택 가격
             selected.addons.forEach(addItem => {
                 total += getItemPrice(addItem, data.addons);
             });
-
-            selected.totalPrice = total; // selected에 저장
+            selected.totalPrice = total;
             document.getElementById("final-price").textContent = total;
         }
 
-        /* 데이터 배열에서 항목 가격 반환 함수 */
+        /* 가격 조회 함수: 해당 항목의 가격 조회 */
         function getItemPrice(itemName, dataArray) {
             const found = dataArray.find(i => i.name === itemName);
             return (found && found.price) ? found.price : 0;
         }
 
-        /* 슬라이더 관련 변수 및 함수 */
+        /* 슬라이더 이동 관련 함수 */
         let currentIndex = 0;
         function moveSlide(newIndex) {
             const slides = document.querySelectorAll(".slide");
@@ -957,7 +982,7 @@
             const offset = -(currentIndex * slider.offsetWidth);
             slider.style.transform = `translateX(${offset}px)`;
 
-            // 최종 주문 내역 슬라이드(6번)일 경우 렌더링
+            // 마지막 슬라이드(최종 주문 내역)일 때 최종 주문 내역 렌더링
             if (currentIndex === 5) {
                 renderFinalSummary();
             }
@@ -965,32 +990,28 @@
         function goPrev() { moveSlide(currentIndex - 1); }
         function goNext() { moveSlide(currentIndex + 1); }
 
-        /* 공통: 항목 박스 생성 함수 */
+        /*  그리드 항목 생성 관련 함수 */
         function createItemBox(item, folderName, options) {
             const box = document.createElement("div");
             box.classList.add("item-box");
 
-            // 이미지
             const img = document.createElement("img");
             img.src = `./image/${folderName}/${item.name}.png`;
             img.alt = item.name;
             box.appendChild(img);
 
-            // 추가 정보(예: 소스 info) 표시
-            if (options.showInfo && item.info) {
+            if (options.showInfo) {
                 const infoP = document.createElement("p");
                 infoP.classList.add("info-text");
                 infoP.textContent = item.info;
                 box.appendChild(infoP);
             }
 
-            // 이름
             const nameP = document.createElement("p");
             nameP.textContent = item.name;
             box.appendChild(nameP);
 
-            // 가격 표시
-            if (options.showPrice && item.price) {
+            if (options.showPrice) {
                 const priceP = document.createElement("p");
                 priceP.textContent = `+ ${item.price}원`;
                 box.appendChild(priceP);
@@ -999,14 +1020,13 @@
             return box;
         }
 
-        /* 기본 클릭 처리 함수 (단일/다중 선택 처리) */
+        /*  기본 클릭 이벤트 처리 함수 (단일/다중 선택) */
         function defaultOnClick(box, item, container, config) {
-            const key = config.selectedKey; // 예: "bread", "veggies", "addons" 등
+            const key = config.selectedKey;
 
             if (config.selectionType === "single") {
-                // 단일 선택
+                // 단일 선택: 이미 선택된 상태라면 해제, 아니면 다른 항목 선택 해제 후 현재 항목 선택
                 const already = box.classList.contains("selected");
-                // 같은 그리드의 다른 항목들 선택 해제
                 container.querySelectorAll(".item-box").forEach(el => el.classList.remove("selected"));
                 if (!already) {
                     box.classList.add("selected");
@@ -1016,9 +1036,8 @@
                 }
             }
             else if (config.selectionType === "multiple") {
-                // 다중 선택
+                // 다중 선택: 제외 항목이 지정되어 있으면 해당 항목 선택 시 다른 항목 모두 해제
                 if (item.isExclude) {
-                    // '제외' 항목 클릭 시 다른 모든 선택 해제
                     const already = box.classList.contains("selected");
                     container.querySelectorAll(".item-box").forEach(el => el.classList.remove("selected"));
                     selected[key] = [];
@@ -1027,7 +1046,7 @@
                         selected[key] = [item.name];
                     }
                 } else {
-                    // '제외'가 선택되어 있다면 해제
+                    // 제외 항목이 선택되어 있으면 제외 항목 해제
                     if (config.excludeText) {
                         const excludeBox = [...container.querySelectorAll(".item-box")]
                             .find(el => el.textContent.trim() === config.excludeText);
@@ -1036,12 +1055,11 @@
                             selected[key] = selected[key].filter(v => v !== config.excludeText);
                         }
                     }
-                    // 현재 항목 토글
+                    // 현재 항목이 선택되어 있으면 해제, 아니면 선택 추가 (최대 선택 개수 제한 적용)
                     if (box.classList.contains("selected")) {
                         box.classList.remove("selected");
                         selected[key] = selected[key].filter(v => v !== item.name);
                     } else {
-                        // 최대 선택 개수 제한
                         if (config.maxCount && selected[key].length >= config.maxCount) {
                             alert(config.maxCountAlert || `최대 ${config.maxCount}개까지 선택 가능합니다.`);
                             return;
@@ -1053,30 +1071,27 @@
             }
         }
 
-        /* 범용 그리드 생성 함수 */
+        /*  그리드 생성 함수: 각 옵션별 그리드에 항목 박스 생성 */
         function createGrid(folderName, container, items, config) {
             items.forEach(item => {
                 const box = createItemBox(item, folderName, config);
                 box.addEventListener("click", () => {
-                    if (config.onClick) {
-                        config.onClick(box, item, container);
-                    } else {
-                        defaultOnClick(box, item, container, config);
-                    }
-                    updateSummary();
+                    defaultOnClick(box, item, container, config);
+                    updateSummary(); // 선택 시 주문 요약 업데이트
                 });
                 container.appendChild(box);
             });
         }
 
-        /* 주문하기 버튼 클릭 시: 필수 항목 체크 후 localStorage 저장 & step4로 이동 */
+        /*  주문 처리 함수 */
         function handleOrder() {
-            // 필수 항목 체크
+            // 필수 항목(샌드위치, 빵, 치즈)이 선택되었는지 확인
             if (!selected.sandwich || !selected.bread || !selected.cheese) {
                 alert("필수 항목(샌드위치, 빵, 치즈)이 선택되지 않았습니다.");
                 return;
             }
 
+            // 총 가격 재계산
             let total = 0;
             total += getItemPrice(selected.sandwich, data.sandwich);
             if (selected.cheeseExtra) {
@@ -1087,7 +1102,7 @@
             });
             selected.totalPrice = total;
 
-            // localStorage 저장할 객체
+            // 주문 정보 객체 생성 및 localStorage 저장
             const orderInfo = {
                 sandwich: selected.sandwich,
                 breadLength: selected.breadLength,
@@ -1100,25 +1115,26 @@
                 price: selected.totalPrice
             };
 
-            // 저장
             localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
 
             alert("주문이 완료되었습니다!");
-            // step4로 이동
             window.location.href = "./order_step4.html";
         }
 
-        /* DOMContentLoaded 이후 초기화 */
+        /* 초기 로드 및 이벤트 리스너 등록 */
         window.addEventListener("load", function () {
+            // 이전 단계에서 저장된 빵 길이 정보를 불러와 selected 객체에 저장
             const breadLength = JSON.parse(localStorage.getItem("orderInfo"));
-            selected.breadLength = breadLength.breadLength
+            selected.breadLength = breadLength.breadLength;
 
-            showStepIndicator(2);
-            // 좌우 버튼 이벤트 바인딩
+            // 스텝 인디케이터 표시 (현재 스텝: 2)
+            renderStepIndicator(2);
+
+            // 슬라이드 좌우 이동 버튼 이벤트 등록
             document.querySelector(".prev-btn").addEventListener("click", goPrev);
             document.querySelector(".next-btn").addEventListener("click", goNext);
 
-            // 토스팅 옵션
+            // 토스팅 옵션 라디오 버튼 이벤트 등록
             document.querySelectorAll('input[name="toasting"]').forEach(input => {
                 input.addEventListener("change", function () {
                     selected.toasting = this.value;
@@ -1126,33 +1142,33 @@
                 });
             });
 
-            // 빵 선택 (단일)
+            // 빵 선택 그리드 생성
             createGrid("빵", document.querySelector(".bread-grid"), data.bread, {
                 selectionType: "single",
                 selectedKey: "bread"
             });
 
-            // 치즈 선택 (단일)
+            // 치즈 선택 그리드 생성 (기본 치즈)
             createGrid("치즈", document.querySelector(".cheese-grid"), data.cheese, {
                 selectionType: "single",
                 selectedKey: "cheese",
                 showPrice: false
             });
-            // 치즈 추가 (단일)
+            // 추가 치즈(Extra) 선택 그리드 생성
             createGrid("치즈", document.querySelector(".cheese-grid-extra"), data.cheeseExtra, {
                 selectionType: "single",
                 selectedKey: "cheeseExtra",
                 showPrice: true
             });
 
-            // 야채 선택 (다중)
+            // 야채 선택 그리드 생성 (다중 선택, "모든 야채 제외" 제외)
             createGrid("야채", document.querySelector(".veggie-grid"), data.veggies, {
                 selectionType: "multiple",
                 selectedKey: "veggies",
                 excludeText: "모든 야채 제외"
             });
 
-            // 소스 선택 (다중, 최대 3개)
+            // 소스 선택 그리드 생성 (다중 선택, 최대 3개, "소스 제외" 제외, 옵션 정보 표시)
             createGrid("소스", document.querySelector(".sauce-grid"), data.sauces, {
                 selectionType: "multiple",
                 selectedKey: "sauces",
@@ -1162,21 +1178,23 @@
                 showInfo: true
             });
 
-            // 추가 선택 (다중)
+            // 추가 선택(애드온) 그리드 생성 (다중 선택)
             createGrid("추가 선택", document.querySelector(".add-grid"), data.addons, {
                 selectionType: "multiple",
                 selectedKey: "addons",
                 showPrice: true
             });
 
+            // 초기 주문 요약 업데이트
             updateSummary();
 
-            // 주문하기 버튼
+            // 주문하기 버튼 클릭 시 handleOrder 함수 실행
             document.getElementById("order-button").addEventListener("click", handleOrder);
         });
     </script>
+
+    <!-- 푸터 영역 -->
     <footer>
-        <!--상단-->
         <div class="footer_menu">
             <ul>
                 <li><a href="/agreement">이용약관</a></li>
@@ -1185,7 +1203,6 @@
                 <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
             </ul>
         </div>
-        <!--하단-->
         <div class="footer_info">
             <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
             <p><span>I</span></p>
@@ -1195,8 +1212,8 @@
             <p><span>I</span></p>
             <p>사업자등록번호 : 101-84-04143</p>
         </div>
-        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
-        <!--sns-->
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights
+            Reserved.</div>
         <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
         <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
     </footer>
