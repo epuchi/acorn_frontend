@@ -122,7 +122,8 @@ header {
     left: 0px;
     top: -10px;
     transform: translateY(50px);
-
+    display: flex;
+    flex-direction: column;
     z-index: 999;
 }
 
@@ -293,7 +294,7 @@ span {
 .how_main_title_text {
     margin-top: 50px;
     font-weight: 500;
-    font-family: "Noto Sans KR",serif;
+    font-family: "Noto Sans KR", serif;
 }
 
 .how_body_nav {
@@ -360,8 +361,8 @@ span {
     /* border: 1px solid black; */
     background-color: transparent;
     /* margin-top: 70px; */
-    
-    
+
+
 }
 
 .how_step_icon_list {
@@ -443,6 +444,14 @@ li {
     margin-right: 0;
     position: relative;
     padding: 20px;
+    transition: all 0.5s ease;
+    transform: scale(0.75);
+    opacity: 0.7;
+}
+
+.how_img_slider li.active {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .how_img_slider li img {
@@ -459,9 +468,11 @@ li {
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* 왼쪽과 오른쪽 끝에 버튼 배치 */
     padding: 0 20px;
     z-index: 2;
+    left: 0; /* 추가: 왼쪽 정렬 기준점 설정 */
+    right: 0; /* 추가: 오른쪽 정렬 기준점 설정 */
 }
 
 .prev_button,
@@ -476,8 +487,6 @@ li {
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
-    transition: all 0.3s ease;
     font-weight: bold;
     color: gray;
 }
@@ -487,10 +496,10 @@ li {
     background-color: #ffc300;
     color: white;
 }
-
-
 .icon_box {
     transition: all 0.3s ease;
+    cursor: default;
+    /* 커서 모양 변경 */
 }
 
 .icon_box.active {
@@ -592,6 +601,7 @@ li {
         transform: translateY(30px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -610,7 +620,8 @@ li {
     z-index: 3;
     top: 0px;
     left: 55%;
-    overflow: hidden; /* 애니메이션이 컨테이너를 벗어나지 않도록 */
+    overflow: hidden;
+    /* 애니메이션이 컨테이너를 벗어나지 않도록 */
 }
 
 .description-content p {
@@ -618,12 +629,24 @@ li {
     animation: slideUp 0.2s ease-out forwards;
 }
 
-.description-content p:nth-child(1) { animation-delay: 0.1s; }
-.description-content p:nth-child(2) { animation-delay: 0.2s; }
-.description-content p:nth-child(3) { animation-delay: 0.3s; }
-.description-content p:nth-child(4) { animation-delay: 0.4s; }
-.description-content .additional_button { 
+.description-content p:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.description-content p:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.description-content p:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.description-content p:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.description-content .additional_button {
     opacity: 0;
     animation: slideUp 0.2s ease-out forwards;
-    animation-delay: 0.2s; 
+    animation-delay: 0.2s;
 }
