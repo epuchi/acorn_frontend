@@ -5,66 +5,229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .hd {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            display: flex;
-            border-top: 1px solid #e0dede;
-            border-bottom: 1px solid #e0dede;
-            height: 60px;
-            justify-content: center;
-            align-items: center;
-            background-color: #FFFFFF;
-            box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.1);
+         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        *{
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
         }
-
-        .hd ul {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            padding: 0;
+        
+        /* header 스타일 */
+        header{
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            display: block;
             position: relative;
         }
-
-        .hd li {
-            margin: 0 auto;
-            color: #999999;
+        .logo{
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%)
         }
-
-        .hd li a,
-        .hd a {
-            font-size: 16px;
-            font-weight: bold;
-            letter-spacing: -2px;
+        
+        .log_menu{
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+        .log_menu ul{
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .log_menu a{
             text-decoration: none;
-            color: #999999;
+            color: #666;
+        }
+        .log_menu li{
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .log_menu li::marker {
+            color: #ddd;
+        }
+        .signup{
+            list-style: inside;
         }
 
-        .logo_img {
-            width: 110px;
+        .main_nav{
+            width: 100%;
+            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;  
+        }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+        .main_nav ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        .main_nav ul:hover{
+            cursor: pointer
+        }
+        .nav_wrap{
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+        .nav_item{
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+        .nav_item:hover{
+            color: #009223;
+        }
+        .hidden_menu{
+            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+            width: 100%;
+            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+
+            z-index: 999;
+        }
+        .hidden_menu li{
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
+        }
+        .hidden_menu li:hover{
+            color:#009223;
+            text-decoration: underline;
+        }
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
+        }
+      
+
+         /* sub header 스타일 */
+         .sub_header{
+            width: 100%;
+            min-width: 1200px;
             height: 60px;
-            background-image: url(https://www.subway.co.kr/images/common/logo_sub_header.png);
+            border-bottom: 0.5px solid #ddd;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            z-index:888;
+
+            position: sticky;
+            top: 0px;
+        }
+        /*서브로고*/
+        .sub_logo{
+            width: 120px;
+            height: 60px;
+            align-content: center;
+            text-align: center;
+            transform: translate(-230px, 3px);
+        }
+        /*메뉴*/
+        .sub_header ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0px;
+            margin: 0;
+            transform: translateX(-50px);
+        }
+        .sub_header li a{
+            text-decoration: none;
+            font-size: 16px;
+            color: #999;
+            letter-spacing: -1px;
+            font-weight: 500;
+            margin: 0 20px;
+        }
+        .sub_header li{
+            position: relative;
+            height: 60px;
+            align-content: center;
+        }
+        .sub_header li:nth-child(-n+3)::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background-color: #dddddd;
+            border-radius: 50%;
+
+            position: absolute;
+            top: 50%;
+        }
+        .underline{
+            width: 73%;
+            height: 4px;
+            background-color: #009223;
+            border-radius: 0;
+            position: absolute;
+            bottom: -1px;
+            left: 15%
+        }
+
+         /*맨위로이동*/
+         .top{
+            width: 35px;
+            height: 60px;;
+            padding: 0px;
+            background-image: url("./image/ToTop.png");
+            background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            background-repeat: no-repeat;
-            position: absolute;
-            left: -350px;
+            background-color: white;
+            transform: translateX(220px);
+            border: none;
         }
 
-        .top {
-            position: absolute;
-            top: -20px;
-            right: -330px;
-            width: 40px;
-            height: 32px;
-            box-sizing: border-box;
-            line-height: 60px;
-            font-size: 13px;
-            color: #BBBBBB;
+        .top:hover{
+            cursor: pointer;
         }
+        .sub_logo, .top {
+            opacity: 0; 
+            transition: opacity 0.3s ease;
+        }
+        .sub_header.sticky .sub_logo, .sub_header.sticky .top {
+            opacity: 1;
+        }
+        /* 내용 */
 
         .branch_title{
             color:#292929;
@@ -125,11 +288,20 @@
         .map_img{
             padding: 15px 0 0 35px;
             opacity: 1;
-            transform: scale(1);
+            transform: scale(0.8);
+            transition: 0.5s;
+        }
+
+        .mapimg1{
+            transform:scale(1);
         }
 
         .mapimg2{
             padding: 12px 0 0 0;
+        }
+
+        .mapimg3{
+            padding: 26px 0 0 103px;
         }
 
         .branch_map{
@@ -142,11 +314,11 @@
         }
 
         .map1{
-            display: none;
+            display: block;
         }
 
         .map2{
-            display: block;
+            display: none;
         }
 
         .map3{
@@ -161,13 +333,15 @@
             padding: 0;
         }
 
+
         .branch_label ul{
             list-style: none;
             margin: 0;
             padding: 0;
         }
 
-        .branch_label li:nth-child(2){
+        .branch_label li:nth-child(2), .branch_label li:nth-child(3), .branch_label li:nth-child(4),
+        .branch_label li:nth-child(5), .branch_label li:nth-child(6){
             margin-top:11px;
         }
 
@@ -247,22 +421,170 @@
             width:25px;
             height:25px;
         }
+
+        /*글꼴*/
+        @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+        *{
+            font-family: 'font_ns', sans-serif;
+        }
+        /*푸터*/
+        footer{
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+        /*상단*/
+        .footer_menu{
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+        footer ul{
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+        footer li{
+            margin-right: 29px;
+        }
+        footer a{
+            text-decoration: none;
+            color: inherit;
+        }
+        strong{
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+        /*하단*/
+        .footer_info{
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+        footer p{
+            padding-right: 5px;
+        }
+        span{
+            font-weight: bold;
+        }
+        .copyright{
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+        /*sns*/
+        .instagram{
+            width: 50px;
+            height: 50px;
+            background-image: url("imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+        .instagram:hover{
+            background-image: url("/imgs/instagram_hover.png");
+        }
+        .facebook{
+            width: 50px;
+            height: 50px;
+            background-image: url("/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+        .facebook:hover{
+            background-image: url("/imgs/facebook_hover.png");
+        }
     </style>
 </head>
 <body>
-    <div class="branch_wrap">
-        <div class="hd">
+    <header>
+        <div class="logo">
+            <a href=#><img src="./image/logo_w.png"></a>
+        </div>
+        <div class="log_menu">
             <ul>
-                <a class="logo_img" href=""></a>
-                <a href="">써브웨이 프랜차이즈</a>
-                <li><a href="#">가맹관련FAQ</a></li>
-                <li><a href="#">가맹신청ㆍ문의</a></li>
-                <li><a href="#">지사안내</a></li>
-                <li><a href="#">사업설명회</a></li>
-                <div class="top"></div>
-                <a class="top" href="#">TOP</a>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
+        <nav class="main_nav">
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                        <!--하위메뉴-->
+                        <ul class="hidden_menu">
+                            <li><a href=""></a>샌드위치</li>
+                            <li><a href=""></a>랩ㆍ기타</li>
+                            <li><a href=""></a>샐러드</li>
+                            <li><a href=""></a>아침메뉴</li>
+                            <li><a href=""></a>스마일 썹</li>
+                            <li><a href=""></a>단체메뉴</li>
+                        </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 이용방법</li>
+                        <li><a href=""></a>단체메뉴 이용방법</li>
+                        <li><a href=""></a>신선한 재료 소개</li>
+                        <li><a href=""></a>App 이용방법</li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>이벤트ㆍ프로모션</li>
+                        <li><a href=""></a>뉴스ㆍ공지사항</li>
+                        <li><a href=""></a>광고영상</li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 역사</li>
+                        <li><a href=""></a>써브웨이 약속</li>
+                        <li><a href=""></a>샌드위치 아티스트 지원</li>
+                        <li><a href=""></a>매장찾기</li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 프랜차이즈</li>
+                        <li><a href=""></a>가맹관련 FAQ</li>
+                        <li><a href=""></a>가맹신청ㆍ문의</li>
+                        <li><a href=""></a>지사안내</li>
+                        <li><a href=""></a>사업설명회</li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>FAST-SUB</li>
+                        <li><a href=""></a>HOME-SUB</li>
+                        <li><a href=""></a>단체주문</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+        <div class="sub_header">
+            <a href=#>
+                <div class="sub_logo">
+                    <img src="./image/logo_sub_header.png" alt="서브로고">
+                </div>
+            </a>
+            <ul>
+                <li><a href="">써브웨이 프랜차이즈</a></li>
+                <li><a href="">가맹관련FAQ</a></li>
+                <li><a href="">가맹신청ㆍ문의</a></li>
+                <li><a href="" style="color:#009223";>지사안내</a>
+                    <div class="underline"></div></li>
+                <li><a href="">사업설명회</a></li>
+            </ul>
+            <div class="top" onclick="scrollToTop()"></div>
+            </div>
         <!-- 지사안내 wrap -->
         <div class="branch_content">
             <h2 class="branch_title">지사안내</h2>
@@ -432,8 +754,71 @@
         </div>
     </div>
 
+    <!--푸터-->
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
     <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const tabs = document.querySelectorAll(".branch_tab a");
+                const maps = document.querySelectorAll(".branch_map");
 
+            tabs.forEach((tab, index) => {
+                tab.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                tabs.forEach((t) => t.parentElement.classList.remove("branchtab_gr"));
+                this.parentElement.classList.add("branchtab_gr");
+
+                maps.forEach((map) => {
+                    map.style.display = "none";
+                    map.querySelector(".map_img").style.opacity = "0";
+                    map.querySelector(".map_img").style.transform = "scale(0.8)";
+                });
+
+                maps[index].style.display = "block";
+
+                setTimeout(() => {
+                    maps[index].querySelector(".map_img").style.opacity = "1";
+                    maps[index].querySelector(".map_img").style.transform = "scale(1)";
+                }, 50);
+            });
+        });
+    });
+            //서브헤더
+            window.addEventListener('scroll', function() {
+                    const sub_header = document.querySelector('.sub_header');
+                    if (window.scrollY > 150) {
+                        sub_header.classList.add('sticky');
+                    } else {
+                        sub_header.classList.remove('sticky');
+                    }
+                });
+                function scrollToTop(){
+                    window.scrollTo({top:0, behavior:'smooth'});
+                }
     </script>
 </body>
 </html>

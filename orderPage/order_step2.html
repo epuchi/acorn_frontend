@@ -2,93 +2,238 @@
 <html lang="en">
 
 <head>
+    <!-- 기본 메타 태그 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fast-Sub</title>
+
+    <!-- CSS 영역 -->
     <style>
+        /* 초기화: 모든 요소 기본 박스 모델(border-box) 및 기본 여백 제거 */
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .wrap {
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+        *{
+            font-family: "Noto Sans KR", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        /* header 스타일 */
+        header{
+            width: 100%;
+            min-width: 1200px;
+            height: 165px;
+            border-top: 5px solid #009223;
+            display: block;
+            position: relative;
+        }
+        .logo{
+            height: 40px;
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+        
+        .log_menu{
+            position: absolute;
+            top: 40px;
+            right: 15%;
+        }
+        .log_menu ul{
+            padding: 0px;
+            margin: 0px;
+            height: 30px;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        .log_menu a{
+            text-decoration: none;
+            color: #666;
+        }
+        .log_menu li{
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .log_menu li::marker {
+            color: #ddd;
+        }
+        .signup{
+            list-style: inside;
+        }
+
+        .main_nav{
+            width: 100%;
+            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            position: absolute;
+            top: 65%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;  
+        }
+        .bg {
+            top: 100%;
+            transform: translateY(-4px);
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            border-top: 0.5px solid #ddd;
+            z-index: 995;
+        }
+        .main_nav ul{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        .main_nav ul:hover{
+            cursor: pointer
+        }
+        .nav_wrap{
+            width: 100%;
+            height: 230px;
+            position: absolute;
+            top: 65%;
+        }
+        .nav_item{
+            float: left;
+            width: 165px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+        .nav_item:hover{
+            color: #009223;
+        }
+        .hidden_menu{
+            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+            width: 100%;
+            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            position: absolute;
+            left: 0px;
+            top: -10px;
+            transform: translateY(50px);
+
+            z-index: 999;
+        }
+        .hidden_menu li{
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            color: #666;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
+        }
+        .hidden_menu li:hover{
+            color:#009223;
+            text-decoration: underline;
+        }
+        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+            height: 260px;
+            /* 마우스를 갖다 대면 높이 생기게 하기 */
+            transition: 0.5s;
+            /* 천천히 나오게 하는 효과*/
+        }
+        .main_nav:hover .bg{
+            border-bottom: 0.5px solid #ddd;
+        }
+      
+    
+
+        /* 메인 컨테이너 (.container): 화면 전체를 감싸는 래퍼 */
+        .container {
             display: flex;
             flex-direction: column;
             min-width: 1280px;
-            background: url(./image/orderBackground.jpg) no-repeat 50% 0 #89cd2f;
+            /* 최소 너비 1280px */
+            background: url("./image/orderBackground.jpg") no-repeat 50% 0 #89cd2f;
+            /* 배경 이미지 설정 */
             text-align: center;
             align-items: center;
         }
 
-        .title-area {
+        /* 헤더 영역: 타이틀과 서브타이틀 */
+        .header-section {
             padding: 60px 0;
         }
 
-        .title {
+        .main-title {
             color: white;
             font-size: 80px;
             font-weight: bold;
         }
 
-        .sub-title {
+        .subtitle {
             color: white;
             margin-top: 30px;
         }
 
-        .step-area {
+        /* 주문 스텝(단계) 표시 영역 */
+        .step-section {
             width: 100%;
             height: 170px;
-
             display: flex;
             justify-content: center;
-
         }
 
-        .menu {
-            box-sizing: border-box;
+        /* 메뉴 리스트와 상세 정보 등을 감싸는 컨테이너 */
+        .menu-wrapper {
             width: 1150px;
             background-color: white;
             margin: 0 auto;
             margin-top: -40px;
             margin-bottom: 100px;
+            box-sizing: border-box;
         }
 
-        .menu-top-select {
+        /* 메뉴 카테고리 탭(즐겨찾기, 프로모션, 샌드위치, 샐러드 등) */
+        .menu-category {
             width: 100%;
-            box-shadow: 7px 7px 20px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .menu-top-select:hover {
-
+        .menu-category:hover {
             cursor: pointer;
         }
 
-        .menu-top-select ul {
+        .menu-category ul {
             list-style: none;
             display: flex;
-
         }
 
-        .menu-top-select li {
+        .menu-category li {
             width: calc(100% / 6);
             height: 75px;
             line-height: 75px;
             border: 1px solid #e5e5e5;
             box-sizing: border-box;
             font-size: 18px;
+            text-align: center;
         }
 
-        .notselect {
+        /* 카테고리 탭 비선택 / 선택 상태 */
+        .tab-unselected {
             color: #666666;
             background-color: #ffffff;
-
         }
 
-        .onselect {
+        .tab-selected {
             color: white;
             background-color: #009223;
         }
 
+        /* 실제 메뉴 리스트가 들어가는 영역 */
         .menu-list {
             width: 100%;
             display: flex;
@@ -96,15 +241,22 @@
             margin-top: 50px;
         }
 
-        .menu-box {
+        /* 개별 메뉴 아이템 박스 */
+        .menu-item {
             width: 370px;
             height: 330px;
             margin: 10px 0;
-            margin-left: calc((1150px - (370px * 3))/6);
+            /* 1150px에서 가로 3개 배치 시, 좌우 여백 계산 */
+            margin-left: calc((1150px - (370px * 3)) / 6);
             position: relative;
         }
 
-        .none-menu-box {
+        .menu-item:hover {
+            cursor: pointer;
+        }
+
+        /* 메뉴가 없는 경우 표시하는 박스 */
+        .no-menu-msg {
             width: 100%;
             height: 480px;
             align-items: center;
@@ -113,21 +265,18 @@
             position: relative;
         }
 
-        .none-menu-box::before {
+        .no-menu-msg::before {
             content: '';
             position: absolute;
             top: 160px;
             left: 50%;
-            background: url(./image/icon_exc_sm.png) no-repeat;
+            background: url("./image/icon_exc_sm.png") no-repeat center;
             width: 40px;
             height: 40px;
         }
 
-        .menu-box:hover {
-            cursor: pointer;
-        }
-
-        .new-icon {
+        /* NEW(신메뉴) 뱃지 */
+        .new-badge {
             position: absolute;
             top: 0;
             left: -8px;
@@ -137,71 +286,79 @@
             height: 30px;
             color: white;
             font-weight: bold;
-            background-color: #FFC300;
+            background-color: #ffc300;
+            text-align: center;
+            line-height: 30px;
         }
 
-        .menu-img-box {
+        /* 메뉴 이미지 컨테이너 */
+        .menu-img-container {
             width: 100%;
             height: 190px;
+            overflow: hidden;
+            /* 이미지 확대 시 넘침 방지 */
         }
 
-        .menu-img-box img {
+        .menu-img-container img {
             width: 100%;
             height: 100%;
-            display: block;
             object-fit: contain;
             transition: 0.3s;
+            display: block;
         }
 
-        .menu-name {
+        /* hover 시 이미지 확대 */
+        .menu-item:hover .menu-img-container img {
+            transform: scale(1.2);
+        }
+
+        /* 메뉴 텍스트 영역 */
+        .menu-text {
             width: 100%;
             height: 140px;
         }
 
-        .menu-name p:nth-child(1) {
+        .menu-text p:nth-child(1) {
             font-size: 22px;
             font-weight: bold;
         }
 
-        .menu-name p:nth-child(2) {
+        .menu-text p:nth-child(2) {
             font-size: 16px;
         }
 
-        .menu-name p:nth-child(3) {
+        .menu-text p:nth-child(3) {
             font-size: 18px;
             font-weight: bold;
-            color: #FFC300;
+            color: #ffc300;
             margin-top: 10px;
         }
 
-        .menu-box:hover .menu-img-box>img {
-            transform: scale(1.2);
-        }
-
-        .menu-info {
+        /* 메뉴 상세 정보 영역 (기본 숨김) */
+        .menu-detail {
             display: none;
             margin: 0 auto;
             width: 90%;
         }
 
-        .menu-info-top {
+        .menu-detail-top {
             display: flex;
             margin-bottom: 35px;
         }
 
-        .menu-info-top>div {
+        .menu-detail-top>div {
             width: 50%;
-
         }
 
-        .menu-info-img img {
-            background-position: center;
-            background-size: contain;
+        /* 메뉴 상세 이미지 영역 */
+        .detail-img img {
             width: 100%;
             height: 440px;
+            object-fit: contain;
         }
 
-        .menu-info-text {
+        /* 메뉴 상세 텍스트 */
+        .detail-text {
             width: 100%;
             height: 440px;
             display: flex;
@@ -212,63 +369,64 @@
             box-sizing: border-box;
         }
 
-        .type {
+        .detail-type {
             color: #009223;
             font-weight: bold;
             font-size: 18px;
         }
 
-        .menuname {
+        .detail-name {
             display: block;
             color: #292929;
             font-size: 50px;
             font-weight: 300;
-            line-break: anywhere;
             margin-bottom: 15px;
         }
 
-        .menuEngNam {
+        .detail-eng {
             color: #999;
             font-size: 18px;
             margin-bottom: 15px;
         }
 
-        .menuinfo {
+        .detail-info {
             color: #999;
             font-size: 18px;
-            line-break: anywhere;
+            margin-bottom: 15px;
             text-align: left;
-            margin-bottom: 15px;
         }
 
-        .orderbtn {
+        .detail-order-btn {
             color: white;
             background-color: #009223;
             border-radius: 30px;
             font-size: 18px;
             font-weight: bold;
-            width: 150px;
+            width: 160px;
             height: 50px;
-            padding-right: 25px;
             line-height: 50px;
+            padding-right: 25px;
             position: relative;
+            text-align: center;
+            cursor: pointer;
         }
 
-        .orderbtn::after {
+        .detail-order-btn::after {
             content: '';
             position: absolute;
-            top: 17px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: url(./image/icon_check.png) no-repeat;
+            top: 15px;
+            right: 15px;
+            width: 25px;
+            height: 20px;
+            background: url("./image/icon_check.png") no-repeat center/cover;
         }
 
-        .menu-info-middle {
+        /* 영양성분표, 안내문구 */
+        .menu-detail-middle {
             margin-bottom: 30px;
         }
 
-        .menu-info-middle>p:nth-child(1) {
+        .menu-detail-middle>p:nth-child(1) {
             text-align: justify;
             font-size: 26px;
             font-weight: bold;
@@ -279,7 +437,6 @@
             border-bottom: 1px solid #009223;
             margin-top: 30px;
             display: flex;
-
         }
 
         .Nutrition-Facts-head p {
@@ -288,6 +445,7 @@
             padding: 20px;
             font-size: 16px;
             color: #005a15;
+            text-align: center;
         }
 
         .Nutrition-Facts-body {
@@ -301,21 +459,22 @@
             padding: 20px;
             font-size: 16px;
             color: #292929;
+            text-align: center;
         }
 
-        .menu-info-middle>p:nth-child(4) {
+        .menu-detail-middle>p:nth-child(4) {
             margin-top: 20px;
             text-align: justify;
             font-size: 13px;
             color: #999;
         }
 
-        .info-btn-area {
+        .info-button-area {
             display: flex;
             justify-content: end;
         }
 
-        .info-btn {
+        .info-button {
             background-color: #292929;
             color: white;
             padding: 10px 20px;
@@ -323,19 +482,22 @@
             margin: 0 10px;
         }
 
-        .orderPopup {
-            display: flex;
+        /* 주문 설정 팝업 (초기 숨김) */
+        .order-popup-overlay {
+            display: none;
+            /* 초기에는 안 보이게 */
             position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            background-color: #00000030;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* 반투명 배경 */
             align-items: center;
             justify-content: center;
         }
 
-        .popup {
+        .popup-box {
             z-index: 99;
             width: 510px;
             height: 700px;
@@ -343,10 +505,12 @@
             padding: 40px 50px;
             border-radius: 30px;
             box-sizing: border-box;
+            position: relative;
+            /* 닫기(X) 버튼 위치를 잡기 위해 relative 추가 */
         }
 
-        .popup>h1 {
-            color: #FF8300;
+        .popup-box>h1 {
+            color: #ff8300;
             font-size: 30px;
             border-bottom: 6px solid #009223;
             padding-bottom: 20px;
@@ -356,25 +520,36 @@
             width: 100%;
         }
 
-        .subPick {
+        /* 팝업 닫기(X) 버튼 */
+        .popup-close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #333;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 썹픽(추천 조합) 안내 섹션 */
+        .subpick-section {
             display: flex;
             align-items: center;
             margin-top: 20px;
         }
 
-        .subPickText {
+        .subpick-title {
             background-color: #ff8200;
             color: white;
             font-size: 16px;
             height: 32px;
             padding: 0 16px;
             border-radius: 100px;
-            text-align: center;
             line-height: 32px;
             margin-left: 20px;
         }
 
-        .subPickInfo {
+        .subpick-info {
             font-size: 12px;
             text-align: justify;
             background-color: #f7f7f7;
@@ -384,150 +559,261 @@
             margin-left: 25px;
         }
 
-        .subPickMenu {
+        /* 썹픽(추천 재료) 목록 */
+        .subpick-menu {
             display: flex;
             width: 100%;
-            text-align: justify;
             align-items: baseline;
         }
 
-        .subPickMenu>p {
+        .subpick-menu>p {
             box-sizing: border-box;
             margin-top: 20px;
             font-size: 20px;
             font-weight: bold;
-
         }
 
-        .subPickMenu>p:nth-child(1) {
+        .subpick-menu>p:nth-child(1) {
             padding-left: 30px;
             width: 35%;
             color: #009223;
+            text-align: justify;
         }
 
-        .subPickMenu>p:nth-child(2) {
+        .subpick-menu>p:nth-child(2) {
             padding-left: 10px;
             width: 65%;
             color: #666666;
             line-height: 120%;
+            text-align: justify;
         }
 
-        .subPickMenu:last-child {
+        .subpick-menu:last-child {
             border-bottom: 2px solid #009223;
             padding-bottom: 30px;
         }
 
-        .choose-bread {
+        /* 빵 길이 선택 */
+        .bread-choice-label {
             width: 33%;
             margin: 0 auto;
             transform: translateY(-50%);
             background-color: white;
             color: #009223;
             font-size: 20px;
+            text-align: center;
+            margin-top: 40px;
         }
 
-        .choose-bread-cm {
+        .bread-radio-group {
             display: flex;
-
+            justify-content: center;
+            margin-top: 5px;
         }
 
-        .choose-bread-cm label {
+        .bread-radio-group label {
             display: flex;
+            align-items: center;
             width: 50%;
             padding-left: 40px;
-
         }
 
-        .choose-bread-cm input {
+        .bread-radio-group input {
             width: 26px;
             height: 26px;
             margin-right: 5px;
         }
 
-        .choose-bread-cm p {
+        .bread-radio-group p {
             font-size: 20px;
         }
 
-        .order-way {
+        /* 주문 방법 버튼(썹픽 / 직접선택) */
+        .order-method-box {
             margin-top: 30px;
             width: 100%;
             height: 60px;
-            background-color: red;
             display: flex;
             box-sizing: border-box;
             align-items: center;
-            justify-content: center;
+            justify-content: space-around;
         }
 
-        .order-way-btn {
-            width: 50%;
+        .order-method-btn {
+            width: 40%;
             height: 100%;
             line-height: 120%;
+            text-align: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 18px;
+            background-color: #005a15;
+            border-radius: 30px;
+            text-decoration: none;
+        }
+
+        /*푸터*/
+        footer{
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+        /*상단*/
+        .footer_menu{
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+        footer ul{
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+        footer li{
+            margin-right: 29px;
+        }
+        footer a{
+            text-decoration: none;
+            color: inherit;
+        }
+        footer strong{
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+        /*하단*/
+        .footer_info{
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+        footer p{
+            padding-right: 5px;
+        }
+        footer span{
+            font-weight: bold;
+        }
+        .copyright{
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+        /*sns*/
+        .instagram{
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+        .instagram:hover{
+            background-image: url("../footer/imgs/instagram_hover.png");
+        }
+        .facebook{
+            width: 50px;
+            height: 50px;
+            background-image: url("../footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+        .facebook:hover{
+            background-image: url("../footer/imgs/facebook_hover.png");
         }
     </style>
+
+    <!-- JavaScript 영역 -->
     <script>
-        const stepTitle = ["매장선택", "메뉴선택", "주문하기", ""]
-        function step(num) {
-            const area = document.querySelector(".step-area");
+        /*
+         * 스텝(1~3) 별 제목 설정 (ex: 1=매장선택, 2=메뉴선택, 3=주문하기)
+         */
+        const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""];
+
+        /*
+         * showStepIndicator(stepNum):
+         * - 상단 .step-section에 스텝 이미지를 동적으로 생성하고
+         *   현재 스텝을 강조 표시
+         */
+        function showStepIndicator(stepNum) {
+            const stepArea = document.querySelector(".step-section");
+            // 초기화
+            stepArea.innerHTML = "";
+
             for (let i = 0; i < 4; i++) {
                 const imgBox1 = document.createElement("div");
                 const imgBox2 = document.createElement("div");
 
                 const stepImg = document.createElement("img");
-                const pointArea = document.createElement("img");
-                const on = `_on`
+                const pointImg = document.createElement("img");
+                const onSuffix = `_on`;
                 const margin = 10;
+
                 stepImg.style.marginLeft = `${margin}px`;
                 stepImg.style.marginRight = `${margin}px`;
-                pointArea.style.marginLeft = `${margin}px`;
-                pointArea.style.marginRight = `${margin}px`;
-                if (num == i + 1) {
-                    stepImg.src = `./image/step${(i + 1) + on}.png`;
-                    stepImg.style.marginRight = '-45px';
-                    stepImg.style.marginTop = '-15px'
-                    stepImg.classList = 'onStep';
-                    pointArea.src = `./image/step_point_on.png`;
+                pointImg.style.marginLeft = `${margin}px`;
+                pointImg.style.marginRight = `${margin}px`;
+                pointImg.style.marginTop = "30px";
+
+                if (stepNum === i + 1) {
+                    stepImg.src = `./image/step${i + 1}${onSuffix}.png`;
+                    stepImg.style.marginRight = "-45px";
+                    stepImg.style.marginTop = "-15px";
+                    stepImg.classList.add("onStep");
+                    pointImg.src = `./image/step_point_on.png`;
                 } else {
                     stepImg.src = `./image/step${i + 1}.png`;
-                    if (i == 3) {
-                        pointArea.style.display = 'none'
+                    if (i === 3) {
+                        // 마지막 스텝: point 이미지 미표시
+                        pointImg.style.display = "none";
                     } else {
-                        pointArea.src = `./image/step_point_off.png`;
+                        pointImg.src = `./image/step_point_off.png`;
                     }
                 }
-                pointArea.style.marginTop = '30px';
-                area.appendChild(imgBox1);
                 imgBox1.appendChild(stepImg);
-                area.appendChild(imgBox2);
-                imgBox2.appendChild(pointArea);
-
-
+                imgBox2.appendChild(pointImg);
+                stepArea.appendChild(imgBox1);
+                stepArea.appendChild(imgBox2);
             }
-            const onstep = document.querySelector(".onStep").parentElement;
+
+            const onstepParent = document.querySelector(".onStep")?.parentElement;
+            if (!onstepParent) return;
+
             const stepText1 = document.createElement("p");
-            stepText1.innerHTML = `STEP${num}`
+            stepText1.textContent = `STEP${stepNum}`;
             const stepText2 = document.createElement("p");
-            stepText2.innerHTML = `${stepTitle[num - 1]}`
-            onstep.appendChild(stepText1);
-            onstep.appendChild(stepText2);
-            onstep.style.position = "relative"
-            stepText1.style.position = "absolute"
-            stepText1.style.top = "5px"
-            stepText1.style.left = "110px"
-            stepText1.style.fontSize = "16px"
-            stepText1.style.fontWeight = "bold"
-            stepText1.style.color = "#ffc300"
+            stepText2.textContent = stepTitles[stepNum - 1];
 
-            stepText2.style.position = "absolute"
-            stepText2.style.top = "25px"
-            stepText2.style.left = "110px"
-            stepText2.style.fontSize = "24px"
-            stepText2.style.fontWeight = "bold"
-            stepText2.style.color = "white"
+            onstepParent.appendChild(stepText1);
+            onstepParent.appendChild(stepText2);
 
+            // 위치/스타일
+            onstepParent.style.position = "relative";
+            stepText1.style.position = "absolute";
+            stepText1.style.top = "5px";
+            stepText1.style.left = "110px";
+            stepText1.style.fontSize = "16px";
+            stepText1.style.fontWeight = "bold";
+            stepText1.style.color = "#ffc300";
+
+            stepText2.style.position = "absolute";
+            stepText2.style.top = "25px";
+            stepText2.style.left = "110px";
+            stepText2.style.fontSize = "24px";
+            stepText2.style.fontWeight = "bold";
+            stepText2.style.color = "white";
         }
 
+        /*
+        * 메뉴 데이터(2차원 배열)
+        * - data[0]: 샌드위치
+        * - data[1]: 샐러드
+        * - data[2]: 랩 기타
+        * - data[3]: 사이드 음료
+        */
+
         const data = [
+            // [0] 샌드위치
             [
                 {
                     name: "콰트로 치즈 스테이크&머쉬룸",
@@ -562,7 +848,7 @@
                     engName: "Beef & Mushroom",
                     kcal: 292,
                     new: 0,
-                    info: "부드럽고 풍미 넘치는 안창살과 담백하고 건강한 머쉬룸이 함께 어우러져 이루는 맛있는 조합의 샌드위치"
+                    info: "부드럽고 풍미 넘치는 안창살과 담백하고 건강한 머쉬룸이 함께 어우러져 이루는 맛있는 조합"
                 },
                 {
                     name: "스테이크 & 치즈",
@@ -689,6 +975,7 @@
                     new: 0
                 }
             ],
+            // [1] 샐러드
             [
                 {
                     name: "안창 비프",
@@ -823,6 +1110,7 @@
                     new: 0
                 }
             ],
+            // [2] 랩 기타
             [
                 {
                     name: "쉬림프 에그마요 랩",
@@ -843,6 +1131,7 @@
                     new: 1
                 }
             ],
+            // [3] 사이드 음료
             [
                 {
                     name: "민트 초코 쿠키",
@@ -974,158 +1263,334 @@
                     new: 0
                 }
             ]
-
-        ]
-
-        window.addEventListener("load", (e) => {
-            const menulist = document.querySelector(".menu-list");
-            menu(data[0], "샌드위치");
-        })
-
-        function menu(menuData, type) {
-            const menulist = document.querySelector(".menu-list");
-            menulist.style.display = "flex";
-            const menuinfo = document.querySelector(".menu-info")
-            menuinfo.style.display = "none"
-            menulist.replaceChildren()
-            menuData.forEach((item, index) => {
-                const menuBox = document.createElement("div");
-                menuBox.classList = 'menu-box';
-                menulist.appendChild(menuBox);
+        ];
 
 
-                menuBox.addEventListener("click", (e) => {
-                    menuClick(item);
+        /*
+         * 페이지 로드 시, 스텝2(메뉴선택) 표시 + 샌드위치 카테고리 로드
+         */
+        window.addEventListener("load", () => {
+            showStepIndicator(2);              // Step 2
+            renderMenuList(data[0], "샌드위치"); // 샌드위치 기본
+        });
+
+        /*
+         * renderMenuList(dataArray, category)
+         * - dataArray: 해당 카테고리의 메뉴 목록
+         * - category: "샌드위치", "샐러드", "랩 기타", "사이드 음료"
+         */
+        function renderMenuList(dataArray, category) {
+            const menuListEl = document.querySelector(".menu-list");
+            const menuDetailEl = document.querySelector(".menu-detail");
+
+            // 메뉴 리스트 보이기, 메뉴 상세 숨기기
+            menuListEl.style.display = "flex";
+            menuDetailEl.style.display = "none";
+
+            // 기존 항목 초기화
+            menuListEl.replaceChildren();
+
+            // 각 메뉴 객체를 DOM으로 생성
+            dataArray.forEach((item) => {
+                const itemEl = document.createElement("div");
+                itemEl.classList.add("menu-item");
+                menuListEl.appendChild(itemEl);
+
+                // 메뉴 아이템 클릭 시 상세보기
+                itemEl.addEventListener("click", () => {
+                    showMenuDetail(item);
                 });
 
-                if (item.new == 1) {
-                    const newIcon = document.createElement("div");
-                    newIcon.classList = 'new-icon';
-                    newIcon.innerHTML = 'new';
-                    menuBox.appendChild(newIcon);
+                // NEW 뱃지 표시
+                if (item.new === 1) {
+                    const newBadgeEl = document.createElement("div");
+                    newBadgeEl.classList.add("new-badge");
+                    newBadgeEl.textContent = "new";
+                    itemEl.appendChild(newBadgeEl);
                 }
 
-                const imgBox = document.createElement("div");
-                imgBox.classList = 'menu-img-box';
-                menuBox.appendChild(imgBox);
+                // 이미지 컨테이너
+                const imgContainer = document.createElement("div");
+                imgContainer.classList.add("menu-img-container");
+                itemEl.appendChild(imgContainer);
 
-                const img = document.createElement("img");
-                img.src = `./image/${type}/${item.name}.png`;
-                img.alt = `${item.name}.png`;
-                imgBox.appendChild(img);
+                // 이미지
+                const imgEl = document.createElement("img");
+                imgEl.src = `./image/${category}/${item.name}.png`;
+                imgEl.alt = item.name;
+                imgContainer.appendChild(imgEl);
 
-                const menuName = document.createElement("div");
-                menuName.classList = 'menu-name';
-                menuBox.appendChild(menuName);
+                // 텍스트 영역
+                const textEl = document.createElement("div");
+                textEl.classList.add("menu-text");
+                itemEl.appendChild(textEl);
 
-                const menuinfo1 = document.createElement("p");
-                menuinfo1.innerHTML = item.name;
-                menuName.appendChild(menuinfo1);
+                // 1) 한글명
+                const nameP = document.createElement("p");
+                nameP.textContent = item.name;
+                textEl.appendChild(nameP);
 
-                const menuinfo2 = document.createElement("p");
-                menuinfo2.innerHTML = item.engName;
-                menuName.appendChild(menuinfo2);
+                // 2) 영문명
+                const engP = document.createElement("p");
+                engP.textContent = item.engName || "";
+                textEl.appendChild(engP);
 
+                // 3) 칼로리
                 if (item.kcal) {
-                    const menuinfo3 = document.createElement("p");
-                    menuinfo3.innerHTML = `${item.kcal}kcal`;
-                    menuName.appendChild(menuinfo3);
+                    const kcalP = document.createElement("p");
+                    kcalP.textContent = `${item.kcal}kcal`;
+                    textEl.appendChild(kcalP);
                 }
-            })
+            });
         }
 
-        function nomenu(text) {
-            const menulist = document.querySelector(".menu-list")
-            menulist.replaceChildren()
+        /*
+         * renderNoMenu(category)
+         * - 메뉴가 없는 경우 "없습니다" 메시지 표시
+         */
+        function renderNoMenu(category) {
+            const menuListEl = document.querySelector(".menu-list");
+            menuListEl.replaceChildren();
 
-            const menuBox = document.createElement("div");
-            menuBox.classList = 'none-menu-box';
-            menuBox.innerHTML = `${text} (이/가) 없습니다`
-            menulist.appendChild(menuBox);
+            const noMenuEl = document.createElement("div");
+            noMenuEl.classList.add("no-menu-msg");
+            noMenuEl.textContent = `${category} (이/가) 없습니다.`;
+            menuListEl.appendChild(noMenuEl);
         }
 
-        function select(obj) {
-            notslect();
-            obj.classList = "onselect";
-            const selectMenu = obj.innerHTML;
-            let dataNum = null;
-            switch (selectMenu) {
-                case "샌드위치": dataNum = 1; break;
-                case "샐러드": dataNum = 2; break;
-                case "랩 기타": dataNum = 3; break;
-                case "사이드 음료": dataNum = 4; break;
+        /*
+         * handleCategoryClick(tabEl)
+         * - 카테고리 탭을 클릭했을 때, 어떤 데이터를 로드할지 결정
+         */
+        function handleCategoryClick(tabEl) {
+            // 모든 탭을 비선택 상태로
+            resetCategoryTabs();
+            // 현재 탭을 선택 상태로
+            tabEl.className = "tab-selected";
+
+            // 탭 이름 추출
+            const categoryName = tabEl.textContent.trim();
+            let dataIndex = null;
+
+            switch (categoryName) {
+                case "샌드위치": dataIndex = 0; break;
+                case "샐러드": dataIndex = 1; break;
+                case "랩 기타": dataIndex = 2; break;
+                case "사이드 음료": dataIndex = 3; break;
+                // 즐겨찾는 메뉴, 프로모션은 별도 로직 or 데이터가 없다면 null
+                case "즐겨찾는 메뉴":
+                case "프로모션":
+                    dataIndex = null;
+                    break;
             }
-            dataNum ?
-                menu(data[dataNum - 1], selectMenu) : nomenu(selectMenu);
+
+            // dataIndex가 있으면 해당 카테고리 메뉴, 없으면 안내 메시지
+            if (dataIndex !== null) {
+                renderMenuList(data[dataIndex], categoryName);
+            } else {
+                renderNoMenu(categoryName);
+            }
         }
 
-        function notslect() {
-            const lis = document.querySelectorAll(".menu-top-select li");
-            lis.forEach((item) => {
-                item.classList = "notselect";
-            })
-
+        /*
+         * resetCategoryTabs()
+         * - 모든 카테고리 탭을 'tab-unselected'로 설정
+         */
+        function resetCategoryTabs() {
+            const allTabs = document.querySelectorAll(".menu-category li");
+            allTabs.forEach((li) => {
+                li.className = "tab-unselected";
+            });
         }
 
-        function menuClick(data) {
-            console.log(data);
-            const menulist = document.querySelector(".menu-list");
-            menulist.style.display = "none";
-            const menuinfo = document.querySelector(".menu-info")
-            menuinfo.style.display = "block";
+        /*
+         * showMenuDetail(menuItem)
+         * - 메뉴 클릭 시 상세 정보 표시(기존 리스트 숨김)
+         */
+        function showMenuDetail(menuItem) {
+            console.log("선택된 메뉴:", menuItem);
 
+            // 메뉴 목록 숨기고 상세 페이지 노출
+            document.querySelector(".menu-list").style.display = "none";
+            const detailEl = document.querySelector(".menu-detail");
+            detailEl.style.display = "block";
 
-            const menuinfodata = document.querySelectorAll(".menu-info-text p")
-            menuinfodata[1].innerHTML = data.name;
-            menuinfodata[2].innerHTML = data.engName;
-            menuinfodata[3].innerHTML = data.info;
+            // 상세 내용 채우기
+            const detailData = document.querySelectorAll(".detail-text p");
+            // detail-text 내 p들 (0: type, 1: name, 2: eng, 3: info)
+            detailData[0].textContent = "샌드위치"; // 실제 카테고리명 사용 가능
+            detailData[1].textContent = menuItem.name || "";
+            detailData[2].textContent = menuItem.engName || "";
+            detailData[3].textContent = menuItem.info || "";
 
-            const menuimg = document.querySelector(".menu-info-img img");
-            menuimg.src = `./image/샌드위치/${data.name}.png`;
+            // 이미지도 업데이트
+            const imgEl = document.querySelector(".detail-img img");
+            imgEl.src = `./image/샌드위치/${menuItem.name}.png`;
         }
+
+        /*
+         * closePopup()
+         * - 팝업 닫기 (우측 상단 X 버튼에서 호출)
+         */
+        function closePopup() {
+            const popupOverlay = document.querySelector(".order-popup-overlay");
+            popupOverlay.style.display = "none";
+        }
+
+        /*
+         * openPopup()
+         * - 팝업 열기 (원하는 시점에 호출)
+         */
+        function openPopup() {
+            const popupOverlay = document.querySelector(".order-popup-overlay");
+            popupOverlay.style.display = "flex";
+        }
+
+        function saveBreadLength() {
+            // 1) 라디오 버튼 중 체크된 값
+            const selectedRadio = document.querySelector('input[name="bread"]:checked');
+            if (!selectedRadio) {
+                console.log("빵 길이가 선택되지 않았습니다.");
+                return;
+            }
+            const lengthValue = selectedRadio.value; // "15" 또는 "30"
+
+            // 2) orderInfo 가져오기 (없으면 빈 객체)
+            let orderInfo = JSON.parse(localStorage.getItem("orderInfo")) || {};
+
+            // 3) orderInfo.breadLength 에 저장
+            orderInfo.breadLength = lengthValue;
+
+            // 4) 다시 localStorage에 저장
+            localStorage.setItem("orderInfo", JSON.stringify(orderInfo));
+
+            console.log("빵 길이 저장:", lengthValue);
+        }
+
     </script>
 </head>
 
-<body onload="step(2)">
-    <div class="wrap">
-        <div class="title-area">
-            <p class="title">Fast-Sub</p>
-            <p class="sub-title">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+<body>
+    <header>
+        <div class="logo">
+            <a href=#><img src="../header/image/logo_w.png"></a>
         </div>
-        <div class="step-area">
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"></a></li>
+            </ul>
+        </div>
+        <nav class="main_nav">
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>샌드위치</li>
+                        <li><a href=""></a>랩ㆍ기타</li>
+                        <li><a href=""></a>샐러드</li>
+                        <li><a href=""></a>아침메뉴</li>
+                        <li><a href=""></a>스마일 썹</li>
+                        <li><a href=""></a>단체메뉴</li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 이용방법</li>
+                        <li><a href=""></a>단체메뉴 이용방법</li>
+                        <li><a href=""></a>신선한 재료 소개</li>
+                        <li><a href=""></a>App 이용방법</li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>이벤트ㆍ프로모션</li>
+                        <li><a href=""></a>뉴스ㆍ공지사항</li>
+                        <li><a href=""></a>광고영상</li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 역사</li>
+                        <li><a href=""></a>써브웨이 약속</li>
+                        <li><a href=""></a>샌드위치 아티스트 지원</li>
+                        <li><a href=""></a>매장찾기</li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>써브웨이 프랜차이즈</li>
+                        <li><a href=""></a>가맹관련 FAQ</li>
+                        <li><a href=""></a>가맹신청ㆍ문의</li>
+                        <li><a href=""></a>지사안내</li>
+                        <li><a href=""></a>사업설명회</li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <!--하위메뉴-->
+                    <ul class="hidden_menu">
+                        <li><a href=""></a>FAST-SUB</li>
+                        <li><a href=""></a>HOME-SUB</li>
+                        <li><a href=""></a>단체주문</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- 상단 타이틀 -->
+        <div class="header-section">
+            <p class="main-title">Fast-Sub</p>
+            <p class="subtitle">온라인 주문 후 매장에서 픽업/시식하는 서비스 입니다.</p>
+        </div>
 
-        </div>
-        <div class="menu">
-            <div class="menu-top-select">
+        <!-- 스텝 표시 영역 -->
+        <div class="step-section"></div>
+
+        <!-- 메뉴 컨테이너 -->
+        <div class="menu-wrapper">
+            <!-- 메뉴 카테고리 탭 -->
+            <div class="menu-category">
                 <ul>
-                    <li onclick="select(this)">즐겨찾는 메뉴</li>
-                    <li onclick="select(this)">프로모션</li>
-                    <li onclick="select(this)" class="onselect">샌드위치</li>
-                    <li onclick="select(this)">샐러드</li>
-                    <li onclick="select(this)">랩 기타</li>
-                    <li onclick="select(this)">사이드 음료</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">즐겨찾는 메뉴</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">프로모션</li>
+                    <li class="tab-selected" onclick="handleCategoryClick(this)">샌드위치</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">샐러드</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">랩 기타</li>
+                    <li class="tab-unselected" onclick="handleCategoryClick(this)">사이드 음료</li>
                 </ul>
             </div>
 
-            <div class="menu-list">
-            </div>
+            <!-- 실제 메뉴 목록(샌드위치가 기본 표시) -->
+            <div class="menu-list"></div>
 
-            <div class="menu-info">
-                <div class="menu-info-top">
-                    <div class="menu-info-img">
-
-                        <img src="" alt="">
+            <!-- 메뉴 상세 정보 (기본 숨김) -->
+            <div class="menu-detail">
+                <div class="menu-detail-top">
+                    <!-- 왼쪽: 메뉴 이미지 -->
+                    <div class="detail-img">
+                        <img src="" alt="메뉴 이미지">
                     </div>
-                    <div class="menu-info-text">
-                        <p class="type">샌드위치</p>
-                        <p class="menuname"></p>
-                        <p class="menuEngNam"></p>
-                        <p class="menuinfo"></p>
-                        <p class="orderbtn">주문시작하기</p>
+                    <!-- 오른쪽: 메뉴 텍스트 -->
+                    <div class="detail-text">
+                        <p class="detail-type">샌드위치</p>
+                        <p class="detail-name"></p>
+                        <p class="detail-eng"></p>
+                        <p class="detail-info"></p>
+                        <p class="detail-order-btn" onclick="openPopup()">주문시작하기</p>
                     </div>
                 </div>
-                <div class="menu-info-middle">
+
+                <!-- 중간 영역: 영양성분표, 안내문구 등 -->
+                <div class="menu-detail-middle">
                     <p>영양성분표</p>
+                    <!-- 영양성분표 헤더 -->
                     <div class="Nutrition-Facts-head">
                         <p>중량(g)</p>
                         <p>열량(kcal)</p>
@@ -1134,6 +1599,7 @@
                         <p>당류(g)</p>
                         <p>나트륨(mg)</p>
                     </div>
+                    <!-- 영양성분표 바디 (예시 데이터) -->
                     <div class="Nutrition-Facts-body">
                         <p>302</p>
                         <p>465</p>
@@ -1142,83 +1608,75 @@
                         <p>8.7</p>
                         <p>929(46%)</p>
                     </div>
+                    <!-- 안내문구 -->
                     <p>
                         ※ 15cm 샌드위치의 영양 정보는 기본 야채 5종(양상추, 토마토, 오이, 피망(파프리카), 양파), 15cm 위트 브레드 및 제품에 따른 미트류가 포함되어 있으며,
-                        치즈와
-                        소스는 제외됩니다.
-                        <br>
-                        ※ 샐러드의 영양 정보는 기본 야채 5종(양상추, 토마토, 오이, 피망(파프리카), 양파) 및 제품에 따른 미트류가 포함되어 있으며, 치즈와 소스는 제외됩니다.
-                        <br>
-                        ※ 단, 메뉴명에 ‘치즈’가 포함되는 경우 치즈의 영양정보도 포함됩니다.
-                        <br>
-                        ※ 랩의 영양 정보는 치즈와 소스를 포함한 고정 레시피를 기준으로 합니다.
-                        <br>
-                        <br>
-                        ※ 아침메뉴의 영양 정보는 15cm 위트 브레드 및 제품에 따른 미트류, 야채, 아메리칸 치즈가 포함되어 있으며, 소스는 제외됩니다.
-                        <br>
-                        ※ 영양 정보표에 표시된 제품의 영양 정보/중량은 표준 레시피를 기준으로 하나, 계절의 변화, 공급사의 변화, 원재료의 수급 상황 및 제품 제조시에 발생하는 중량의 차이
-                        등에 따라 실제 제공되는 제품의 영양 정보/중량과 차이가 있을 수 있습니다.
-                        <br>
-                        ※ 괄호 안 %는 1일 영양소 기준치에 대한 비율입니다.
+                        치즈와 소스는 제외됩니다.
+                        <br><br>
+                        ※ (이하 동일 안내문)
                     </p>
-                    <div class="info-btn-area">
-                        <div class="info-btn">
-                            원산지 정보
-                        </div>
-                        <div class="info-btn">
-                            알레르기 정보
-                        </div>
+                    <!-- 기타 정보 버튼 (원산지, 알레르기) -->
+                    <div class="info-button-area">
+                        <div class="info-button">원산지 정보</div>
+                        <div class="info-button">알레르기 정보</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="orderPopup">
-            <div class="popup">
+
+        <!-- 주문 설정 팝업 (초기에는 숨김) -->
+        <div class="order-popup-overlay">
+            <div class="popup-box">
+                <!-- 오른쪽 상단 닫기 버튼(X) -->
+                <div class="popup-close-button" onclick="closePopup()">⨉</div>
+
                 <h1>에그마요</h1>
                 <div class="popup-content">
-                    <div class="subPick">
-                        <div class="subPickText">
-                            썹픽이란?
-                        </div>
-                        <div class="subPickInfo">
+                    <!-- 썹픽 안내 (추천 조합) -->
+                    <div class="subpick-section">
+                        <div class="subpick-title">썹픽이란?</div>
+                        <div class="subpick-info">
                             재료를 고르지 않고,<br>
                             써브웨이 추천 조합을 한 번에 주문하는 방식
                         </div>
                     </div>
-                    <div class="subPickMenu">
+
+                    <!-- 썹픽이 추천하는 재료 목록 -->
+                    <div class="subpick-menu">
                         <p>빵</p>
                         <p>파마산 오레가노</p>
                     </div>
-                    <div class="subPickMenu">
+                    <div class="subpick-menu">
                         <p>치즈</p>
                         <p>콰트로 치즈</p>
                     </div>
-                    <div class="subPickMenu">
+                    <div class="subpick-menu">
                         <p>토스팅</p>
                         <p>토스팅</p>
                     </div>
-                    <div class="subPickMenu">
+                    <div class="subpick-menu">
                         <p>야채</p>
                         <p>양상추 토마토 오이 피망(파프리카) 양파</p>
                     </div>
-                    <div class="subPickMenu">
+                    <div class="subpick-menu">
                         <p>소스/시즈닝</p>
                         <p>스위트 어니언 마요네즈</p>
                     </div>
                 </div>
-                <div class="choose-bread">
-                    빵 길이 선택
-                </div>
-                <div class="choose-bread-cm">
+
+                <!-- 빵 길이 선택 -->
+                <div class="bread-choice-label">빵 길이 선택</div>
+                <div class="bread-radio-group">
                     <label>
-                        <input type="radio" name="bread" id="bread15" value="15">
+                        <input type="radio" name="bread" value="15">
                         <p>15cm</p>
                     </label>
                     <label>
-                        <input type="radio" name="bread" id="bread30" value="30">
+                        <input type="radio" name="bread" value="30">
                         <p>30cm</p>
                     </label>
                 </div>
+<<<<<<< HEAD
                 <div class="order-way">
                     <div class="order-way-btn">
                         썹픽으로<br>
@@ -1228,10 +1686,46 @@
                         모든 재료<br>
                         직접 선택하기
                     </div>
+=======
+
+                <!-- 주문 방법 선택 (썹픽 / 직접선택) -->
+                <div class="order-method-box">
+                    <a href="./order_step3.html" class="order-method-btn" onclick="saveBreadLength()">
+                        썹픽으로<br>한 번에 주문하기
+                    </a>
+                    <a href="./order_step3.html" class="order-method-btn" onclick="saveBreadLength()">
+                        모든 재료<br>직접 선택하기
+                    </a>
+>>>>>>> origin/master
                 </div>
             </div>
         </div>
     </div>
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
 </body>
 
 </html>
