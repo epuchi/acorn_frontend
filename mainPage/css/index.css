@@ -970,4 +970,60 @@ ul{
 .menu_next_button:hover:not(:disabled) {
     background: #fac608;
     color: #000;
+
+}
+
+/*퀵 메뉴*/
+.quick_menu {
+    min-width: 1200px;
+    background-color: #fff;
+    padding: 40px 0px 37px 0px;
+}
+.quick_menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+.quick_menu ul li {
+    margin-left: 80px;
+}
+.quick_menu ul li a {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    padding-left: 90px;
+}
+.quick_menu ul li .icon {
+    background: url("/imgs/quickmenu.png");
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.quick_menu ul li strong {
+    color: #292929;
+    font-size: 18px;
+    display: block;
+    margin-top: 12px;
+    text-align: left;
+}
+.quick_menu ul li span {
+    color: #999999;
+    font-size: 13px;
+    display: block;
+    margin-top: 6px;
+    text-align: left;
+}
+.quick_menu ul li.qm01 .icon {
+    background-position: 0px 0px;
+}
+.quick_menu ul li.qm02 .icon {
+    background-position: -70px 0px;
+}
+.quick_menu ul li.qm03 .icon {
+    background-position: -140px 0px;
+}
+.quick_menu ul li.qm04 .icon {
+    background-position: -210px 0px;
 }
