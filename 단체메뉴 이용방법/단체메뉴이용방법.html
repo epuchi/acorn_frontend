@@ -470,6 +470,7 @@
         let autoMove ;
         
         function next_btn() {
+            clearTimeout(autoMove);
             const move_content = document.querySelectorAll(".move_content");
 
             move_content.forEach((item, index) => {
@@ -491,6 +492,7 @@
         }
 
         function prev_btn() {
+            clearTimeout(autoMove);
             const move_content = document.querySelectorAll(".move_content");
 
             move_content.forEach((item, index) => {
@@ -512,6 +514,7 @@
         }
 
     function pager_btn(index) {
+        clearTimeout(autoMove);
         const move_content = document.querySelectorAll(".move_content");
 
         move_content.forEach((item) => {
