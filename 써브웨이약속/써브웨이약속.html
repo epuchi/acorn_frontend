@@ -349,9 +349,7 @@
         }
 
         .sub_content li:nth-child(5){
-            height:250px;
-            margin-bottom: 0;
-            padding:0;
+            height:200px;
         }
         .num{
             display:flex;
@@ -519,12 +517,11 @@
             </div>
         </a>
         <ul>
-            <li><a href="">써브웨이 프랜차이즈</a></li>
-            <li><a href="">가맹관련FAQ</a></li>
-            <li><a href="">가맹신청ㆍ문의</a></li>
-            <li><a href="" style="color:#009223";>지사안내</a>
+            <li><a href="">써브웨이 역사</a></li>
+            <li><a href="" style="color:#009223";>써브웨이 약속</a>
                 <div class="underline"></div></li>
-            <li><a href="">사업설명회</a></li>
+            <li><a href="">샌드위치 아티스트 지원</a></li>
+            <li><a href="">매장찾기</a></li>
         </ul>
         <div class="top" onclick="scrollToTop()"></div>
         </div>
@@ -630,5 +627,19 @@
         <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
         <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
     </footer>
+    <script>
+        //서브헤더
+        window.addEventListener('scroll', function() {
+                    const sub_header = document.querySelector('.sub_header');
+                    if (window.scrollY > 150) {
+                        sub_header.classList.add('sticky');
+                    } else {
+                        sub_header.classList.remove('sticky');
+                    }
+                });
+                function scrollToTop(){
+                    window.scrollTo({top:0, behavior:'smooth'});
+                }
+    </script>
 </body>
 </html>
