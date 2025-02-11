@@ -726,7 +726,6 @@
 
             // 하나의 문자열로 합치기
             // 예) "15cm, 허니오트(토스팅), 치즈 제외, 양상추, 토마토, 오이, 올리브, 후추"
-            //    -> breadLength(단위 cm) + bread + (toasting), cheese, veggies..., sauce..., addons...
             const lengthText = orderInfo.breadLength ? orderInfo.breadLength + "cm" : "";
             const breadText = orderInfo.bread ? orderInfo.bread : "";
             const toastText = orderInfo.toasting === "토스팅" ? "(토스팅)" : "";
