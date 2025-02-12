@@ -119,6 +119,13 @@
             margin: 0;
             z-index: 999;
         }
+
+        
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
         .hidden_menu li{
             margin: 15px 0 15px 0;
             font-size: 15px;
@@ -1029,3 +1036,4 @@ ul{
 .quick_menu ul li.qm04 .icon {
     background-position: -210px 0px;
 }
+
