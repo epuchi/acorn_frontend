@@ -276,11 +276,11 @@
         .fastSub_tab > div:hover{
             cursor: pointer;
         }
-        .fastSub{
+        .groupOrder{
             background-color: #009223;
             color: white;
         }
-        .homeSub, .groupOrder{
+        .fastSub, .homeSub{
             background-color: white;
             color: #666;
         }
@@ -810,9 +810,9 @@
 
         <!--이용방법 탭메뉴-->
         <div class="fastSub_tab">
-          <div class="fastSub" onclick="window.location.href='./fast-sub.html';">FAST-SUB</div>
+          <div class="fastSub" onclick="window.location.href='../fastSubPage/fast-sub.html';">FAST-SUB</div>
           <div class="homeSub" onclick="window.location.href='../homeSubPage/home-sub.html';">HOME-SUB</div>
-          <div class="groupOrder" onclick="window.location.href='../groupOrderPage/group-order.html';">단체주문</div>
+          <div class="groupOrder" onclick="window.location.href='./group-order.html';">단체주문</div>
         </div> 
         
         <div class="slider_wrap">
@@ -822,104 +822,47 @@
                 <ul>
                     <li><div class="step"><p>STEP</p><h2>1</h2></div></li>
                     <li><div class="step"><p>STEP</p><h2>2</h2></div></li>
-                    <li><div class="step"><p>STEP</p><h2>3</h2></div></li>
-                    <li><div class="step"><p>STEP</p><h2>4</h2></div></li>
-                    <li><div class="step"><p>STEP</p><h2>5</h2></div></li>
                 </ul>
             </div>
             <div class="fastSub_slider">
                 <ul>
                     <li class="slide">
-                        <img class="imgBox" src="./image/fast_img_s1.png">
+                        <img class="imgBox" src="./image/group_img_s1.png">
                         <div class="txtBox">
                             <h3>STEP 1</h3>
                             <div class="txt_item">
-                                <h2>매장 선택</h2>
+                                <h2>매장 찾기</h2>
                                 <div class="line"></div>
                                 <p class="txt1">
                                     현재 위치에서 가장 가까운 매장, 혹은<br>
-                                    픽업을 원하는 매장을 검색하시고 선택해주세요.                           
+                                    픽업을 원하는 매장을 검색하시고 선택해주세요.                    
                                 </p>
                                 <p class="txt2">
-                                    * FAST-SUB은 온라인 선주문 후 매장에서<br>
-                                    픽업/시식하는 서비스입니다.
+                                    * 단체주문은 제품구매수량이 10개 이상 /<br>
+                                    Caterling 제품일 경우 전화주문 후 매장에서<br>
+                                    픽업하는 서비스입니다.
                                 </p>
                             </div>
                         </div>
                     </li>
                     <li class="slide">
-                        <img class="imgBox" src="./image/fast_img_s2.png">
+                        <img class="imgBox" src="./image/group_img_s2.png">
                         <div class="txtBox">
                             <h3>STEP 2</h3>
                             <div class="txt_item">
-                                <h2>메뉴 선택</h2>
+                                <h2>전화 주문</h2>
                                 <div class="line"></div>
                                 <p class="txt1">
-                                    써브웨이의 메뉴를 더 맛있고<br>
-                                    특별하게 즐기는 방법!<br>
-                                    원하시는 메뉴를 선택해주세요.<br>
-                                    (FAST-SUB, HOME-SUB 메뉴 선택 방법은<br>
-                                    동일합니다)                          
+                                    선택한 매장에 전화주문을 통해<br>
+                                    미리 선주문하시고 매장에 가서 픽업하시면 됩니다.<br>                       
                                 </p>
                                 <p class="txt2">
-                                    * 하단으로 스크롤 해주세요
+                                    * 단체주문은 온라인 주문/결제를 지원하지 않습니다.
                                 </p>
                                 </p>
                             </div>
                         </div>
                     </li>
-                    <li class="slide">
-                        <img class="imgBox" src="./image/fast_img_s3.png">
-                        <div class="txtBox">
-                            <h3>STEP 3</h3>
-                            <div class="txt_item">
-                                <h2>사이드메뉴 추가</h2>
-                                <div class="line"></div>
-                                <p class="txt1">
-                                    선택한 메뉴를 장바구니에 담고<br>
-                                    사이드메뉴를 추가해보세요.                           
-                                </p>
-                                <p class="txt2">
-                                    * 쿠키, 칩, 웨지/수프, 음료 메뉴 선택이<br>
-                                    가능합니다.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="slide" style="transform: translateX(-219px)">
-                        <img class="imgBox" src="./image/fast_img_s4.png">
-                        <div class="txtBox">
-                            <h3>STEP 4</h3>
-                            <div class="txt_item">
-                                <h2>주문하기</h2>
-                                <div class="line"></div>
-                                <p class="txt1">
-                                    매장, 주문내역, 주문금액, 할인금액,<br>
-                                    결제방법, 쿠폰을 확인 후 결제를 진행해주세요.                           
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="slide">
-                        <img class="imgBox" src="./image/fast_img_s5.png">
-                        <div class="txtBox">
-                            <h3>STEP 5</h3>
-                            <div class="txt_item">
-                                <h2>결제하기</h2>
-                                <div class="line"></div>
-                                <p class="txt1">
-                                    결제를 완료하셨다면<br>
-                                    지정하신 픽업매장으로 가셔서서<br>
-                                    써브웨이를 즐기시면 끝!                           
-                                </p>
-                                <p class="txt2">
-                                    * 어플리케이션 홈 화면에서 현재 주문내역의<br>
-                                    진행상황을 확인하실 수 있습니다.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-
                 </ul>
             </div>
         </div>
