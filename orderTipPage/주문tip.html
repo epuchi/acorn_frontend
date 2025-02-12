@@ -123,13 +123,16 @@
         .hidden_menu li{
             margin: 15px 0 15px 0;
             font-size: 15px;
-            color: #666;
             letter-spacing: -1px;
         }
         .hidden_menu li:nth-child(1){
             margin-top: 20px;
         }
-        .hidden_menu li:hover{
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+        .hidden_menu a:hover{
             color:#009223;
             text-decoration: underline;
         }
@@ -462,6 +465,75 @@
         }
         
         
+
+        /*푸터*/
+        footer{
+            background-color: rgb(41, 41, 41);
+            color: rgb(102, 102, 102);
+            position: relative;
+        }
+        /*상단*/
+        .footer_menu{
+            padding: 5px;
+            border-bottom: 1px solid #3b3b3b;
+        }
+        .footer_menu ul{
+            list-style: none;
+            display: flex;
+            font-size: 14px;
+        }
+        .footer_menu li{
+            margin-right: 29px;
+        }
+        .footer_menu a{
+            text-decoration: none;
+            color: inherit;
+        }
+        .footer_menu strong{
+            font-weight: bold;
+            color: #bbbbbb;
+        }
+        /*하단*/
+        .footer_info{
+            font-size: 13px;
+            display: flex;
+            padding: 10px 0px 0px 45px;
+        }
+        .footer_info p{
+            padding-right: 5px;
+        }
+        .footer_info span{
+            font-weight: bold;
+        }
+        .copyright{
+            font-size: 13px;
+            margin-top: -10px;
+            padding: 5px 0px 25px 45px;
+        }
+        /*sns*/
+        .instagram{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/instagram.png");
+            position: absolute;
+            right: 100px;
+            bottom: 20px;
+        }
+        .instagram:hover{
+            background-image: url("/footer/imgs/instagram_hover.png");
+        }
+        .facebook{
+            width: 50px;
+            height: 50px;
+            background-image: url("/footer/imgs/facebook.png");
+            position: absolute;
+            right: 35px;
+            bottom: 20px;
+        }
+        .facebook:hover{
+            background-image: url("/footer/imgs/facebook_hover.png");
+        }
+
     </style>
     <script>
         //서브헤더
@@ -489,6 +561,11 @@
                 sandwich3.classList.add('scroll');
             }
         })
+        //샌드위치1 DOMContentLoaded이벤트적용
+        window.addEventListener('DOMContentLoaded', function() {
+            sandwich1 = document.querySelector('.item1_img');
+            sandwich1.classList.add('scroll');
+        });
 
         //맨위로
         function scrollToTop(){
@@ -496,24 +573,17 @@
         }
 
 
-        //이거 그 매장에서주문/주문팁 탭
-        function tipTab(){
-            //alert("dsfdsfd");확인용
-        }
-        function orderTab(){
-            alert("dsfjsdkf");
-        }
     </script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href=#><img src="./image/logo_w.png"></a>
+            <a href="../mainPage/html/index.html"><img src="./image/logo_w.png"></a>
         </div>
         <div class="log_menu">
             <ul>
-                <li><a href="">로그인</a></li>
-                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.co.kr/member/login">로그인</a></li>
+                <li class="signup"><a href="https://www.subway.co.kr/member/join/step1">회원가입</a></li>
                 <li class="global"><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
@@ -523,56 +593,56 @@
                 <li class="nav_item">메뉴소개
                         <!--하위메뉴-->
                         <ul class="hidden_menu">
-                            <li><a href=""></a>샌드위치</li>
-                            <li><a href=""></a>랩ㆍ기타</li>
-                            <li><a href=""></a>샐러드</li>
-                            <li><a href=""></a>아침메뉴</li>
-                            <li><a href=""></a>스마일 썹</li>
-                            <li><a href=""></a>단체메뉴</li>
+                            <li><a href="">샌드위치</a></li>
+                            <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                            <li><a href="">샐러드</a></li>
+                            <li><a href="">아침메뉴</a></li>
+                            <li><a href="">스마일 썹</a></li>
+                            <li><a href="">단체메뉴</a></li>
                         </ul>
                 </li>
                 <li class="nav_item" style="color:#009223;">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li style="color:#009223; text-decoration:underline;"><a href=""></a>써브웨이 이용방법</li>
-                        <li><a href=""></a>단체메뉴 이용방법</li>
-                        <li><a href=""></a>신선한 재료 소개</li>
-                        <li><a href=""></a>App 이용방법</li>
+                        <li><a style="color:#009223; text-decoration:underline;" href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>이벤트ㆍ프로모션</li>
-                        <li><a href=""></a>뉴스ㆍ공지사항</li>
-                        <li><a href=""></a>광고영상</li>
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">써브웨이
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 역사</li>
-                        <li><a href=""></a>써브웨이 약속</li>
-                        <li><a href=""></a>샌드위치 아티스트 지원</li>
-                        <li><a href=""></a>매장찾기</li>
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../promisePage/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">가맹점
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 프랜차이즈</li>
-                        <li><a href=""></a>가맹관련 FAQ</li>
-                        <li><a href=""></a>가맹신청ㆍ문의</li>
-                        <li><a href=""></a>지사안내</li>
-                        <li><a href=""></a>사업설명회</li>
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>FAST-SUB</li>
-                        <li><a href=""></a>HOME-SUB</li>
-                        <li><a href=""></a>단체주문</li>
+                        <li><a href="../fastSubPage/fast-sub.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -580,17 +650,17 @@
     </header>
 
     <div class="sub_header">
-        <a href=#>
+        <a href="../mainPage/html/index.html">
             <div class="sub_logo">
                 <img src="./image/logo_sub_header.png" alt="서브로고">
             </div>
         </a>
         <ul>
-            <li><a href="" style="color:#009223";>써브웨이 이용방법</a>
+            <li><a href="../howToPage/html/index.html" style="color:#009223";>써브웨이 이용방법</a>
             <div class="underline"></div></li>
-            <li><a href="">단체메뉴 이용방법</a></li>
-            <li><a href="">신선한 재료 소개</a></li>
-            <li><a href="">APP 이용방법</a></li>
+            <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+            <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+            <li><a href="../fastSubPage/fast-sub.html">APP 이용방법</a></li>
         </ul>
         <div class="top" onclick="scrollToTop()"></div>
         </div>
@@ -604,12 +674,10 @@
         
         <!--이용방법 탭메뉴-->
         <div class="orderTip_tab">
-            <div class="orderTab" onclick="orderTab()">매장에서 주문하기</div>
-            <div class="tipTab"onclick="tipTab()">주문 TIP</div>
+            <div class="orderTab" onclick="window.location.href='../howToPage/html/index.html';">매장에서 주문하기</div>
+            <div class="tipTab">주문 TIP</div>
         </div>
 
-        <!--매장주문페이지 넣어야되는거예요??????-->
-        <div class="order_menu"></div>
 
         <!--주문tip페이지-->
         <div class="orderTip_menu">
@@ -719,5 +787,32 @@
             </div>
         </div>
     </div>
+
+    <!--푸터-->
+    <footer>
+        <!--상단-->
+        <div class="footer_menu">
+            <ul>
+                <li><a href="/agreement">이용약관</a></li>
+                <li><a href="/privacy"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="/subcard">써브카드</a></li>
+                <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
+            </ul>
+        </div>
+        <!--하단-->
+        <div class="footer_info">
+            <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
+            <p><span>I</span></p>
+            <p>대표 : INSOO CHO(인수조)</p>
+            <p><span>I</span></p>
+            <p>전화 : 02-797-5036</p>
+            <p><span>I</span></p>
+            <p>사업자등록번호 : 101-84-04143</p>
+        </div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <!--sns-->
+        <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
+        <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
+    </footer>
 </body>
 </html>
