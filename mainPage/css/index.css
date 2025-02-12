@@ -880,6 +880,8 @@ ul{
     width: 100%;
     overflow: hidden;
     position: relative;
+    padding: 0 20px;  
+    box-sizing: border-box;  
 }
 
 .subway_menu_slider {
@@ -889,7 +891,7 @@ ul{
 }
 
 .subway_menu_slider li {
-    flex: 0 0 25%;
+    flex: 0 0 calc(25% - 15px);  
     height: 360px;
     text-align: center;
     background: white;
