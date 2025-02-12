@@ -12,6 +12,7 @@
             font-weight: 400;
             font-style: normal;
         }
+        
         /* header 스타일 */
         header{
             width: 100%;
@@ -128,11 +129,11 @@
         .hidden_menu li:nth-child(1){
             margin-top: 20px;
         }
-        .hidden_menu a {
+        .hidden_menu a{
             color: #666;
             text-decoration: none;
         }
-        .hidden_menu a:hover{
+        .hidden_menu li:hover{
             color:#009223;
             text-decoration: underline;
         }
@@ -236,8 +237,8 @@
         }
 
 
-        /* 본문 orderTip 스타일 */
-        .orderTip_title{
+        /* 본문 타이틀  */
+        .fastSub_title{
             width: 100%;
             min-width: 1200px;
             margin: 0px;
@@ -248,226 +249,264 @@
             text-align: center;
             letter-spacing: -2px;
         }
-        .orderTip_wrap{
+        .fastSub_wrap{
             width: 100%;
             min-width: 1200px;
             text-align: center;
         }
 
         /*이용방법 탭메뉴? 스타일*/
-        .orderTip_tab{
+        .fastSub_tab{
             width: 1170px;
             height: 68px;
             border: 0.5px solid #e5e5e5;
-            border-bottom: none;
             position: relative;
             z-index: 2;
             display: flex;
             margin: 0 auto;
-            box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
         }
-        .orderTip_tab > div{
+        .fastSub_tab > div{
             width: 50%;
             line-height: 68px;
             text-align: center;
             font-size: 18px;
             font-weight: 500;
         }
-        .orderTip_tab > div:hover{
+        .fastSub_tab > div:hover{
             cursor: pointer;
         }
-        .orderTab{
-            background-color: white;
-            color: #666;
-        }
-        .tipTab{
+        .groupOrder{
             background-color: #009223;
             color: white;
         }
+        .fastSub, .homeSub{
+            background-color: white;
+            color: #666;
+        }
+        .groupOrder{
+            border-left: 0.5px solid #e5e5e5;
+        }
 
-
-        /*주문tip 페이지*/
-        .orderTip_menu{
+        /* 본문 스타일 */
+        .slider_wrap{
             position: relative;
             z-index: 1px;
-            top:-34px;
+            top:-46px;
+        
+            width: 100%;
+            min-width: 1200px;
+            height: 768px;
+            background-color: #f9f9f9;
         }
 
-        .orderTip_img1{
-            width: 100%;
-            height: 520px;
-            background-image: url("./image/bg_order_tip01.jpg");
+        /* 버튼 */
+        .prevBtn{
+            width: 55px;
+            height: 55px;
+            background-image: url("./image/prev_arr1.png");
             background-position: center;
             background-size: cover;
-            position: relative;
-            display: flex;
-        }
-        .item1_img{
-            width: 615px;
-            height: 330px;
-            background-image: url("./image/img_sandwich01.png");
-            background-position: center;
-            background-size: cover;
-        }
-        .scroll.item1_img{
-            transform: translateX(0);
-            opacity: 1;
-        } 
-        .item_order{
-            width: 600px;
+
             position: absolute;
-            left: 11%;
-            top: 15%;
+            top: 45%;
+            left: 10px;
+            z-index: 444;
         }
-        .txt{
-            margin: 30px 0px;
-            font-size: 22px;
-            color: white;
-            width: 290px;
-            height: 50px;
-            line-height: 50px;
-            background-color: #ff8201;
-            border-radius: 30px;
-            letter-spacing: -1px;
+        .prevBtn:hover{
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            background-image: url("./image/prev_arr2.png");
+            background-position: center;
+            background-size: cover;
+        }
+        .nextBtn{
+            width: 55px;
+            height: 55px;
+            background-image: url("./image/next_arr1.png");
+            background-position: center;
+            background-size: cover;
 
+            position: absolute;
+            top: 45%;
+            right: 10px;
+            z-index: 444;
         }
-        .bold_text{
-            font-weight: bold;
-        }
-        .item_text{
-            width: 500px;
-            text-align: left;
-            margin: 30px 0px;
-        }
-        .item_text h1{
-            font-size: 54px;
-            font-weight: 700;
-            margin: 20px 0px;
-            letter-spacing: -2px;
-            color: #292929;
-        }
-        .item_text p{
-            font-size: 16px;
-            font-weight: 500;
-            color: #292929;
-            margin: 0px;
-            line-height: 25px;
-            letter-spacing: -0.7px;
+        .nextBtn:hover{
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+            background-image: url("./image/next_arr2.png");
+            background-position: center;
+            background-size: cover;
         }
 
-        .item_bg{
+        /*스텝12345*/
+        .fastSub_step{
             width: 100%;
-            height: 400px;
-            background-color: #f6f6f6;
+            min-width: 1200px;
+            height: 110px;
+            margin: 45px 0 0 0;
+            align-content: center;
+            justify-content: center;
         }
-        .topping_tip{
-            width: 1170px;
-            height: 460px;
-            background-color: white;
-            margin: 0 auto;
-            transform: translateY(-60px);
-        }
-        .topping_tip h3{
-            margin:0px;
-            padding: 30px 0px;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .topping_tip ul{
+        .fastSub_step ul{
             list-style: none;
             display: flex;
+            justify-content: center;
             padding: 0px;
-            margin: 0px;
-            justify-content: space-around;
+            position: relative;
         }
-        .topping_tip li:nth-child(-n+3){
-            width: 320px;
-        }
-        .topping_tip li:nth-child(-n+2)::after{
-            background: url("./image/bul02.png") no-repeat center center;
+        .fastSub_step li:nth-child(n+2) .step::before{
+            background: url("./image/icon_step_dot2.png") no-repeat center center;
             content: '';
-            width: 65px;
+            width: 25px;
             height: 5px;
 
             position: absolute;
-            top: 40%;
-            transform: translateX(163px);
+            top: 35px;
+            transform: translateX(-80px);
+        }
+        .step{
+            width: 63px;
+            height: 63px;
+            margin: 0 33px;
+            border: 4px solid #ddd;
+            border-radius: 50%;
+            justify-content: center;
+            align-content: center;
+        }
+        .step.active{
+            background-color: #009223;
+            border: 4px solid #009223;
+            p, h2{
+                color: white
+            }
+        }
+        .step.active2{
+            background-color: white;
+            border: 4px solid #009223;
+            transition-duration: 0.9s;
+        }
+        .step.active2 p, .step.active2 h2 {
+            transition: color 0.8s ease;  /* p와 h2 색이 천천히 변하도록 transition 추가 */
+        }
+        .step.active2 p {
+            color: #009223; 
+        }
+        .step.active2 h2 {
+            color: black; 
         }
 
-        .topping_tip li h4{
-            font-size: 18px;
+        .step.active3{
+            background-color: white;
+            border: 4px solid #ddd;
+            transition-duration: 0.9s;
+        }
+        .step.active3 p, .step.active3 h2 {
+            transition: color 0.8s ease;  /* p와 h2 색이 천천히 변하도록 transition 추가 */
+        }
+        .step.active3 p {
+            color: #ddd;  /* p 폰트 색 */
+        }
+        .step.active3 h2 {
+            color: #ddd;  /* h2 폰트 색 */
+        }
+
+        .step p, .step h2{
+            margin: 0px;
+            padding: 0px;
+            color: #bbb;
+            transform: scaleY(0.9);
+        }
+        .step p{
+            font-size: 13px;
             font-weight: 900;
-            margin: 15px 0px;
+            transform: translateY(7px);
         }
-        .topping_tip li h4 img{
-            margin: 0 8px 0 0;
-            width: 13px;
-            height: 13px;
-            object-fit: contain;
+        .step h2{
+            font-size: 28px;
+            font-weight: 900;
+            transform: translateY(-2px);
         }
-        .topping_tip p{
-            font-size: 16px;
-            letter-spacing: -0.5px;
-            line-height: 23px;
-            margin: 10px 0 0 0px;
-            font-weight: 500px;
+        
+        /*슬라이더내용*/
+        .fastSub_slider{
+            width:100%;
+            height: 610px;
+            overflow: hidden;
         }
-        .orderTip_img2{
-            width: 100%;
-            height: 520px;
-            background-image: url("./image/bg_order_tip02.jpg");
-            background-position: center;
-            background-size: cover;
-            position: relative;
+        .fastSub_slider ul{
+            list-style: none;
+        }
+        .fastSub_slider li{
             display: flex;
         }
-        .item2_img{
-            width: 615px;
-            height: 330px;
-            background-image: url("./image/img_sandwich02.png");
-            background-position: center;
-            background-size: cover;
+        .imgBox{
+            /*transform: translateX(580px);*/
+            transform: translateX(385px);
         }
-        .scroll.item2_img{
-            transform: translateX(0);
-            opacity: 1;
-        } 
-        .orderTip_img3{
-            width: 100%;
-            height: 520px;
-            background-image: url("./image/bg_order_tip03.jpg");
-            background-position: center;
-            background-size: cover;
-            position: relative;
-            display: flex;
+        .txtBox{
+            width: 400px;
+            height: 420px;
+            border: 1px solid #ddd;
+            background-color: white;
+            transform: translate(450px, 15px);
+            text-align: left;
         }
-        .item3_img{
-            width: 615px;
-            height: 330px;
-            background-image: url("./image/img_sandwich03.png");
-            background-position: center;
-            background-size: cover;
-        }
-        .scroll.item3_img{
-            transform: translateX(0);
-            opacity: 1;
-        }
-        /*샌드위치 위치스타일*/
-        .item1_img, .item2_img, .item3_img{
+        .txtBox::before{
+            background: url("./image/icon_step_arr.png") no-repeat center center;
+            content: '';
+            width: 11px;
+            height: 21px;
             position: absolute;
-            right: 8%;
-            top: 15%;
-            transform: translateX(20%);
-            opacity: 0;
-            transition-delay: 0.3s;
-            transition: 0.6s;
+            left: -11px;
+            top: 20%;
         }
-        
-        
+        .txtBox h3{
+            font-size: 19px;
+            font-weight: 900;
+            color:#009223;
+            letter-spacing: -1px;
+            transform: scaleY(0.9);
+            margin: 0px;
+            position: absolute;
+            left: 50px;
+            top: 37px;
+        }
+        .txt_item{
+            position: absolute;
+            left: 50px;
+            top: 45px;
+        }
+        .txtBox h2{
+            font-size: 28px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin: 18px 0;
 
-        /*푸터*/
-        footer{
+        }
+        .line{
+            width: 40px;
+            height: 4px;
+            background-color: #ffc300;
+
+        }
+        .txt1, .txt2{
+            color: #666;
+            font-size: 16px;
+            word-spacing: -1px;
+            line-height: 25px;
+            font-weight: 500;
+        }
+        .txt2{
+            margin: 77px 0;
+        }
+
+
+                /*푸터*/
+                footer{
             background-color: rgb(41, 41, 41);
             color: rgb(102, 102, 102);
             position: relative;
@@ -533,7 +572,8 @@
         .facebook:hover{
             background-image: url("/footer/imgs/facebook_hover.png");
         }
-
+       
+        
     </style>
     <script>
         //서브헤더
@@ -546,36 +586,132 @@
             }
         });
 
-        //샌드위치
-        window.addEventListener('scroll', function(){
-            const sandwich1 = document.querySelector('.item1_img');
-            if(window.scrollY > 0 ){
-                sandwich1.classList.add('scroll');
-            }
-            const sandwich2 = document.querySelector('.item2_img');
-            if(window.scrollY > 650 ){
-                sandwich2.classList.add('scroll');
-            }
-            const sandwich3 = document.querySelector('.item3_img');
-            if(window.scrollY > 1400 ){
-                sandwich3.classList.add('scroll');
-            }
-        })
-        //샌드위치1 DOMContentLoaded이벤트적용
-        window.addEventListener('DOMContentLoaded', function() {
-            sandwich1 = document.querySelector('.item1_img');
-            sandwich1.classList.add('scroll');
-        });
-
         //맨위로
         function scrollToTop(){
             window.scrollTo({top:0, behavior:'smooth'});
         }
 
+        //탭 함수 만들어야됨
+
+
+        //다음버튼
+        let step=[];
+        let index=0;
+        let animating=false; //애니메이션 동작중인지 확인하는 변수
+        function next(){
+
+            if(animating){ //애니메이션 동작중이면 함수종료
+                return;
+            }
+
+            // 페이지 넘기기
+            if (index + 1 < step.length) {
+                let stepPage = document.querySelector(".fastSub_slider ul");
+                stepPage.innerHTML = step[index + 1];
+                index++;
+            } else {
+                return;
+            }
+
+            // 현재 step의 active 클래스를 제거
+            const currentStep = document.querySelector(".fastSub_step li:nth-child(" + (index) + ") .step");
+            currentStep.classList.remove("active");
+            currentStep.classList.add("active2");
+            // 새로운 step에 active 클래스를 추가
+            const nextStep = document.querySelector(".fastSub_step li:nth-child(" + (index + 1) + ") .step");
+            nextStep.classList.add("active");
+
+
+            animating=true; //애니메이션 시작점
+            //이미지효과
+            let img = document.querySelector(".imgBox");
+            img.animate([
+                {transform:'translateX(580px)', opacity: 0},
+                {transform:'translateX(385px)', opacity: 1}
+            ],{
+                duration: 900,
+                easing: 'ease-out'
+            }).finished.then(() => {   //효과 끝나야지만 다른 동작가능
+                animating=false;
+            })
+
+            //글자효과
+            let txt = document.querySelector(".txt_item");
+            txt.animate([
+                {transform:'translateY(40px)', opacity: 0},
+                {transform:'translateY(0px)', opacity: 1}
+            ],{
+                duration: 800,
+                easing: 'ease'
+            });            
+        };
+            
+
+
+        //이전버튼
+        function prev(){
+            if(animating){ //애니메이션 동작중이면 함수종료
+                return;
+            }
+
+            //이전페이지
+            if(index > 0 ){
+                let stepPage = document.querySelector(".fastSub_slider ul");
+                stepPage.innerHTML=step[index-1];
+                index--;
+            }else{
+                return;
+            }
+            
+            //이거안돼요......next함수는 되는데 prev는 안돼요 왜왜
+             // 현재 step의 active 클래스를 제거
+            const currentStep = document.querySelector(".fastSub_step li:nth-child(" + (index+2) + ") .step");
+            currentStep.classList.add("active3");
+            currentStep.classList.add("active");
+            const prevStep = document.querySelector(".fastSub_step li:nth-child(" + (index+1) + ") .step");
+            prevStep.classList.add("active");
+           
+
+            animating=true; //애니메이션 시작점
+            //이미지효과
+            let img = document.querySelector(".imgBox");
+            img.animate([
+                {transform:'translateX(580px)', opacity: 0},
+                {transform:'translateX(385px)', opacity: 1}
+            ],{
+                duration: 900,
+                easing: 'ease'
+            }).finished.then(() => {   //효과 끝나야지만 다른 동작가능
+                animating=false;
+            })
+             
+            //글자효과
+            let txt = document.querySelector(".txt_item");
+            txt.animate([
+                {transform:'translateY(40px)', opacity: 0},
+                {transform:'translateY(0px)', opacity: 1}
+            ],{
+                duration: 800,
+                easing: 'ease'
+            });      
+        };
+
+
+        function init(){
+            let slides = document.querySelectorAll(".fastSub_slider .slide")
+
+            for(let i=0; i<slides.length; i++){
+                let item = slides[i];
+                let slide_content = item.outerHTML;
+                //innerHTML말고 outerHTML 써야 전체HTML 가져와짐
+                step[i] = slide_content;
+            }
+        }
+
 
     </script>
 </head>
-<body>
+<body onload="init()">
     <header>
         <div class="logo">
             <a href="../mainPage/html/index.html"><img src="./image/logo_w.png"></a>
@@ -604,10 +740,10 @@
                 <li class="nav_item" style="color:#009223;">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a style="color:#009223; text-decoration:underline;" href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a>써브웨이 이용방법</a></li>
                         <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
                         <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
-                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
+                        <li><a style="color:#009223; text-decoration:underline;" href="../howToPage/html/index.html" href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
@@ -656,11 +792,11 @@
             </div>
         </a>
         <ul>
-            <li><a href="../howToPage/html/index.html" style="color:#009223";>써브웨이 이용방법</a>
-            <div class="underline"></div></li>
+            <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
             <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
             <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
-            <li><a href="../fastSubPage/fast-sub.html">APP 이용방법</a></li>
+            <li><a href="../fastSubPage/fast-sub.html" style="color:#009223;">APP 이용방법</a>
+            <div class="underline"></div></li>
         </ul>
         <div class="top" onclick="scrollToTop()"></div>
         </div>
@@ -668,125 +804,71 @@
 
 
     <!-- 본문 -->
-    <h2 class="orderTip_title">써브웨이 이용방법</h2>
+    <h2 class="fastSub_title">APP 이용방법</h2>
 
-    <div class="orderTip_wrap">
-        
+    <div class="fastSub_wrap">
+
         <!--이용방법 탭메뉴-->
-        <div class="orderTip_tab">
-            <div class="orderTab" onclick="window.location.href='../howToPage/html/index.html';">매장에서 주문하기</div>
-            <div class="tipTab">주문 TIP</div>
-        </div>
-
-
-        <!--주문tip페이지-->
-        <div class="orderTip_menu">
-            <!--스테이크&치즈-->
-            <div class="orderTip_img1">
-                <div class="item_order">
-                    <p class="txt"><span class="bold_text">완벽한 한끼</span>를 원하신다면?</p>
-                    <div class="item_text">
-                        <h1>스테이크 & 치즈</h1>
-                        <p>고급스러운 스테이크와 고소하고 진한 치즈의 콜라보<br>
-                            신선한 야채와 함께 푸짐하고 완벽한 한끼가 완성됩니다!<br>
-                            다양한 토핑을 추가해 나만의 한끼 메뉴를 즐겨보세요.
-                        </p>
-                    </div>
-                </div>
-                <div class="item1_img"></div>
+        <div class="fastSub_tab">
+          <div class="fastSub" onclick="window.location.href='../fastSubPage/fast-sub.html';">FAST-SUB</div>
+          <div class="homeSub" onclick="window.location.href='../homeSubPage/home-sub.html';">HOME-SUB</div>
+          <div class="groupOrder" onclick="window.location.href='./group-order.html';">단체주문</div>
+        </div> 
+        
+        <div class="slider_wrap">
+            <div class="prevBtn" onclick="prev()"></div>
+            <div class="nextBtn" onclick="next()"></div>
+            <div class="fastSub_step">
+                <ul>
+                    <li><div class="step"><p>STEP</p><h2>1</h2></div></li>
+                    <li><div class="step"><p>STEP</p><h2>2</h2></div></li>
+                </ul>
             </div>
-                <!--토핑-->
-            <div class="item_bg">
-                <div class="topping_tip">
-                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
-                    <ul>
-                        <li><img src="./image/img_cheese.jpg">
-                            <h4><img src="./image/bul01.png">CHEESE</h4>
-                            <p>더블치즈로 치즈와 쇠고기의<br>완벽한 조화!</p></li>
-                        <li><img src="./image/img_sauce01.jpg">
-                            <h4><img src="./image/bul01.png">SAUCE</h4>
-                            <p>달콤하게 즐기고 싶다면 스윗어니언+마요네즈!<br>
-                                스테이크의 맛을 즐기고 싶다면 후추만 톡톡!</p></li>
-                        <li><img src="./image/img_vegetable.jpg">
-                            <h4><img src="./image/bul03.png">VEGETABLE</h4>
-                            <p>토마토, 오이를 빼면<br>고기의 풍미를 즐길 수 있습니다.</p></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!--로스트치킨-->
-            <div class="orderTip_img2">
-                <div class="item_order">
-                    <p class="txt" style="width: 225px;"><span class="bold_text">다이어트</span>중이라면?</p>
-                    <div class="item_text">
-                        <h1 style="color:white;">로스트치킨</h1>
-                        <p style="color: white">퍽퍽한 닭가슴살은 이제 그만!<br>
-                            로스트 치킨 샐러드는 가볍고 든든하게 즐길 수 있습니다.<br>
-                            샌드위치와 샐러드로 맛있고 든든하게 즐기세요.
-                        </p>
-                    </div>
-                </div>
-                <div class="item2_img"></div>
-            </div>
-                <!--토핑-->
-            <div class="item_bg">
-                <div class="topping_tip">
-                    <h3>더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
-                    <ul>
-                        <li><img src="./image/img_salad.jpg">
-                            <h4><img src="./image/bul01.png">SALAD</h4>
-                            <p>로스트치킨은 샐러드로 드셔도 좋습니다.<br>
-                                관리의 시작은 써브웨이로부터!</p></li>
-                        <li><img src="./image/img_sauce02.jpg">
-                            <h4><img src="./image/bul01.png">SAUCE</h4>
-                            <p>랜치로 고소하게 즐겨보세요!</p></li>
-                        <li><img src="./image/img_topping.jpg">
-                            <h4><img src="./image/bul03.png">TOPPING</h4>
-                            <p>올리브, 피클, 할라피뇨를 빼고 드시면,<br>
-                                담백하고 부드러운 로스트 치킨을<br>
-                                제대로 즐길 수 있습니다.</p></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!--써브웨이클럽-->
-            <div class="orderTip_img3">
-                <div class="item_order">
-                    <p class="txt" style="width: 230px;"><span class="bold_text">건강</span>을 생각한다면?</p>
-                    <div class="item_text">
-                        <h1 style="color:white;">써브웨이 클럽</h1>
-                        <p style="color: white">고기의 단백질과 야채의 비타민으로 영양UP!<br>
-                                절임류 야채를 제외해서 더 담백하게, 올리브오일을 넣어 부담은 DOWN!<br>
-                                써브웨이 클럽으로 건강한 하루를 보내세요.
-                        </p>
-                    </div>
-                </div>
-                <div class="item3_img"></div>
-            </div>
-                <!--토핑-->
-            <div class="item_bg">
-                <div class="topping_tip">
-                    <h3 >더 맛있게 즐기는 <span style="color:#ff8201; font-weight:900; letter-spacing:-1px;">TIP</span></h3>
-                    <ul>
-                        <li><img src="./image/img_sauce03.jpg">
-                            <h4><img src="./image/bul01.png">SAUCE</h4>
-                            <p>올리브오일과 후추를 살짝 뿌리면,<br>
-                                짜지않고 담백한 행복의 맛을 느낄 수 있습니다.</p></li>
-                        <li><img src="./image/img_cheese.jpg">
-                            <h4><img src="./image/bul03.png">CHEESE</h4>
-                            <p>치즈를 빼고 터키, 베이컨<br>
-                                햄의 완벽한 조화를 느껴보세요!</p></li>
-                        <li><img src="./image/img_topping.jpg">
-                            <h4><img src="./image/bul03.png">TOPPING</h4>
-                            <p>올리브, 피클, 할라피뇨를 빼고 드시면,<br>
-                                담백하고 부드러운 로스트 치킨을<br>
-                                제대로 즐길 수 있습니다.<p></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="fastSub_slider">
+                <ul>
+                    <li class="slide">
+                        <img class="imgBox" src="./image/group_img_s1.png">
+                        <div class="txtBox">
+                            <h3>STEP 1</h3>
+                            <div class="txt_item">
+                                <h2>매장 찾기</h2>
+                                <div class="line"></div>
+                                <p class="txt1">
+                                    현재 위치에서 가장 가까운 매장, 혹은<br>
+                                    픽업을 원하는 매장을 검색하시고 선택해주세요.                    
+                                </p>
+                                <p class="txt2">
+                                    * 단체주문은 제품구매수량이 10개 이상 /<br>
+                                    Caterling 제품일 경우 전화주문 후 매장에서<br>
+                                    픽업하는 서비스입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="slide">
+                        <img class="imgBox" src="./image/group_img_s2.png">
+                        <div class="txtBox">
+                            <h3>STEP 2</h3>
+                            <div class="txt_item">
+                                <h2>전화 주문</h2>
+                                <div class="line"></div>
+                                <p class="txt1">
+                                    선택한 매장에 전화주문을 통해<br>
+                                    미리 선주문하시고 매장에 가서 픽업하시면 됩니다.<br>                       
+                                </p>
+                                <p class="txt2">
+                                    * 단체주문은 온라인 주문/결제를 지원하지 않습니다.
+                                </p>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
+    
     </div>
+    
 
     <!--푸터-->
     <footer>
@@ -814,5 +896,6 @@
         <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
         <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
     </footer>
+
 </body>
 </html>
