@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,57 @@
     <link rel="stylesheet" href="/menuIntro/sandwich/menu_wrap.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-        *{
+
+        * {
             font-family: "Noto Sans KR", serif;
             font-optical-sizing: auto;
             font-weight: 400;
             font-style: normal;
         }
-        
-        /* header 스타일 */
-        header{
+
+        header {
             width: 100%;
             min-width: 1200px;
             height: 165px;
             border-top: 5px solid #009223;
+            /* 상단 녹색 테두리 */
             display: block;
             position: relative;
         }
-        .logo{
+
+        /* 
+          [로고 스타일]
+          헤더 중앙에 위치한 로고 영역으로, 위치를 absolute로 설정하여 중앙에 정렬합니다.
+        */
+        .logo {
             height: 40px;
             position: absolute;
             top: 35px;
             left: 50%;
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
 
-        .log_menu{
+        /* 
+          [로그인/회원가입 메뉴 스타일]
+          헤더 우측에 위치한 메뉴 영역으로, 로그인, 회원가입 및 글로벌 메뉴 아이콘을 포함합니다.
+        */
+        .log_menu {
             position: absolute;
             top: 40px;
-            right: 13%;
+            right: 15%;
         }
-        .log_menu ul{
+
+        .logo img {
+            height: 53px;
+            
+        }
+
+        .log_menu img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .log_menu ul {
             padding: 0px;
             margin: 0px;
             height: 30px;
@@ -44,38 +66,50 @@
             list-style: none;
             align-items: center;
         }
-        .log_menu a{
+
+        .log_menu a {
+            height: 53px;   
             text-decoration: none;
             color: #666;
         }
-        .log_menu li{
+
+        .log_menu li {
             margin: 5px;
             font-size: 13px;
             font-weight: bold;
         }
+
         .log_menu li::marker {
             color: #ddd;
         }
-        .signup{
+
+        .signup {
             list-style: inside;
         }
-        .global{
-            width: 30px;
-            height: 30px;
-            padding-left: 6px;
+
+        img {
+            object-fit: contain;
+            margin: 0;
         }
 
-        /*헤더메인메뉴*/
-        .main_nav{
+        /* 
+          [메인 네비게이션 바 스타일]
+          헤더 아래쪽에 위치하며 메뉴 항목들이 수평으로 배치됩니다.
+          마우스 오버 시 하위 메뉴(드롭다운)가 나타나는 효과를 위해 관련 스타일을 설정합니다.
+        */
+        .main_nav {
             width: 100%;
-            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            height: 60px;
+            /* 네비게이션 영역 높이 설정 (하위 메뉴와의 간격 확보를 위함) */
             position: absolute;
             top: 65%;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content: center;  
+            justify-content: center;
         }
+
+        /* 배경 요소: 하위 메뉴가 나타날 때 배경 흰색 영역을 보여줍니다. */
         .bg {
             top: 100%;
             transform: translateY(-4px);
@@ -86,114 +120,153 @@
             border-top: 0.5px solid #ddd;
             z-index: 995;
         }
-        .main_nav ul{
+
+        .main_nav ul {
             margin: 0px;
             padding: 0px;
             list-style: none;
         }
-        .main_nav ul:hover{
-            cursor: pointer
+
+        .main_nav ul:hover {
+            cursor: pointer;
         }
-        .nav_wrap{
+
+        /* 하위 메뉴를 감싸는 래퍼 */
+        .nav_wrap {
             width: 100%;
             height: 230px;
             position: absolute;
             top: 65%;
         }
-        .nav_item{
+
+        /* 개별 네비게이션 메뉴 항목 */
+        .nav_item {
             float: left;
             width: 165px;
             font-size: 18px;
             font-weight: bold;
             position: relative;
         }
-        .nav_item:hover{
+
+        .nav_item:hover {
             color: #009223;
         }
-        .hidden_menu{
-            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+
+        /* 
+          하위 메뉴(드롭다운) 스타일
+          기본적으로 높이를 0으로 설정하여 숨기고, 오버 시 height가 확장되어 보입니다.
+        */
+        .hidden_menu {
+            overflow: hidden;
+            /* 내용이 넘치면 보이지 않게 함 */
             width: 100%;
-            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            height: 0;
+            /* 기본 상태에서는 숨김 */
             position: absolute;
             left: 0px;
             top: -10px;
             transform: translateY(50px);
-
             z-index: 999;
+            display: flex;
+            flex-direction: column;
         }
-        .hidden_menu li{
+
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
             margin: 15px 0 15px 0;
             font-size: 15px;
             color: #666;
             letter-spacing: -1px;
         }
-        .hidden_menu li:nth-child(1){
+
+        .hidden_menu li:nth-child(1) {
             margin-top: 20px;
         }
-        .hidden_menu li:hover{
-            color:#009223;
+
+        .hidden_menu li:hover {
+            color: #009223;
             text-decoration: underline;
         }
-        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+
+        /* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경의 높이를 확장 */
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
             height: 260px;
-            /* 마우스를 갖다 대면 높이 생기게 하기 */
             transition: 0.5s;
-            /* 천천히 나오게 하는 효과*/
+            /* 부드러운 전환 효과 */
         }
-        .main_nav:hover .bg{
+
+        .main_nav:hover .bg {
             border-bottom: 0.5px solid #ddd;
         }
-      /*글꼴*/
-      @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
-        *{
+
+        /*글꼴*/
+        @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+        * {
             font-family: 'font_ns', sans-serif;
         }
+
         /*푸터*/
-        footer{
+        footer {
             background-color: rgb(41, 41, 41);
             color: rgb(102, 102, 102);
             position: relative;
         }
+
         /*상단*/
-        .footer_menu{
+        .footer_menu {
             padding: 5px;
             border-bottom: 1px solid #3b3b3b;
         }
-        ul{
+
+        ul {
             list-style: none;
             display: flex;
             font-size: 14px;
         }
-        li{
+
+        li {
             margin-right: 29px;
         }
-        a{
+
+        a {
             text-decoration: none;
             color: inherit;
         }
-        strong{
+
+        strong {
             font-weight: bold;
             color: #bbbbbb;
         }
+
         /*하단*/
-        .footer_info{
+        .footer_info {
             font-size: 13px;
             display: flex;
             padding: 10px 0px 0px 45px;
         }
-        p{
+
+        p {
             padding-right: 5px;
         }
-        span{
+
+        span {
             font-weight: bold;
         }
-        .copyright{
+
+        .copyright {
             font-size: 13px;
             margin-top: -10px;
             padding: 5px 0px 25px 45px;
         }
+
         /*sns*/
-        .instagram{
+        .instagram {
             width: 50px;
             height: 50px;
             background-image: url("/footer/imgs/instagram.png");
@@ -201,10 +274,12 @@
             right: 100px;
             bottom: 20px;
         }
-        .instagram:hover{
+
+        .instagram:hover {
             background-image: url("/footer/imgs/instagram_hover.png");
         }
-        .facebook{
+
+        .facebook {
             width: 50px;
             height: 50px;
             background-image: url("/footer/imgs/facebook.png");
@@ -212,80 +287,81 @@
             right: 35px;
             bottom: 20px;
         }
-        .facebook:hover{
+
+        .facebook:hover {
             background-image: url("/footer/imgs/facebook_hover.png");
         }
     </style>
 
 </head>
+
 <body>
     <header>
         <div class="logo">
-            <a href=#><img src="/header/image/logo_w.png"></a>
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../../mainpage/html/index.html"><img src="../../header/image/logo_w.png" alt="로고"></a>
         </div>
         <div class="log_menu">
             <ul>
                 <li><a href="">로그인</a></li>
                 <li class="signup"><a href="">회원가입</a></li>
-                <li class="global"><a href="https://www.subway.com/en-us/"><img src="/header/image/icon_utill_global.png"></a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
             </ul>
         </div>
+        <!-- 상단 네비게이션 바 -->
         <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
             <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
-                        <!--하위메뉴-->
-                        <ul class="hidden_menu">
-                            <li><a href=""></a>샌드위치</li>
-                            <li><a href=""></a>랩ㆍ기타</li>
-                            <li><a href=""></a>샐러드</li>
-                            <li><a href=""></a>아침메뉴</li>
-                            <li><a href=""></a>스마일 썹</li>
-                            <li><a href=""></a>단체메뉴</li>
-                        </ul>
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
                 </li>
                 <li class="nav_item">이용방법
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 이용방법</li>
-                        <li><a href=""></a>단체메뉴 이용방법</li>
-                        <li><a href=""></a>신선한 재료 소개</li>
-                        <li><a href=""></a>App 이용방법</li>
+                        <li><a href="../../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../../groupOrderPage/group-order.html">App 이용방법</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>이벤트ㆍ프로모션</li>
-                        <li><a href=""></a>뉴스ㆍ공지사항</li>
-                        <li><a href=""></a>광고영상</li>
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">써브웨이
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 역사</li>
-                        <li><a href=""></a>써브웨이 약속</li>
-                        <li><a href=""></a>샌드위치 아티스트 지원</li>
-                        <li><a href=""></a>매장찾기</li>
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">가맹점
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 프랜차이즈</li>
-                        <li><a href=""></a>가맹관련 FAQ</li>
-                        <li><a href=""></a>가맹신청ㆍ문의</li>
-                        <li><a href=""></a>지사안내</li>
-                        <li><a href=""></a>사업설명회</li>
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../../사업설명회/사업설명회.html">사업설명회</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>FAST-SUB</li>
-                        <li><a href=""></a>HOME-SUB</li>
-                        <li><a href=""></a>단체주문</li>
+                        <li><a href="../../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -339,7 +415,8 @@
             <p><span>I</span></p>
             <p>사업자등록번호 : 101-84-04143</p>
         </div>
-        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
+        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights
+            Reserved.</div>
         <!--sns-->
         <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
         <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
@@ -547,7 +624,7 @@
                 desc: `갓 구운 빵과 신선한 8가지 야채로 즐기는 깔끔한 한끼`
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/미트 추가.png",
                 alt: "미트 추가",
                 kor: "미트 추가",
@@ -555,7 +632,7 @@
                 desc: "주 재료를 2배로 더 푸짐하게 즐기세요<br>15cm : 3,000원 / 30cm : 6,000원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/에그마요.png",
                 alt: "에그마요",
                 kor: "에그마요",
@@ -563,7 +640,7 @@
                 desc: "신선한 달걀과 고소한 마요네즈의 만남<br>15cm : 2,000원 / 30cm : 4,000원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "https://www.subway.co.kr/upload/menu/img_toppping_03.png",
                 alt: "오믈렛",
                 kor: "오믈렛",
@@ -571,7 +648,7 @@
                 desc: "더 부드럽게, 더 고소하게<br>15cm : 1,800원 / 30cm : 3,600원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/에그 슬라이스.png",
                 alt: "에그 슬라이스",
                 kor: "에그 슬라이스",
@@ -579,7 +656,7 @@
                 desc: "신선한 달걀의 담백함을 추가해, 더 든든하게 즐겨보세요<br>15cm : 1,200원 / 30cm : 2,400원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/아보카도.png",
                 alt: "아보카도",
                 kor: "아보카도",
@@ -587,7 +664,7 @@
                 desc: "숲속의 버터 아보카도로 영양 UP<br>15cm : 1,500원 / 30cm : 3,000원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/베이컨.png",
                 alt: "베이컨",
                 kor: "베이컨",
@@ -595,7 +672,7 @@
                 desc: "진한 풍미와 바삭한 베이컨으로 특별한 나만의 써브웨이~<br>15cm : 1,500원 / 30cm : 3,000원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/페퍼로니.png",
                 alt: "페퍼로니",
                 kor: "페퍼로니",
@@ -603,7 +680,7 @@
                 desc: "입맛 당기는 페퍼로니로 써브웨이를 더 맛있게!<br>15cm : 1,400원 / 30cm : 2,800원"
             },
             {
-                tag: "추가 선택", 
+                tag: "추가 선택",
                 img: "/menuIntro/sandwich/imgs/치즈 추가.png",
                 alt: "치즈 추가",
                 kor: "치즈 추가",
@@ -624,10 +701,10 @@
         function makeMenu(obj) {
             show(obj.innerHTML);
             const menuItems = document.querySelectorAll('.wrap_list li');
-        menuItems.forEach(item => item.classList.remove('active'));
+            menuItems.forEach(item => item.classList.remove('active'));
 
-        // 클릭한 항목에 active 클래스 추가
-        obj.classList.add('active');
+            // 클릭한 항목에 active 클래스 추가
+            obj.classList.add('active');
         }
 
         function show(text) {
@@ -660,9 +737,9 @@
                     li.appendChild(p);
                     li.appendChild(a);
 
-                     if (!isFirstLoad) {
-                li.style.animation = "scaleInOut 0.6s ease-out";  // 클릭 시에만 애니메이션 효과 적용
-            }
+                    if (!isFirstLoad) {
+                        li.style.animation = "scaleInOut 0.6s ease-out";  // 클릭 시에만 애니메이션 효과 적용
+                    }
                     wrapAllul.appendChild(li);
                 }
 
@@ -670,11 +747,11 @@
             wrapAll.appendChild(wrapAllul);
 
             if (isFirstLoad) {
-        const allMenuItem = document.querySelector('.wrap_list li'); // "All" 메뉴
-        if (allMenuItem) {
-            allMenuItem.classList.add('active'); // "All" 메뉴에만 active 클래스를 추가
-        }
-    }
+                const allMenuItem = document.querySelector('.wrap_list li'); // "All" 메뉴
+                if (allMenuItem) {
+                    allMenuItem.classList.add('active'); // "All" 메뉴에만 active 클래스를 추가
+                }
+            }
         }
     </script>
 </body>
