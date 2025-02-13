@@ -13,29 +13,44 @@
             font-style: normal;
         }
         
-        /* header 스타일 */
-        header{
+     /* 
+          [헤더 영역 스타일]
+          페이지 상단의 로고, 메뉴 및 네비게이션 바가 포함된 헤더 영역을 구성합니다.
+          전체 너비를 사용하며 최소 너비와 높이를 지정하고, 상단 테두리 효과를 줍니다.
+        */
+        header {
             width: 100%;
             min-width: 1200px;
             height: 165px;
             border-top: 5px solid #009223;
+            /* 상단 녹색 테두리 */
             display: block;
             position: relative;
         }
-        .logo{
+
+        /* 
+          [로고 스타일]
+          헤더 중앙에 위치한 로고 영역으로, 위치를 absolute로 설정하여 중앙에 정렬합니다.
+        */
+        .logo {
             height: 40px;
             position: absolute;
             top: 35px;
             left: 50%;
-            transform: translateX(-50%)
+            transform: translateX(-50%);
         }
-        
-        .log_menu{
+
+        /* 
+          [로그인/회원가입 메뉴 스타일]
+          헤더 우측에 위치한 메뉴 영역으로, 로그인, 회원가입 및 글로벌 메뉴 아이콘을 포함합니다.
+        */
+        .log_menu {
             position: absolute;
             top: 40px;
             right: 15%;
         }
-        .log_menu ul{
+
+        .log_menu ul {
             padding: 0px;
             margin: 0px;
             height: 30px;
@@ -43,32 +58,44 @@
             list-style: none;
             align-items: center;
         }
-        .log_menu a{
+
+        .log_menu a {
             text-decoration: none;
             color: #666;
         }
-        .log_menu li{
+
+        .log_menu li {
             margin: 5px;
             font-size: 13px;
             font-weight: bold;
         }
+
         .log_menu li::marker {
             color: #ddd;
         }
-        .signup{
+
+        .signup {
             list-style: inside;
         }
 
-        .main_nav{
+        /* 
+          [메인 네비게이션 바 스타일]
+          헤더 아래쪽에 위치하며 메뉴 항목들이 수평으로 배치됩니다.
+          마우스 오버 시 하위 메뉴(드롭다운)가 나타나는 효과를 위해 관련 스타일을 설정합니다.
+        */
+        .main_nav {
             width: 100%;
-            height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
+            height: 60px;
+            /* 네비게이션 영역 높이 설정 (하위 메뉴와의 간격 확보를 위함) */
             position: absolute;
             top: 65%;
             display: flex;
             text-align: center;
             align-items: center;
-            justify-content: center;  
+            justify-content: center;
         }
+
+        /* 배경 요소: 하위 메뉴가 나타날 때 배경 흰색 영역을 보여줍니다. */
         .bg {
             top: 100%;
             transform: translateY(-4px);
@@ -79,61 +106,85 @@
             border-top: 0.5px solid #ddd;
             z-index: 995;
         }
-        .main_nav ul{
+
+        .main_nav ul {
             margin: 0px;
             padding: 0px;
             list-style: none;
         }
-        .main_nav ul:hover{
-            cursor: pointer
+
+        .main_nav ul:hover {
+            cursor: pointer;
         }
-        .nav_wrap{
+
+        /* 하위 메뉴를 감싸는 래퍼 */
+        .nav_wrap {
             width: 100%;
             height: 230px;
             position: absolute;
             top: 65%;
         }
-        .nav_item{
+
+        /* 개별 네비게이션 메뉴 항목 */
+        .nav_item {
             float: left;
             width: 165px;
             font-size: 18px;
             font-weight: bold;
             position: relative;
         }
-        .nav_item:hover{
+
+        .nav_item:hover {
             color: #009223;
         }
-        .hidden_menu{
-            overflow: hidden;  /* 영역 넘어가면 안보이게 하기*/
+
+        /* 
+          하위 메뉴(드롭다운) 스타일
+          기본적으로 높이를 0으로 설정하여 숨기고, 오버 시 height가 확장되어 보입니다.
+        */
+        .hidden_menu {
+            overflow: hidden;
+            /* 내용이 넘치면 보이지 않게 함 */
             width: 100%;
-            height: 0; /* 평소에는 높이 0으로 둬서 안보이게 하기*/
+            height: 0;
+            /* 기본 상태에서는 숨김 */
             position: absolute;
             left: 0px;
             top: -10px;
             transform: translateY(50px);
-
             z-index: 999;
         }
-        .hidden_menu li{
+
+        .hidden_menu a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .hidden_menu li {
             margin: 15px 0 15px 0;
             font-size: 15px;
             color: #666;
             letter-spacing: -1px;
         }
-        .hidden_menu li:nth-child(1){
+
+        .hidden_menu li:nth-child(1) {
             margin-top: 20px;
         }
-        .hidden_menu li:hover{
-            color:#009223;
+
+        .hidden_menu li:hover {
+            color: #009223;
             text-decoration: underline;
         }
-        .main_nav:hover .hidden_menu, .main_nav:hover .bg {
+
+        /* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경의 높이를 확장 */
+        .main_nav:hover .hidden_menu,
+        .main_nav:hover .bg {
             height: 260px;
-            /* 마우스를 갖다 대면 높이 생기게 하기 */
             transition: 0.5s;
-            /* 천천히 나오게 하는 효과*/
+            /* 부드러운 전환 효과 */
         }
-        .main_nav:hover .bg{
+
+        .main_nav:hover .bg {
             border-bottom: 0.5px solid #ddd;
         }
 
@@ -365,72 +416,88 @@
 
         }
 
-        /*푸터*/
-        footer{
+        /* 
+          [푸터 영역 스타일]
+          페이지 하단에 위치한 회사 정보, 이용약관, SNS 링크 등을 포함한 영역입니다.
+        */
+        footer {
             background-color: rgb(41, 41, 41);
             color: rgb(102, 102, 102);
             position: relative;
         }
-        /*상단*/
-        .footer_menu{
+
+        /* 푸터 상단 메뉴 스타일 */
+        .footer_menu {
             padding: 5px;
             border-bottom: 1px solid #3b3b3b;
         }
-        footer ul{
+
+        footer ul {
             list-style: none;
             display: flex;
             font-size: 14px;
         }
-        footer li{
+
+        footer li {
             margin-right: 29px;
         }
-        footer a{
+
+        footer a {
             text-decoration: none;
             color: inherit;
         }
-        strong{
+
+        footer strong {
             font-weight: bold;
             color: #bbbbbb;
         }
-        /*하단*/
-        .footer_info{
+
+        /* 푸터 하단 정보 스타일 */
+        .footer_info {
             font-size: 13px;
             display: flex;
             padding: 10px 0px 0px 45px;
         }
-        footer p{
+
+        footer p {
             padding-right: 5px;
         }
-        span{
+
+        footer span {
             font-weight: bold;
         }
-        .copyright{
+
+        .copyright {
             font-size: 13px;
             margin-top: -10px;
             padding: 5px 0px 25px 45px;
         }
-        /*sns*/
-        .instagram{
+
+        /* SNS 아이콘 스타일 (인스타그램, 페이스북) */
+        .instagram {
             width: 50px;
             height: 50px;
-            background-image: url("imgs/instagram.png");
+            background-image: url("../footer/imgs/instagram.png");
             position: absolute;
             right: 100px;
             bottom: 20px;
         }
-        .instagram:hover{
-            background-image: url("/imgs/instagram_hover.png");
+
+        .instagram:hover {
+            background-image: url("../footer/imgs/instagram_hover.png");
         }
-        .facebook{
+
+        .facebook {
             width: 50px;
             height: 50px;
-            background-image: url("/imgs/facebook.png");
+            background-image: url("../footer/imgs/facebook.png");
             position: absolute;
             right: 35px;
             bottom: 20px;
         }
-        .facebook:hover{
-            background-image: url("/imgs/facebook_hover.png");
+
+        .facebook:hover {
+            background-image: url("../footer/imgs/facebook_hover.png");
         }
         
 
@@ -440,71 +507,70 @@
 <body>
     <header>
         <div class="logo">
-            <a href=#><img src="./image/logo_w.png"></a>
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../mainpage/html/index.html"><img src="../header/image/logo_w.png" alt="로고"></a>
         </div>
         <div class="log_menu">
             <ul>
                 <li><a href="">로그인</a></li>
                 <li class="signup"><a href="">회원가입</a></li>
-                <li><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
             </ul>
         </div>
+        <!-- 상단 네비게이션 바 -->
         <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
             <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
-                        <!--하위메뉴-->
-                        <ul class="hidden_menu">
-                            <li><a href=""></a>샌드위치</li>
-                            <li><a href=""></a>랩ㆍ기타</li>
-                            <li><a href=""></a>샐러드</li>
-                            <li><a href=""></a>아침메뉴</li>
-                            <li><a href=""></a>스마일 썹</li>
-                            <li><a href=""></a>단체메뉴</li>
-                        </ul>
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
                 </li>
                 <li class="nav_item">이용방법
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 이용방법</li>
-                        <li><a href=""></a>단체메뉴 이용방법</li>
-                        <li><a href=""></a>신선한 재료 소개</li>
-                        <li><a href=""></a>App 이용방법</li>
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>이벤트ㆍ프로모션</li>
-                        <li><a href=""></a>뉴스ㆍ공지사항</li>
-                        <li><a href=""></a>광고영상</li>
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">써브웨이
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 역사</li>
-                        <li><a href=""></a>써브웨이 약속</li>
-                        <li><a href=""></a>샌드위치 아티스트 지원</li>
-                        <li><a href=""></a>매장찾기</li>
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">가맹점
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 프랜차이즈</li>
-                        <li><a href=""></a>가맹관련 FAQ</li>
-                        <li><a href=""></a>가맹신청ㆍ문의</li>
-                        <li><a href=""></a>지사안내</li>
-                        <li><a href=""></a>사업설명회</li>
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
-                    <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>FAST-SUB</li>
-                        <li><a href=""></a>HOME-SUB</li>
-                        <li><a href=""></a>단체주문</li>
+                        <li><a href="../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
                     </ul>
                 </li>
             </ul>
@@ -518,7 +584,7 @@
         </a>
         <ul>
             <li><a href="">써브웨이 역사</a></li>
-            <li><a href="" style="color:#009223";>써브웨이 약속</a>
+            <li><a href="../써브웨이약속/써브웨이약속.html" style="color:#009223";>써브웨이 약속</a>
                 <div class="underline"></div></li>
             <li><a href="">샌드위치 아티스트 지원</a></li>
             <li><a href="">매장찾기</a></li>
@@ -600,10 +666,12 @@
             </li>
             <li></li>
         </ul>
-    </div>
-    <!--푸터-->
+   <!-- 
+      [푸터 영역]
+      회사 정보, 이용약관, 개인정보처리방침, SNS 링크 등을 포함한 페이지 하단 영역입니다.
+    -->
     <footer>
-        <!--상단-->
+        <!-- 푸터 상단 메뉴 영역 -->
         <div class="footer_menu">
             <ul>
                 <li><a href="/agreement">이용약관</a></li>
@@ -612,7 +680,7 @@
                 <li><a href="https://store.subway.co.kr/">점주관리자</a></li>
             </ul>
         </div>
-        <!--하단-->
+        <!-- 푸터 하단 정보 영역 -->
         <div class="footer_info">
             <p>서울시 서초구 강남대로 535 프린스빌딩 15층</p>
             <p><span>I</span></p>
@@ -622,8 +690,10 @@
             <p><span>I</span></p>
             <p>사업자등록번호 : 101-84-04143</p>
         </div>
-        <div class="copyright">SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.</div>
-        <!--sns-->
+        <div class="copyright">
+            SUBWAY® is a Registered Trademark of Subway IP LLC. © 2021 Subway IP LLC. All Rights Reserved.
+        </div>
+        <!-- SNS 링크 (인스타그램, 페이스북) -->
         <a class="instagram" href="https://www.instagram.com/subwaykorea"></a>
         <a class="facebook" href="https://www.facebook.com/Subwaykr"></a>
     </footer>
