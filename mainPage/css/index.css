@@ -738,7 +738,7 @@ ul{
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     overflow: hidden;
-    padding: 30px;
+    padding-bottom: 30px;
 }
 
 .section_subway_s2_slider_wrap {
