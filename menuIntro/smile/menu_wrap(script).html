@@ -5,7 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/menuIntro/smile/menu_wrap.css">
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
+* {
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+header {
+    width: 100%;
+    min-width: 1200px;
+    height: 165px;
+    border-top: 5px solid #009223;
+    /* 상단 녹색 테두리 */
+    display: block;
+    position: relative;
+}
+
+/* 
+  [로고 스타일]
+  헤더 중앙에 위치한 로고 영역으로, 위치를 absolute로 설정하여 중앙에 정렬합니다.
+*/
+.logo {
+    height: 40px;
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 
+  [로그인/회원가입 메뉴 스타일]
+  헤더 우측에 위치한 메뉴 영역으로, 로그인, 회원가입 및 글로벌 메뉴 아이콘을 포함합니다.
+*/
+.log_menu {
+    position: absolute;
+    top: 40px;
+    right: 15%;
+}
+
+.logo img {
+    height: 53px;
+    
+}
+
+.log_menu img {
+    width: 30px;
+    height: 30px;
+}
+
+.log_menu ul {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.log_menu a {
+    height: 53px;   
+    text-decoration: none;
+    color: #666;
+}
+
+.log_menu li {
+    margin: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.log_menu li::marker {
+    color: #ddd;
+}
+
+.signup {
+    list-style: inside;
+}
+
+
+
+/* 
+  [메인 네비게이션 바 스타일]
+  헤더 아래쪽에 위치하며 메뉴 항목들이 수평으로 배치됩니다.
+  마우스 오버 시 하위 메뉴(드롭다운)가 나타나는 효과를 위해 관련 스타일을 설정합니다.
+*/
+.main_nav {
+    width: 100%;
+    height: 60px;
+    /* 네비게이션 영역 높이 설정 (하위 메뉴와의 간격 확보를 위함) */
+    position: absolute;
+    top: 65%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 배경 요소: 하위 메뉴가 나타날 때 배경 흰색 영역을 보여줍니다. */
+.bg {
+    top: 100%;
+    transform: translateY(-4px);
+    position: absolute;
+    width: 100%;
+    height: 0;
+    background-color: white;
+    border-top: 0.5px solid #ddd;
+    z-index: 995;
+}
+
+.main_nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.main_nav ul:hover {
+    cursor: pointer;
+}
+
+/* 하위 메뉴를 감싸는 래퍼 */
+.nav_wrap {
+    width: 100%;
+    height: 230px;
+    position: absolute;
+    top: 65%;
+}
+
+/* 개별 네비게이션 메뉴 항목 */
+.nav_item {
+    float: left;
+    width: 165px;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+}
+
+.nav_item:hover {
+    color: #009223;
+}
+
+/* 
+  하위 메뉴(드롭다운) 스타일
+  기본적으로 높이를 0으로 설정하여 숨기고, 오버 시 height가 확장되어 보입니다.
+*/
+.hidden_menu {
+    overflow: hidden;
+    /* 내용이 넘치면 보이지 않게 함 */
+    width: 100%;
+    height: 0;
+    /* 기본 상태에서는 숨김 */
+    position: absolute;
+    left: 0px;
+    top: -10px;
+    transform: translateY(50px);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden_menu a {
+    color: #666;
+    text-decoration: none;
+}
+
+.hidden_menu li {
+    margin: 15px 0 15px 0;
+    font-size: 15px;
+    color: #666;
+    letter-spacing: -1px;
+}
+
+.hidden_menu li:nth-child(1) {
+    margin-top: 20px;
+}
+
+.hidden_menu li:hover {
+    color: #009223;
+    text-decoration: underline;
+}
+
+/* 네비게이션 바에 마우스 오버 시 하위 메뉴와 배경의 높이를 확장 */
+.main_nav:hover .hidden_menu,
+.main_nav:hover .bg {
+    height: 260px;
+    transition: 0.5s;
+    /* 부드러운 전환 효과 */
+}
+
+.main_nav:hover .bg {
+    border-bottom: 0.5px solid #ddd;
+}
+    </style>
 </head>
 <script>
     function animate_text(){
@@ -17,6 +211,77 @@
     }
 </script>
 <body>
+    <header>
+        <div class="logo">
+            <!-- 로고를 클릭하면 메인 페이지로 이동 -->
+            <a href="../../mainpage/html/index.html"><img src="../../header/image/logo_w.png" alt="로고"></a>
+        </div>
+        <div class="log_menu">
+            <ul>
+                <li><a href="">로그인</a></li>
+                <li class="signup"><a href="">회원가입</a></li>
+                <li><a href="https://www.subway.com/en-us/"><img src="../../header/image/icon_utill_global.png"
+                            alt="글로벌 메뉴"></a></li>
+            </ul>
+        </div>
+        <!-- 상단 네비게이션 바 -->
+        <nav class="main_nav">
+            <!-- 하위 메뉴가 표시될 때 사용할 배경 요소 -->
+            <div class="bg"></div>
+            <ul>
+                <li class="nav_item">메뉴소개
+                    <!-- 하위 메뉴 (드롭다운) -->
+                    <ul class="hidden_menu">
+                        <li><a href="../../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                        <li><a href="../../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                        <li><a href="../../menuIntro/salad/salad.html">샐러드</a></li>
+                        <li><a href="../../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                        <li><a href="../../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                        <li><a href="../../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">이용방법
+                    <ul class="hidden_menu">
+                        <li><a href="../../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../../groupOrderPage/group-order.html">App 이용방법</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">새소식
+                    <ul class="hidden_menu">
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">써브웨이
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">가맹점
+                    <ul class="hidden_menu">
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../../사업설명회/사업설명회.html">사업설명회</a></li>
+                    </ul>
+                </li>
+                <li class="nav_item">온라인 주문
+                    <ul class="hidden_menu">
+                        <li><a href="../../orderPage/order_step1.html">FAST-SUB</a></li>
+                        <li><a href="">HOME-SUB</a></li>
+                        <li><a href="">단체주문</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="menu_wrap">
         <div class="wrap_intro">
             <div class="menu_list">

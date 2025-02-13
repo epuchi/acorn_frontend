@@ -167,6 +167,8 @@ img {
     height: 189px;
     margin: 20px auto 0;
     display: block;
+    position: relative;
+    justify-content: center;
 }
 
 .kor {
