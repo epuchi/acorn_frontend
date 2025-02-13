@@ -106,6 +106,7 @@ header {
 }
 
 .nav_item {
+    margin: 0;
     float: left;
     width: 165px;
     font-size: 18px;
@@ -133,7 +134,7 @@ header {
 }
 
 .hidden_menu li {
-    margin: 15px 0 15px 0;
+    margin: 5px 0 5px 0;
     font-size: 15px;
     color: #666;
     letter-spacing: -1px;
