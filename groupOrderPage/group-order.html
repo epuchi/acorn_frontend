@@ -12,9 +12,14 @@
             font-weight: 400;
             font-style: normal;
         }
+
+        html, body{
+            margin: 0px;
+            padding: 0px;
+        }
         
         /* header 스타일 */
-        header{
+        .header{
             width: 100%;
             min-width: 1200px;
             height: 165px;
@@ -408,10 +413,10 @@
             transition: color 0.8s ease;  /* p와 h2 색이 천천히 변하도록 transition 추가 */
         }
         .step.active3 p {
-            color: #ddd;  /* p 폰트 색 */
+            color: #ddd;
         }
         .step.active3 h2 {
-            color: #ddd;  /* h2 폰트 색 */
+            color: #ddd;
         }
 
         .step p, .step h2{
@@ -600,6 +605,7 @@
         let animating=false; //애니메이션 동작중인지 확인하는 변수
         function next(){
 
+
             if(animating){ //애니메이션 동작중이면 함수종료
                 return;
             }
@@ -663,12 +669,12 @@
                 return;
             }
             
-            //이거안돼요......next함수는 되는데 prev는 안돼요 왜왜
-             // 현재 step의 active 클래스를 제거
-            const currentStep = document.querySelector(".fastSub_step li:nth-child(" + (index+2) + ") .step");
-            currentStep.classList.add("active3");
-            currentStep.classList.add("active");
-            const prevStep = document.querySelector(".fastSub_step li:nth-child(" + (index+1) + ") .step");
+
+            //ㅜㅜ이거안됨왜안됨이유가뭐임임
+
+            const currentStep = document.querySelector(".fastSub_step li:nth-child(" + (index + 1) + ") .step");
+            currentStep.classList.remove("active");
+            const prevStep = document.querySelector(".fastSub_step li:nth-child(" + index + ") .step");
             prevStep.classList.add("active");
            
 
@@ -712,7 +718,7 @@
     </script>
 </head>
 <body onload="init()">
-    <header>
+    <div class="header">
         <div class="logo">
             <a href="../mainPage/html/index.html"><img src="./image/logo_w.png"></a>
         </div>
@@ -723,18 +729,18 @@
                 <li class="global"><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
-        <nav class="main_nav">
+        <div class="main_nav">
             <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
                         <!--하위메뉴-->
                         <ul class="hidden_menu">
-                            <li><a href="">샌드위치</a></li>
-                            <li><a href="../menu_wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
-                            <li><a href="">샐러드</a></li>
-                            <li><a href="">아침메뉴</a></li>
-                            <li><a href="">스마일 썹</a></li>
-                            <li><a href="">단체메뉴</a></li>
+                            <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                            <li><a href="../menuIntro/wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                            <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                            <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                            <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                            <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
                         </ul>
                 </li>
                 <li class="nav_item" style="color:#009223;">이용방법
@@ -776,14 +782,14 @@
                 <li class="nav_item">온라인 주문
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href="../fastSubPage/fast-sub.html">FAST-SUB</a></li>
-                        <li><a href="">HOME-SUB</a></li>
-                        <li><a href="">단체주문</a></li>
-                    </ul>
+                      <li><a href="../fastSubPage/fast-sub.html">FAST-SUB</a></li>
+                      <li><a href="../homeSubPage/home-sub.html">HOME-SUB</a></li>
+                      <li><a href="../groupOrderPage/group-order.html">단체주문</a></li>
+                  </ul>
                 </li>
             </ul>
-        </nav>
-    </header>
+          </div>
+      </div>
 
     <div class="sub_header">
         <a href="../mainPage/html/index.html">
@@ -820,7 +826,7 @@
             <div class="nextBtn" onclick="next()"></div>
             <div class="fastSub_step">
                 <ul>
-                    <li><div class="step"><p>STEP</p><h2>1</h2></div></li>
+                    <li><div class="step active"><p>STEP</p><h2>1</h2></div></li>
                     <li><div class="step"><p>STEP</p><h2>2</h2></div></li>
                 </ul>
             </div>
