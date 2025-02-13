@@ -12,7 +12,10 @@
             font-weight: 400;
             font-style: normal;
         }
-        
+        html, body{
+            margin: 0px;
+            padding: 0px;
+        }
         /* header 스타일 */
         header{
             width: 100%;
@@ -21,6 +24,7 @@
             border-top: 5px solid #009223;
             display: block;
             position: relative;
+
         }
         .logo{
             height: 40px;
@@ -29,11 +33,11 @@
             left: 50%;
             transform: translateX(-50%)
         }
-        
+
         .log_menu{
             position: absolute;
             top: 40px;
-            right: 15%;
+            right: 13%;
         }
         .log_menu ul{
             padding: 0px;
@@ -58,7 +62,13 @@
         .signup{
             list-style: inside;
         }
+        .global{
+            width: 30px;
+            height: 30px;
+            padding-left: 6px;
+        }
 
+        /*헤더메인메뉴*/
         .main_nav{
             width: 100%;
             height: 60px; /* 영역이 짧아서 히든영역이랑 간격이 있음 충분한 높이 주시면 잘 넘어가요*/
@@ -114,25 +124,29 @@
 
             z-index: 999;
         }
-        .hidden_menu li{
-            margin: 15px 0 15px 0;
-            font-size: 15px;
-            color: #666;
-            letter-spacing: -1px;
-        }
-        .hidden_menu li:nth-child(1){
-            margin-top: 20px;
-        }
-        .hidden_menu li:hover{
-            color:#009223;
-            text-decoration: underline;
-        }
         .main_nav:hover .hidden_menu, .main_nav:hover .bg {
             height: 260px;
             /* 마우스를 갖다 대면 높이 생기게 하기 */
             transition: 0.5s;
             /* 천천히 나오게 하는 효과*/
         }
+        .hidden_menu li{
+            margin: 15px 0 15px 0;
+            font-size: 15px;
+            letter-spacing: -1px;
+        }
+        .hidden_menu li:nth-child(1){
+            margin-top: 20px;
+        }
+        .hidden_menu a{
+            color: #666;
+            text-decoration: none;
+        }
+        .hidden_menu a:hover{
+            color:#009223;
+            text-decoration: underline;
+        }
+        
         .main_nav:hover .bg{
             border-bottom: 0.5px solid #ddd;
         }
@@ -142,75 +156,75 @@
 <body>
     <header>
         <div class="logo">
-            <a href=#><img src="./image/logo_w.png"></a>
+            <a href="../mainPage/html/index.html"><img src="./image/logo_w.png"></a>
         </div>
         <div class="log_menu">
             <ul>
-                <li><a href="">로그인</a></li>
-                <li class="signup"><a href="">회원가입</a></li>
-                <li><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
+                <li><a href="https://www.subway.co.kr/member/login">로그인</a></li>
+                <li class="signup"><a href="https://www.subway.co.kr/member/join/step1">회원가입</a></li>
+                <li class="global"><a href="https://www.subway.com/en-us/"><img src="./image/icon_utill_global.png"></a></li>
             </ul>
         </div>
-        <nav class="main_nav">
+        <div class="main_nav">
             <div class="bg"></div>
             <ul>
                 <li class="nav_item">메뉴소개
                         <!--하위메뉴-->
                         <ul class="hidden_menu">
-                            <li><a href=""></a>샌드위치</li>
-                            <li><a href=""></a>랩ㆍ기타</li>
-                            <li><a href=""></a>샐러드</li>
-                            <li><a href=""></a>아침메뉴</li>
-                            <li><a href=""></a>스마일 썹</li>
-                            <li><a href=""></a>단체메뉴</li>
+                            <li><a href="../menuIntro/sandwich/sandwich.html">샌드위치</a></li>
+                            <li><a href="../menuIntro/wrap.etc/menu_wrap(script).html">랩ㆍ기타</a></li>
+                            <li><a href="../menuIntro/salad/salad.html">샐러드</a></li>
+                            <li><a href="../menuIntro/morning/menu_wrap(script).html">아침메뉴</a></li>
+                            <li><a href="../menuIntro/smile/menu_wrap(script).html">스마일 썹</a></li>
+                            <li><a href="../menuIntro/catering/menu_wrap(script).html">단체메뉴</a></li>
                         </ul>
                 </li>
                 <li class="nav_item">이용방법
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 이용방법</li>
-                        <li><a href=""></a>단체메뉴 이용방법</li>
-                        <li><a href=""></a>신선한 재료 소개</li>
-                        <li><a href=""></a>App 이용방법</li>
+                        <li><a href="../howToPage/html/index.html">써브웨이 이용방법</a></li>
+                        <li><a href="../단체메뉴 이용방법/단체메뉴이용방법.html">단체메뉴 이용방법</a></li>
+                        <li><a href="../ingridientIntro/html/index.html">신선한 재료 소개</a></li>
+                        <li><a href="../fastSubPage/fast-sub.html">App 이용방법</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">새소식
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>이벤트ㆍ프로모션</li>
-                        <li><a href=""></a>뉴스ㆍ공지사항</li>
-                        <li><a href=""></a>광고영상</li>
+                        <li><a href="">이벤트ㆍ프로모션</a></li>
+                        <li><a href="">뉴스ㆍ공지사항</a></li>
+                        <li><a href="">광고영상</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">써브웨이
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 역사</li>
-                        <li><a href=""></a>써브웨이 약속</li>
-                        <li><a href=""></a>샌드위치 아티스트 지원</li>
-                        <li><a href=""></a>매장찾기</li>
+                        <li><a href="">써브웨이 역사</a></li>
+                        <li><a href="../써브웨이약속/써브웨이약속.html">써브웨이 약속</a></li>
+                        <li><a href="">샌드위치 아티스트 지원</a></li>
+                        <li><a href="">매장찾기</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">가맹점
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>써브웨이 프랜차이즈</li>
-                        <li><a href=""></a>가맹관련 FAQ</li>
-                        <li><a href=""></a>가맹신청ㆍ문의</li>
-                        <li><a href=""></a>지사안내</li>
-                        <li><a href=""></a>사업설명회</li>
+                        <li><a href="">써브웨이 프랜차이즈</a></li>
+                        <li><a href="">가맹관련 FAQ</a></li>
+                        <li><a href="">가맹신청ㆍ문의</a></li>
+                        <li><a href="../지사안내/지사안내.html">지사안내</a></li>
+                        <li><a href="../사업설명회/사업설명회.html">사업설명회</a></li>
                     </ul>
                 </li>
                 <li class="nav_item">온라인 주문
                     <!--하위메뉴-->
                     <ul class="hidden_menu">
-                        <li><a href=""></a>FAST-SUB</li>
-                        <li><a href=""></a>HOME-SUB</li>
-                        <li><a href=""></a>단체주문</li>
+                        <li><a href="../fastSubPage/fast-sub.html">FAST-SUB</a></li>
+                        <li><a href="../homeSubPage/home-sub.html">HOME-SUB</a></li>
+                        <li><a href="../groupOrderPage/group-order.html">단체주문</a></li>
                     </ul>
                 </li>
             </ul>
-        </nav>
+        </div>
     </header>
 </body>
 </html>

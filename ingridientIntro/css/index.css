@@ -149,14 +149,14 @@ footer{
     padding: 5px;
     border-bottom: 1px solid #3b3b3b;
 }
-/* ul{
+.footer_menu ul{
     list-style: none;
     display: flex;
     font-size: 14px;
 }
-li{
+.footer_menu ul li{
     margin-right: 29px;
-} */
+}
 a{
     text-decoration: none;
     color: inherit;
@@ -186,24 +186,24 @@ span{
 .instagram{
     width: 50px;
     height: 50px;
-    background-image: url("imgs/instagram.png");
+    background-image: url("../image/instagram.png");
     position: absolute;
     right: 100px;
     bottom: 20px;
 }
 .instagram:hover{
-    background-image: url("/imgs/instagram_hover.png");
+    background-image: url("../image/instagram_hover.png");
 }
 .facebook{
     width: 50px;
     height: 50px;
-    background-image: url("/imgs/facebook.png");
+    background-image: url("../image/facebook.png");
     position: absolute;
     right: 35px;
     bottom: 20px;
 }
 .facebook:hover{
-    background-image: url("/imgs/facebook_hover.png");
+    background-image: url("../image/facebook_hover.png");
 }
 /* 푸터 끝 */
 
@@ -447,6 +447,7 @@ li{
     font-family: "Noto Sans KR",serif;
     font-weight: bold;
     font-size: 19px;
+    
 }
 
 .ing_body_list_box li {
@@ -639,57 +640,52 @@ li{
     font-size: 20px;
 }
 
-/*퀵 메뉴*/
-.quick_menu {
-    min-width: 1200px;
+/* 퀵매뉴 수정 */
+.quick_menu{
     background-color: #fff;
     padding: 40px 0px 37px 0px;
+    font-weight: bold;
+    margin-top: 15px;
 }
-.quick_menu ul {
+.quick_menu ul{
     list-style: none;
     display: flex;
     justify-content: center;
 }
-.quick_menu ul li {
-    margin-left: 80px;
+.quick_menu li{
+    padding: 0px 80px;
 }
-.quick_menu ul li a {
-    display: block;
+a{
     text-decoration: none;
     position: relative;
-    padding-left: 90px;
 }
-.quick_menu ul li .icon {
-    background: url("/imgs/quickmenu.png");
+.qm_img{
+    background: url("../image/quickmenu.png");
     width: 70px;
     height: 70px;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -90px;
+    top: -10px;
 }
-.quick_menu ul li strong {
+.qm_name{
     color: #292929;
     font-size: 18px;
-    display: block;
-    margin-top: 12px;
-    text-align: left;
+    margin-right: 60px;
+    padding-bottom: 5px;
 }
-.quick_menu ul li span {
+.qm_info{
     color: #999999;
     font-size: 13px;
-    display: block;
-    margin-top: 6px;
-    text-align: left;
 }
-.quick_menu ul li.qm01 .icon {
-    background-position: 0px 0px;
+.qm1 .qm_img{
+   background-position: 0px 0px;
 }
-.quick_menu ul li.qm02 .icon {
+.qm2 .qm_img{
     background-position: -70px 0px;
 }
-.quick_menu ul li.qm03 .icon {
+.qm3 .qm_img{
     background-position: -140px 0px;
 }
-.quick_menu ul li.qm04 .icon {
+.qm4 .qm_img{
     background-position: -210px 0px;
 }

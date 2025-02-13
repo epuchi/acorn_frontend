@@ -5,14 +5,6 @@
     <meta charset="UTF-8" />
     <title>Fast-Sub 결제 페이지</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-
-        * {
-            font-family: "Noto Sans KR", serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-        }
 
         /* header 스타일 */
         header {
@@ -131,6 +123,7 @@
 
             z-index: 999;
         }
+
         .hidden_menu a {
             color: #666;
             text-decoration: none;
@@ -214,7 +207,6 @@
             height: 170px;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         /* 주문 전체 영역(흰 박스) */
@@ -599,11 +591,10 @@
     </style>
 
     <script>
-        // 스텝 인디케이터 표시 (상단)
         function renderStepIndicator(stepNum) {
-            const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""];
+            const stepTitles = ["매장선택", "메뉴선택", "주문하기", ""]; // 스텝 제목 배열
             const stepArea = document.querySelector(".step-section");
-            stepArea.innerHTML = "";
+            stepArea.innerHTML = ""; // 기존 내용 초기화
 
             for (let i = 0; i < 4; i++) {
                 const imgBox1 = document.createElement("div");
@@ -612,12 +603,14 @@
                 const pointImg = document.createElement("img");
                 const margin = 10;
 
+                // 이미지 간 마진 설정
                 stepImg.style.marginLeft = `${margin}px`;
                 stepImg.style.marginRight = `${margin}px`;
                 pointImg.style.marginLeft = `${margin}px`;
                 pointImg.style.marginRight = `${margin}px`;
                 pointImg.style.marginTop = "30px";
 
+                // 현재 스텝이면 활성화 이미지 사용
                 if (stepNum === i + 1) {
                     stepImg.src = `./image/step${i + 1}_on.png`;
                     stepImg.style.marginRight = "-45px";
@@ -638,9 +631,9 @@
                 stepArea.appendChild(imgBox2);
             }
 
+            // 활성화된 스텝 이미지의 부모 요소에 스텝 번호와 제목 텍스트 추가
             const onStepParent = document.querySelector(".onStep")?.parentElement;
             if (!onStepParent) return;
-
             const stepText1 = document.createElement("p");
             stepText1.textContent = `STEP${stepNum}`;
             const stepText2 = document.createElement("p");
@@ -649,6 +642,7 @@
             onStepParent.appendChild(stepText1);
             onStepParent.appendChild(stepText2);
 
+            // 텍스트의 위치와 스타일 설정
             onStepParent.style.position = "relative";
             stepText1.style.position = "absolute";
             stepText1.style.top = "5px";
@@ -656,7 +650,6 @@
             stepText1.style.fontSize = "16px";
             stepText1.style.fontWeight = "bold";
             stepText1.style.color = "#ffc300";
-
             stepText2.style.position = "absolute";
             stepText2.style.top = "25px";
             stepText2.style.left = "110px";
