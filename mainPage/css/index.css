@@ -9,7 +9,7 @@
         }
         
         /* header 스타일 */
-         html, body{
+        html, body{
             margin: 0;
             padding: 0;
         }
@@ -154,12 +154,7 @@
         }
 /* 헤더 끝 */
 
-/* 푸터 */
-/*글꼴*/
-@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
-*{
-    font-family: 'font_ns', sans-serif;
-}
+
 /*푸터*/
 footer{
     background-color: rgb(41, 41, 41);
