@@ -8,7 +8,12 @@
     font-style: normal;
 }
 
+
 /* header 스타일 */
+html, body{
+    margin: 0;
+    padding: 0;
+}
 header {
     width: 100%;
     min-width: 1200px;
